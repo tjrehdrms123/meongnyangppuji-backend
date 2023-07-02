@@ -7,6 +7,7 @@ import {
 import { IsUUID } from 'class-validator'
 import { Exclude } from 'class-transformer'
 
+// 엔터티 생성시 상속 받아야되는 부모 엔터티 Class  
 export abstract class CommonEntity {
   @IsUUID()
   @PrimaryGeneratedColumn('uuid')
@@ -27,4 +28,16 @@ export abstract class CommonEntity {
   @Exclude()
   @DeleteDateColumn({ type: 'timestamptz' })
   deletedAt?: Date | null
+}
+
+// 성별
+export enum Sex {
+  MALE = '남성',
+  FEMALEfemale = '여성',
+}
+
+// QR 발행 여부
+export enum QRissuance {
+  ISSUED = '발행',
+  UNPUBLISHED = '미발행',
 }
