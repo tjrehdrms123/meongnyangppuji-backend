@@ -2,7 +2,11 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-# Nest-TypeOrm-Board
+# 냥멍 Backend
+
+## DB Table
+
+- [Version 0.0.1](./DB.md)
 
 ## NEV Sample
 
