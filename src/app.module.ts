@@ -4,6 +4,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 import * as Joi from 'joi'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import { AppController } from './app.controller'
+import { AnimalModule } from './animal/animal.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -45,6 +46,8 @@ const typeOrmModuleOptions = {
       }),
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
+    AnimalModule,
+    AnimalModule
   ],
   controllers: [AppController],
 })
