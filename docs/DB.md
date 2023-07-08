@@ -8,7 +8,7 @@
 | guardian_animal | animal      | M:N  | 한 마리의 반려동물이 여러 명의 보호자가 있을 수도 있다는 것을 의미합니다.     |
 | guardian_animal | guardian    | M:N  | 한 명의 보호자가 여러 마리의 반려동물을 가질 수 있다는 것을 의미합니다.       |
 | animal          | animal_type | 1:1  | 한 마리의 반려동물은 하나의 반려동물 종류에만 속할 수 있다는 것을 의미합니다. |
-| animal          | qr          | 1:1  | 한 마리의 반려동물은 하나의 QR 코드를 가질 수 있다는 것을 의미합니다.         |
+| qr              | animal      | 1:1  | 한 마리의 반려동물은 하나의 QR 코드를 가질 수 있다는 것을 의미합니다.         |
 
 ---
 
@@ -47,34 +47,34 @@
 
 ### animal | 반려동물 테이블
 
-| 컬럼명         | 타입    | 설명                                 |
-| -------------- | ------- | ------------------------------------ |
-| id             | number  | 고유 아이디                          |
-| name           | varchar | 이름                                 |
-| introduction   | varchar | 소개                                 |
-| age            | int     | 나이                                 |
-| sex            | boolean | 성별 (1: 남자, 2: 여자)              |
-| profile_img    | varchar | 프로필 이미지                        |
-| animal_type    | number  | 반려동물 종류 (1: 강아지, 2: 고양이) |
-| animal_type_id | int     | 종류 FK                              |
-| qr_id          | int     | QR FK                                |
+| 컬럼명       | 타입    | 설명                    |
+| ------------ | ------- | ----------------------- |
+| id           | number  | 고유 아이디             |
+| name         | varchar | 이름                    |
+| introduction | varchar | 소개                    |
+| age          | int     | 나이                    |
+| sex          | boolean | 성별 (1: 남자, 2: 여자) |
+| profile_img  | varchar | 프로필 이미지           |
+| animal_type  | number  | 반려동물 종류 FK        |
+| qr_id        | int     | QR FK                   |
 
 ---
 
 ### animal_type | 반려동물 종류 테이블
 
-| 컬럼명    | 타입    | 설명        |
-| --------- | ------- | ----------- |
-| id        | number  | 고유 아이디 |
-| name      | varchar | 이름        |
-| rep_image | number  | 대표 이미지 |
+| 컬럼명      | 타입    | 설명                             |
+| ----------- | ------- | -------------------------------- |
+| id          | number  | 고유 아이디                      |
+| name        | varchar | 이름 (강아지, 고양이)            |
+| detail_name | varchar | 이름 (푸들, 진돗개, 차우차우...) |
 
 ---
 
-### qr | QR 코드 테이블
+### qr | QR 코드 관리 테이블
 
 | 컬럼명      | 타입    | 설명                              |
 | ----------- | ------- | --------------------------------- |
 | id          | number  | 고유 아이디                       |
 | qr_issuance | boolean | QR 발행 여부 (1: 미발행, 2: 발행) |
 | qr_use      | boolean | QR 사용 여부 (1: 미사용, 2: 사용) |
+| animal_id   | number  | animal FK                         |
