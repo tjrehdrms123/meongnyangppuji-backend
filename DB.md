@@ -16,7 +16,6 @@ animal : animal_type <1:1>
 | id             | number  | 고유 아이디   |
 | name           | varchar | 이름          |
 | introduction   | varchar | 소개          |
-| detail_type    | varchar | 반려동물 품종 |
 | age            | int     | 나이          |
 | sex            | enum    | 성별          |
 | profile_img    | varchar | 프로필 이미지 |
