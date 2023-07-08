@@ -5,6 +5,11 @@ import * as Joi from 'joi'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import { AppController } from './app.controller'
 import { AnimalModule } from './animal/animal.module';
+import { QrModule } from './qr/qr.module';
+import { AnimalTypeModule } from './animal_type/animal_type.module';
+import { GuardianModule } from './guardian/guardian.module';
+import { QrModule } from './qr/qr.module';
+import { GuardianModule } from './guardian/guardian.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -47,7 +52,10 @@ const typeOrmModuleOptions = {
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
     AnimalModule,
-    AnimalModule
+    AnimalModule,
+    QrModule,
+    AnimalTypeModule,
+    GuardianModule
   ],
   controllers: [AppController],
 })
