@@ -29,15 +29,3 @@ export abstract class CommonEntity {
   @DeleteDateColumn({ type: 'timestamptz' })
   deletedAt?: Date | null
 }
-
-// 성별
-export enum Sex {
-  MALE = '남성',
-  FEMALEfemale = '여성',
-}
-
-// QR 발행 여부
-export enum QRissuance {
-  ISSUED = '발행',
-  UNPUBLISHED = '미발행',
-}
