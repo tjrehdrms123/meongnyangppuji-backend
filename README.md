@@ -2,11 +2,11 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-# 냥멍 Backend
+# 멍냥뿌지 Backend
 
 ## DB Table
 
-- [Version 0.0.1](./DB.md)
+- [Version 0.0.1](./docs/DB.md)
 
 ## NEV Sample
 
