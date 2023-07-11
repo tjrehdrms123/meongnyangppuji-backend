@@ -6,7 +6,7 @@ import { GetAnimalTypeNameDto } from 'src/animal_type/dto/get_animal_type_name_d
 import { UpdateAnimalTypeByDetailNameDto } from 'src/animal_type/dto/update_animal_type_by_detail_name_dto';
 import { DeleteResult } from 'typeorm';
 
-export interface BaseInterfacAnimalTypeBaseeRepository<T> {
+export interface AnimalTypeServiceInterface<T> {
   // GET: name을 distinct로 반환
   getAnimalTypeName(animalTypeData: GetAnimalTypeNameDto);
 

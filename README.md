@@ -26,3 +26,10 @@ DB_PORT=
 DB_NAME=
 DB_TYPE=
 ```
+
+## Code Abstract
+```
+base/abstract.ts
+base/interface.ts
+repository.ts
+```
