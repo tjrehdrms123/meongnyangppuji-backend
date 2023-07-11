@@ -11,6 +11,7 @@ import * as expressBasicAuth from 'express-basic-auth';
 import * as passport from 'passport';
 import * as cookieParser from 'cookie-parser';
 import { HttpApiExceptionFilter } from './common/exceptions/http-api-exception.filter';
+import * as expressSession from "express-session";
 
 class Application {
   private logger = new Logger(Application.name);
@@ -19,6 +20,7 @@ class Application {
   private corsOriginList: string[];
   private ADMIN_USER: string;
   private ADMIN_PASSWORD: string;
+  private SESSION_SECRET_KEY: string;
 
   constructor(private server: NestExpressApplication) {
     this.server = server;
@@ -31,6 +33,7 @@ class Application {
       : ['*'];
     this.ADMIN_USER = process.env.ADMIN_USER || 'admin';
     this.ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '1234';
+    this.SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || 'SESSION_SECRET_KEY';
   }
 
   private setUpBasicAuth() {
@@ -52,8 +55,8 @@ class Application {
       SwaggerModule.createDocument(
         this.server,
         new DocumentBuilder()
-          .setTitle('I Love Cat - API')
-          .setDescription('TypeORM In Nest')
+          .setTitle('멍냥뿌지 - API')
+          .setDescription('BackEnd API DOCS')
           .setVersion('0.0.1')
           .build(),
       ),
@@ -73,6 +76,15 @@ class Application {
         transform: true,
       }),
     );
+
+    this.server.use(
+      expressSession({
+        secret: this.SESSION_SECRET_KEY,
+        resave: true,
+        saveUninitialized: true,
+      }),
+    )
+
     this.server.use(passport.initialize());
     this.server.use(passport.session());
     this.server.useGlobalInterceptors(
