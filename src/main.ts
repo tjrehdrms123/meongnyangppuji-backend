@@ -21,6 +21,7 @@ class Application {
   private ADMIN_USER: string;
   private ADMIN_PASSWORD: string;
   private SESSION_SECRET_KEY: string;
+  private SWAGGER_SERVER_URL: string;
 
   constructor(private server: NestExpressApplication) {
     this.server = server;
@@ -49,19 +50,26 @@ class Application {
   }
 
   private setUpOpenAPIMidleware() {
-    SwaggerModule.setup(
-      'docs',
-      this.server,
-      SwaggerModule.createDocument(
-        this.server,
-        new DocumentBuilder()
-          .setTitle('멍냥뿌지 - API')
-          .setDescription('BackEnd API DOCS')
-          .setVersion('0.0.1')
-          .build(),
-      ),
-    );
+    const options = new DocumentBuilder()
+      .setTitle('멍냥뿌지 - API')
+      .setDescription('BackEnd API DOCS')
+      .setVersion('0.0.1')
+      .addServer(process.env.DOMAIN_PRODUCTION, 'Production Server')
+      .addServer(process.env.DOMAIN_LOCAL, 'Local Server')
+      .build();
+  
+    const document = SwaggerModule.createDocument(this.server, options);
+  
+    SwaggerModule.setup('docs', this.server, document, {
+      swaggerOptions: {
+        servers: [
+          { url: process.env.DOMAIN_PRODUCTION, description: 'Production Server' },
+          { url: process.env.DOMAIN_LOCAL, description: 'Local Server' },
+        ],
+      },
+    });
   }
+  
 
   private async setUpGlobalMiddleware() {
     this.server.enableCors({
