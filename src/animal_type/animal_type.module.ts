@@ -8,10 +8,10 @@ import { TypeOrmCustomModule } from 'src/typeorm-custom.module';
 
 @Module({
   imports: [
-    TypeOrmCustomModule.forCustomRepository([AnimalTypeRepository])
+    TypeOrmModule.forFeature([AnimalTypeEntity]),
   ],
-  providers: [AnimalTypeService],
+  providers: [AnimalTypeRepository,AnimalTypeService],
   controllers: [AnimalTypeController],
-  exports: [AnimalTypeService],
+  exports: [AnimalTypeRepository],
 })
 export class AnimalTypeModule {}
