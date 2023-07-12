@@ -8,20 +8,20 @@ import { DeleteResult } from 'typeorm';
 
 export interface AnimalTypeRepositoryInterface<T> {
   // GET: name을 distinct로 반환
-  getAnimalTypeName(animalTypeData: GetAnimalTypeNameDto);
+  getAnimalTypeName(animalTypeData: GetAnimalTypeNameDto): Promise<T[]>;
 
   // GET: name을 줬을때 detail_name값을 반환
-  getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto);
+  getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string>;
   
   // POST: 반려동물 종류 등록
-  createAnimalType(animalTypeData: CreateAnimalTypeDto);
+  createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<T>;
   
   // PUT: 반려동물 상세 이름 수정
-  updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto);
+  updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto): Promise<T>;
   
   // DELETE: 반려동물 상세 이름으로 삭제
-  deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto);
+  deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto): Promise<DeleteResult>;
   
   // DELETE: 반려동물 이름으로 삭제
-  deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto);
+  deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto): Promise<DeleteResult>;
 }
