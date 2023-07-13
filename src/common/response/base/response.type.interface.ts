@@ -1,4 +1,4 @@
-export interface ApiCreatedResponseTypeInterface {
+export interface ResponseSuccessInterface {
     success: boolean,
     data: object
 }
