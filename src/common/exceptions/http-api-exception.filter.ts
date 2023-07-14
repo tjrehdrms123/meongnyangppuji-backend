@@ -24,7 +24,12 @@ export class HttpApiExceptionFilter implements ExceptionFilter {
         .status(status)
         .json({ success: true, statusCode: status, message: error })
     } else {
-      response.status(status).json({ success: false, ...error })
+      response.status(status).json({ 
+        success: false,
+        timestamp: error.message,
+        path: error.message,
+        method: error.message
+      })
     }
   }
 }
