@@ -26,11 +26,12 @@ export class AnimalTypeController {
     }   
   ])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
-    ErrorDefine['ERROR-0000'],
+    ErrorDefine['ERROR-100'],
     ErrorDefine['ERROR-0001']
   ])
-  @ApiBadRequestResponse({ description: '유효성 검사에 실패했습니다.', type: DeleteAnimalTypeByDetailNameDto}) // 400
-  @ApiUnauthorizedResponse({ description: '잘못된 토큰 입니다', type: DeleteAnimalTypeByDetailNameDto}) // 401
+  @ErrorResponse(HttpStatus.UNAUTHORIZED, [
+    ErrorDefine['ERROR-0001']
+  ])
   @Post()
   async createAnimalType(@Body() animalTypeData: CreateAnimalTypeDto) {
     return await this.animalTypeService.createAnimalType(animalTypeData);

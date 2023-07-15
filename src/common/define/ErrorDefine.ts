@@ -18,13 +18,30 @@ type Keys =
   | 'ERROR-0002'
   | 'ERROR-0003'
   | 'ERROR-0004'
-  | 'ERROR-0005';
+  | 'ERROR-0005'
+  | 'ERROR-100'
+  ;
 
 export const ErrorDefine: Record<
   Keys,
   ErrorResponseOption & { code: string }
 > = {
+  // 1000 : Animal Type
+  'ERROR-1000': {
+    model: BadRequestException,
+    exampleTitle: 'Animal Type - 생성 실패',
+    exampleDescription: '동일한 반려 동물의 상세 이름이 존재합니다.',
+    message: '동일한 반려 동물의 상세 이름이 존재합니다.',
+    code: 'ERROR-1000'
+  },
   //400
+  'ERROR-100': {
+    model: BadRequestException,
+    exampleTitle: '유효성 검사 - 실패',
+    exampleDescription: '유효성 검사에 실패 했습니다.',
+    message: '해당 값이 없습니다. | 해당 값은 필수입니다.',
+    code: 'ERROR-100'
+  },
   'ERROR-0000': {
     model: BadRequestException,
     exampleDescription: '3분짜리 인증번호 기한만료시에 발생하는 오류',
@@ -71,13 +88,13 @@ export const ErrorDefine: Record<
   },
 
   //401
-  'ERROR-1000': {
-    model: UnauthorizedException,
-    exampleDescription: '헤더 Bearer 형식을 지키지 않고 잘못 요청 보냈을 때',
-    exampleTitle: '어세스토큰-잘못된 헤더 요청',
-    message: '잘못된 헤더 요청',
-    code: 'ERROR-1000'
-  },
+  // 'ERROR-1000': {
+  //   model: UnauthorizedException,
+  //   exampleDescription: '헤더 Bearer 형식을 지키지 않고 잘못 요청 보냈을 때',
+  //   exampleTitle: '어세스토큰-잘못된 헤더 요청',
+  //   message: '잘못된 헤더 요청',
+  //   code: 'ERROR-1000'
+  // },
 
   'ERROR-1001': {
     model: UnauthorizedException,
