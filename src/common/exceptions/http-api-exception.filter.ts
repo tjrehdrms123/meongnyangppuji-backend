@@ -17,11 +17,11 @@ export class HttpApiExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const status = exception.getStatus();
     const request = ctx.getRequest<Request>();
+    const getError = exception.getResponse();
 
     const error = exception.getResponse() as
       | string
       | { error: string; statusCode: number; message: string[] }
-    console.log('err:',error)
     if (typeof error === 'string') {
       response
       .status(status)

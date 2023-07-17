@@ -24,8 +24,7 @@ export class AnimalTypeController {
     }   
   ])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
-    ErrorDefine['ERROR-100'],
-    ErrorDefine['ERROR-0001']
+    ErrorDefine['ERROR-1000']
   ])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001']

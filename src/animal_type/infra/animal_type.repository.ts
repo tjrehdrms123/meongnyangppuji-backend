@@ -6,22 +6,18 @@ import { DeleteAnimalTypeByDetailNameDto } from 'src/animal_type/dto/delete_anim
 import { DeleteAnimalTypeNameDto } from 'src/animal_type/dto/delete_animal_type_by_name_dto';
 import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { AnimalTypeRepositoryInterface } from './base/animal_type.repository.interface';
 import { CreateAnimalTypeDto } from '../dto/create_animal_type_dto';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-export class AnimalTypeRepository extends Repository<AnimalTypeEntity> implements AnimalTypeRepositoryInterface<AnimalTypeEntity> {
-
+export class AnimalTypeRepository {
     constructor(
         @InjectRepository(AnimalTypeEntity)
         private readonly animalTypeRepository: Repository<AnimalTypeEntity>
-    ) {
-        super(animalTypeRepository.target, animalTypeRepository.manager, animalTypeRepository.queryRunner);
-    }
+    ){}
 
     // GET: name을 distinct로 반환
-    public async getAnimalTypeName(animalTypeData: GetAnimalTypeNameDto) {
+    async getAnimalTypeName(animalTypeData: GetAnimalTypeNameDto) {
         const distinctValues = await this.animalTypeRepository
         .createQueryBuilder('animal_type')
         .select('DISTINCT animal_type.name', animalTypeData.name)
@@ -31,24 +27,29 @@ export class AnimalTypeRepository extends Repository<AnimalTypeEntity> implement
     }
 
     // GET: name을 줬을때 detail_name값을 반환
-    public async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto) {
+    async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto) {
         const { name } = animalTypeData;
         const animalType = await this.animalTypeRepository.findOneByOrFail({ name });
         return animalType.detail_name;
     }
 
-    // POST: 반려동물 종류 등록
-    public async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
-        try{
-            const newAnimalType = this.animalTypeRepository.create(animalTypeData);
-            return await this.animalTypeRepository.save(newAnimalType);
-        } catch(e){
-            throw new BadRequestException('test');
+    /**
+     * POST: 반려동물 종류 등록
+     * @param animalTypeData: 생성 정보
+     * @returns 
+     */
+    async createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<AnimalTypeEntity | null>{
+        const { name, detail_name } = animalTypeData;
+        const animalType = this.animalTypeRepository.findOne({ where : {'detail_name': detail_name} });
+        if(animalType){
+            throw new BadRequestException("동일한 반려 동물의 상세 이름이 존재합니다.");
         }
+        const newAnimalType = this.animalTypeRepository.create(animalTypeData);
+        return await this.animalTypeRepository.save(newAnimalType);
     }
 
     // PUT: 반려동물 상세 이름 수정
-    public async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
+    async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
         const { id, detail_name } = animalTypeData;
         const animalType = await this.animalTypeRepository.findOneByOrFail({ id: animalTypeData.id });
 
@@ -57,13 +58,13 @@ export class AnimalTypeRepository extends Repository<AnimalTypeEntity> implement
     }
 
     // DELETE: 반려동물 상세 이름으로 삭제
-    public async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
+    async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
         const { detail_name } = animalTypeData;
         return this.animalTypeRepository.softDelete({ detail_name });
     }
 
     // DELETE: 반려동물 이름으로 삭제
-    public async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
+    async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
         const { name } = animalTypeData;
         return this.animalTypeRepository.softDelete({ name });
     }

@@ -82,7 +82,7 @@ class Application {
     );
 
     // 성공시 인터셉터
-    this.server.useGlobalInterceptors(new SuccessInterceptor());
+    // this.server.useGlobalInterceptors(new SuccessInterceptor());
     this.server.useGlobalFilters(new HttpApiExceptionFilter());
   }
 
