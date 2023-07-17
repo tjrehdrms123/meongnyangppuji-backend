@@ -12,6 +12,7 @@ import * as cookieParser from 'cookie-parser';
 import { HttpApiExceptionFilter } from './common/exceptions/http-api-exception.filter';
 import * as expressSession from 'express-session';
 import { setupSwagger } from './common/utils/swagger';
+import { SuccessInterceptor } from './common/exceptions/success.interceptor';
 
 class Application {
   private logger = new Logger(Application.name);
@@ -72,9 +73,16 @@ class Application {
 
     this.server.use(passport.initialize());
     this.server.use(passport.session());
+
+    // 글로벌로 class 직렬화 선택
     this.server.useGlobalInterceptors(
-      new ClassSerializerInterceptor(this.server.get(Reflector)),
+      new ClassSerializerInterceptor(this.server.get(Reflector), {
+        excludeExtraneousValues: true
+      })
     );
+
+    // 성공시 인터셉터
+    this.server.useGlobalInterceptors(new SuccessInterceptor());
     this.server.useGlobalFilters(new HttpApiExceptionFilter());
   }
 

@@ -5,7 +5,7 @@ import { UpdateAnimalTypeByDetailNameDto } from 'src/animal_type/dto/update_anim
 import { DeleteAnimalTypeByDetailNameDto } from 'src/animal_type/dto/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from 'src/animal_type/dto/delete_animal_type_by_name_dto';
 import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { AnimalTypeRepositoryInterface } from './base/animal_type.repository.interface';
 import { CreateAnimalTypeDto } from '../dto/create_animal_type_dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -39,8 +39,12 @@ export class AnimalTypeRepository extends Repository<AnimalTypeEntity> implement
 
     // POST: 반려동물 종류 등록
     public async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
-        const newAnimalType = this.animalTypeRepository.create(animalTypeData);
-        return await this.animalTypeRepository.save(newAnimalType);
+        try{
+            const newAnimalType = this.animalTypeRepository.create(animalTypeData);
+            return await this.animalTypeRepository.save(newAnimalType);
+        } catch(e){
+            throw new BadRequestException('test');
+        }
     }
 
     // PUT: 반려동물 상세 이름 수정

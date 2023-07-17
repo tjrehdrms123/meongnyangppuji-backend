@@ -12,8 +12,6 @@ import { ErrorDefine } from 'src/common/define/ErrorDefine';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
-@UseInterceptors(SuccessInterceptor)
-@UseFilters(HttpApiExceptionFilter)
 export class AnimalTypeController {
   constructor(private readonly animalTypeService: AnimalTypeService) {}
   @ApiOperation({ summary: '애완 동물 타입 생성', description: '애완 동물 타입 생성' })
