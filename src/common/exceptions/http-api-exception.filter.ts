@@ -23,8 +23,7 @@ export class HttpApiExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
 
     let statusCode: number;
-    let error: HttpExceptionErrorResponseDto;
-
+    let error: HttpExceptionErrorResponseDto;    
     if (exception instanceof ThrottlerException) {
       statusCode = 429;
       error = {
@@ -54,7 +53,7 @@ export class HttpApiExceptionFilter implements ExceptionFilter {
         const objError = getError as HttpExceptionErrorResponseDto;
         error = {
           code: objError.code,
-          message: objError.message,
+          message: objError.message.toString(), // classValidator Message 배열로 넘어와서 문자열 처리
           error: exception.name,
           statusCode: statusCode
         };
