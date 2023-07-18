@@ -28,7 +28,6 @@ export class AnimalTypeService {
   // POST: 반려동물 종류 등록
   async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
     try{
-      // TODO: 공통 예외 처리 필더 작업, 에러 응답 생성, Swagger 응답 통일화
       const newAnimalType = this.animalTypeRepository.createAnimalType(animalTypeData);
       return newAnimalType;
     } catch(error){

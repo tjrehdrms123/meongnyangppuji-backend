@@ -2,7 +2,6 @@ import { Body, Controller, Get, HttpStatus, Post, UseFilters, UseInterceptors } 
 import { AnimalTypeService } from '../service/animal_type.service';
 import { CreateAnimalTypeDto } from '../dto/create_animal_type_dto';
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiNotAcceptableResponse, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
-import { HttpApiExceptionFilter } from 'src/common/exceptions/http-api-exception.filter';
 import { SuccessInterceptor } from 'src/common/exceptions/success.interceptor';
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/delete_animal_type_by_detail_name_dto';
 import { AnimalTypeDto } from '../dto/animal_type_dto';
@@ -27,7 +26,8 @@ export class AnimalTypeController {
     ErrorDefine['ERROR-1000']
   ])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
-    ErrorDefine['ERROR-0001']
+    ErrorDefine['ERROR-0001'],
+    ErrorDefine['ERROR-0002'],
   ])
   @Post()
   async createAnimalType(@Body() animalTypeData: CreateAnimalTypeDto) {

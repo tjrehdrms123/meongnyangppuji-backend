@@ -8,6 +8,7 @@ import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAnimalTypeDto } from '../dto/create_animal_type_dto';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ErrorDefine } from 'src/common/define/ErrorDefine';
 
 @Injectable()
 export class AnimalTypeRepository {
@@ -42,7 +43,7 @@ export class AnimalTypeRepository {
         const { name, detail_name } = animalTypeData;
         const animalType = this.animalTypeRepository.findOne({ where : {'detail_name': detail_name} });
         if(animalType){
-            throw new BadRequestException("동일한 반려 동물의 상세 이름이 존재합니다.");
+            throw new BadRequestException(ErrorDefine['ERROR-1000']);
         }
         const newAnimalType = this.animalTypeRepository.create(animalTypeData);
         return await this.animalTypeRepository.save(newAnimalType);

@@ -70,8 +70,8 @@ export const ErrorResponse = (
         }
         innerErrorDto = new HttpExceptionErrorResponseDto(
           StatusCode,
-          error.model.name,
           error.message,
+          error.model.name,
           error.code
         );
       }
