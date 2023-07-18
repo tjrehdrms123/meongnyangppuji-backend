@@ -5,6 +5,7 @@ import * as Joi from 'joi'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import { AppController } from './app.controller'
 import { AnimalTypeModule } from './animal_type/animal_type.module';
+import { ThrottlerModule } from '@nestjs/throttler'
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -47,6 +48,10 @@ const typeOrmModuleOptions = {
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
     AnimalTypeModule,
+    // ThrottlerModule.forRoot({
+    //   ttl: process.env.NODE_ENV === 'production' ? 300 : 60,
+    //   limit: 3
+    // }),
   ],
   controllers: [AppController],
 })

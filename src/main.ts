@@ -74,15 +74,9 @@ class Application {
     this.server.use(passport.initialize());
     this.server.use(passport.session());
 
-    // 글로벌로 class 직렬화 선택
-    this.server.useGlobalInterceptors(
-      new ClassSerializerInterceptor(this.server.get(Reflector), {
-        excludeExtraneousValues: true
-      })
-    );
-
     // 성공시 인터셉터
-    // this.server.useGlobalInterceptors(new SuccessInterceptor());
+    this.server.useGlobalInterceptors(new SuccessInterceptor());
+    // 예외 필더
     this.server.useGlobalFilters(new HttpApiExceptionFilter());
   }
 

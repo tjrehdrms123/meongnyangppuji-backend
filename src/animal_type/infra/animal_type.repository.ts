@@ -39,14 +39,13 @@ export class AnimalTypeRepository {
      * @param animalTypeData: 생성 정보
      * @returns 
      */
-    async createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<AnimalTypeEntity | null>{
+    async createAnimalType(animalTypeData: CreateAnimalTypeDto){
         const { name, detail_name } = animalTypeData;
-        const animalType = this.animalTypeRepository.findOne({ where : {'detail_name': detail_name} });
+        const animalType = await this.animalTypeRepository.findOne({ where : {detail_name: detail_name} });
         if(animalType){
             throw new BadRequestException(ErrorDefine['ERROR-1000']);
         }
-        const newAnimalType = this.animalTypeRepository.create(animalTypeData);
-        return await this.animalTypeRepository.save(newAnimalType);
+        return await this.animalTypeRepository.save(animalTypeData);
     }
 
     // PUT: 반려동물 상세 이름 수정

@@ -28,7 +28,7 @@ export class AnimalTypeService {
   // POST: 반려동물 종류 등록
   async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
     try{
-      const newAnimalType = this.animalTypeRepository.createAnimalType(animalTypeData);
+      const newAnimalType = await this.animalTypeRepository.createAnimalType(animalTypeData);
       return newAnimalType;
     } catch(error){
       throw error;

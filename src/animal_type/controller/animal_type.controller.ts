@@ -1,13 +1,12 @@
 import { Body, Controller, Get, HttpStatus, Post, UseFilters, UseInterceptors } from '@nestjs/common';
 import { AnimalTypeService } from '../service/animal_type.service';
 import { CreateAnimalTypeDto } from '../dto/create_animal_type_dto';
-import { ApiBadRequestResponse, ApiCreatedResponse, ApiNotAcceptableResponse, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
-import { SuccessInterceptor } from 'src/common/exceptions/success.interceptor';
-import { DeleteAnimalTypeByDetailNameDto } from '../dto/delete_animal_type_by_detail_name_dto';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AnimalTypeDto } from '../dto/animal_type_dto';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
+import { SuccessInterceptor } from 'src/common/exceptions/success.interceptor';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
