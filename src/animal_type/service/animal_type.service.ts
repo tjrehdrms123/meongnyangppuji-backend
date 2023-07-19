@@ -18,7 +18,9 @@ export class AnimalTypeService {
   ) {}
 
   // GET: name을 distinct로 반환
-  async getAnimalTypeName(animalTypeData: GetAnimalTypeNameDto) {
+  async getAnimalTypeName() {
+    const animalTypeName = await this.animalTypeRepository.getAnimalTypeName();
+    return animalTypeName;
   }
 
   // GET: name을 줬을때 detail_name값을 반환
@@ -27,12 +29,8 @@ export class AnimalTypeService {
 
   // POST: 반려동물 종류 등록
   async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
-    try{
-      const newAnimalType = await this.animalTypeRepository.createAnimalType(animalTypeData);
-      return newAnimalType;
-    } catch(error){
-      throw error;
-    }
+    const newAnimalType = await this.animalTypeRepository.createAnimalType(animalTypeData);
+    return newAnimalType;
   }
 
   // PUT: 반려동물 상세 이름 수정

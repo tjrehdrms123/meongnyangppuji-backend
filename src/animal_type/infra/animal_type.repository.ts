@@ -18,13 +18,13 @@ export class AnimalTypeRepository {
     ){}
 
     // GET: name을 distinct로 반환
-    async getAnimalTypeName(animalTypeData: GetAnimalTypeNameDto) {
+    async getAnimalTypeName() {
         const distinctValues = await this.animalTypeRepository
         .createQueryBuilder('animal_type')
-        .select('DISTINCT animal_type.name', animalTypeData.name)
+        .select('DISTINCT animal_type.name')
         .getRawMany();
-
-        return distinctValues.map((value) => value.name);
+        const animalTypeName = distinctValues.map((value) => value.name);
+        return animalTypeName;
     }
 
     // GET: name을 줬을때 detail_name값을 반환

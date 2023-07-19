@@ -7,6 +7,7 @@ import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
 import { SuccessInterceptor } from 'src/common/exceptions/success.interceptor';
+import { GetAnimalTypeNameDto } from '../dto/get_animal_type_name_dto';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
@@ -31,5 +32,10 @@ export class AnimalTypeController {
   @Post()
   async createAnimalType(@Body() animalTypeData: CreateAnimalTypeDto) {
     return await this.animalTypeService.createAnimalType(animalTypeData);
+  }
+
+  @Get('name')
+  async getAnimalType() {
+    return await this.animalTypeService.getAnimalTypeName();
   }
 }
