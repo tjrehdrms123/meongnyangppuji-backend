@@ -17,9 +17,8 @@ export class AnimalTypeController {
   @SuccessResponse(HttpStatus.OK, [
     {
       model: AnimalTypeDto,
-      exampleTitle: '애완 동물 타입 성공 예시',
-      exampleDescription: '애완 동물 타입 성공 예시',
-      generic: CreateAnimalTypeDto
+      exampleTitle: '애완동물 타입 생성 성공 예시',
+      exampleDescription: '애완동물 타입 생성 성공 예시',
     }   
   ])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
@@ -34,6 +33,13 @@ export class AnimalTypeController {
     return await this.animalTypeService.createAnimalType(animalTypeData);
   }
 
+  @SuccessResponse(HttpStatus.OK, [
+    {
+      model: GetAnimalTypeNameDto,
+      exampleTitle: '애완동물 타입 종류 조회 예시',
+      exampleDescription: '애완동물 타입 종류 조회 성공 예시',
+    }   
+  ])
   @Get('name')
   async getAnimalType() {
     return await this.animalTypeService.getAnimalTypeName();
