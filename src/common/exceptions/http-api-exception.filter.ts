@@ -13,6 +13,8 @@ import { ErrorDefine } from '../define/ErrorDefine';
 import { CustomValidationError } from '../dtos/error/ValidationError';
 import { ErrorCommonResponse } from '../dtos/ErrorCommonResponse.dto';
 import { HttpExceptionErrorResponseDto } from '../dtos/HttpExceptionError.response.dto';
+import { getToday } from '../utils/moment';
+import { winstonLogger } from '../utils/winston';
 
 @Catch()
 export class HttpApiExceptionFilter implements ExceptionFilter {
@@ -70,11 +72,14 @@ export class HttpApiExceptionFilter implements ExceptionFilter {
           message: '서버에러 관리자한테 문의 주세요'
         }
       };
+      // 콘솔
       Logger.error(
         'ExceptionsFilter',
         exception.stack,
         request.method + request.url
       );
+      // 로깅
+      winstonLogger.error(`${ getToday() } | ${ exception.stack } | ${ request.method + request.url }`);
       return response.status(statusCode).json(errorResponse);
     }
 
