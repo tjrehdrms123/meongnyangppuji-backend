@@ -10,7 +10,9 @@ import { ApiProperty } from '@nestjs/swagger'
 
 // 엔터티 생성시 상속 받아야되는 부모 엔터티 Class  
 export abstract class CommonEntity {
-  @IsUUID()
+  @IsUUID(4,{
+    message: "입력한 ID가 옳바르지 않습니다."
+  })
   @PrimaryGeneratedColumn('uuid')
   @Expose()
   @ApiProperty({

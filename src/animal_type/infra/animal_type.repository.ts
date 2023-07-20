@@ -40,18 +40,24 @@ export class AnimalTypeRepository {
      * @returns 
      */
     async createAnimalType(animalTypeData: CreateAnimalTypeDto){
-        const { name, detail_name } = animalTypeData;
+        return await this.animalTypeRepository.save(animalTypeData);
+    }
+
+    /**
+     * ERROR-1000 : 반려동물 상세 이름 있는지 검사
+     * @param detail_name 
+     */
+    async findOneByDetailName(detail_name){
         const animalType = await this.animalTypeRepository.findOne({ where : {detail_name: detail_name} });
         if(animalType){
             throw new BadRequestException(ErrorDefine['ERROR-1000']);
         }
-        return await this.animalTypeRepository.save(animalTypeData);
     }
 
     // PUT: 반려동물 상세 이름 수정
     async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
         const { id, detail_name } = animalTypeData;
-        const animalType = await this.animalTypeRepository.findOneByOrFail({ id: animalTypeData.id });
+        const animalType = await this.animalTypeRepository.findOneByOrFail({ id: id });
 
         animalType.detail_name = detail_name;
         return this.animalTypeRepository.save(animalType);
@@ -60,12 +66,15 @@ export class AnimalTypeRepository {
     // DELETE: 반려동물 상세 이름으로 삭제
     async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
         const { detail_name } = animalTypeData;
-        return this.animalTypeRepository.softDelete({ detail_name });
+        const deleteResult = await this.animalTypeRepository.softDelete({ detail_name });
+        const affectedRows = deleteResult.affected;
+        return affectedRows;
     }
-
     // DELETE: 반려동물 이름으로 삭제
     async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
         const { name } = animalTypeData;
-        return this.animalTypeRepository.softDelete({ name });
+        const deleteResult = await this.animalTypeRepository.softDelete({ name });
+        const affectedRows = deleteResult.affected;
+        return affectedRows;
     }
 }

@@ -25,19 +25,24 @@ export class AnimalTypeService {
 
   // POST: 반려동물 종류 등록
   async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
+    const { detail_name } = animalTypeData;
+    await this.animalTypeRepository.findOneByDetailName(detail_name);
     const newAnimalType = await this.animalTypeRepository.createAnimalType(animalTypeData);
     return newAnimalType;
   }
 
   // PUT: 반려동물 상세 이름 수정
   async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
+    return await this.animalTypeRepository.updateAnimalTypeByDetailName(animalTypeData);
   }
 
   // DELETE: 반려동물 상세 이름으로 삭제
   async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
+    return await this.animalTypeRepository.deleteAnimalTypeByDetailName(animalTypeData);
   }
 
   // DELETE: 반려동물 이름으로 삭제
   async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
+    return await this.animalTypeRepository.deleteAnimalByName(animalTypeData);
   }
 }

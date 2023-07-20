@@ -43,7 +43,7 @@ export const ErrorDefine: Record<
   // 1000 : Animal Type
   'ERROR-1000': {
     model: BadRequestException,
-    exampleTitle: 'Animal Type - 생성 실패',
+    exampleTitle: 'Animal Type - 에러',
     exampleDescription: '동일한 반려 동물의 상세 이름이 존재합니다.',
     message: '동일한 반려 동물의 상세 이름이 존재합니다.',
     code: 'ERROR-1000'
