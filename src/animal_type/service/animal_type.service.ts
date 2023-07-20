@@ -1,14 +1,10 @@
 import { Injectable, Logger, PreconditionFailedException } from '@nestjs/common';
-import { AnimalTypeEntity } from '../entities/animal_type.entity';
 import { AnimalTypeRepository } from '../infra/animal_type.repository';
-import { Repository } from 'typeorm';
-import { GetAnimalTypeNameDto } from '../dto/get_animal_type_name_dto';
-import { GetAnimalTypeByDetailNameDto } from '../dto/get_animal_type_by_detail_name_dto';
-import { UpdateAnimalTypeByDetailNameDto } from '../dto/update_animal_type_by_detail_name_dto';
-import { DeleteAnimalTypeByDetailNameDto } from '../dto/delete_animal_type_by_detail_name_dto';
-import { DeleteAnimalTypeNameDto } from '../dto/delete_animal_type_by_name_dto';
-import { CreateAnimalTypeDto } from '../dto/create_animal_type_dto';
-import { InjectRepository } from '@nestjs/typeorm';
+import { CreateAnimalTypeDto } from '../dto/request/create_animal_type_dto';
+import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_detail_name_dto';
+import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_type_by_detail_name_dto';
+import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
+import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
 
 @Injectable()
 export class AnimalTypeService {
@@ -19,12 +15,12 @@ export class AnimalTypeService {
 
   // GET: name을 distinct로 반환
   async getAnimalTypeName() {
-    const animalTypeName = await this.animalTypeRepository.getAnimalTypeName();
-    return animalTypeName;
+    return await this.animalTypeRepository.getAnimalTypeName();
   }
 
   // GET: name을 줬을때 detail_name값을 반환
   async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto) {
+    return await this.animalTypeRepository.getAnimalTypeByDetailName(animalTypeData);
   }
 
   // POST: 반려동물 종류 등록
