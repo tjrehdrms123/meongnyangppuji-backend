@@ -6,12 +6,11 @@ import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
 import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_detail_name_dto';
-import { ResAnimalTypeDto } from '../dto/response/res_animal_type_dto';
-import { ResAnimalTypeNameDto } from '../dto/response/res_animal_type_name_dto';
-import { ResAnimalTypeDetailNameDto } from '../dto/response/res_animal_type_detail_name_dto';
 import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
+import { AnimalTypeDto } from '../dto/animal_type_dto';
+import { ResAnimalTypeDto, ResAnimalTypeManyRowDto, ResAnimalTypeOmitDetailNameDto, ResAnimalTypeOmitNameDto, ResAnimalTypeRowDto } from '../dto/response/res_animal_type_dto';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
@@ -40,7 +39,7 @@ export class AnimalTypeController {
   @ApiOperation({ summary: '애완동물 타입 종류 조회 예시', description: '애완동물 타입 종류 조회 예시' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResAnimalTypeNameDto,
+      model: ResAnimalTypeOmitNameDto,
       exampleTitle: '애완동물 타입 종류 조회 예시',
       exampleDescription: '애완동물 타입 종류 조회 성공 예시',
     }   
@@ -57,7 +56,7 @@ export class AnimalTypeController {
   @ApiOperation({ summary: '애완동물 타입 상세 이름 조회 예시', description: '애완동물 타입 상세 이름 조회 예시' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResAnimalTypeDetailNameDto,
+      model: ResAnimalTypeOmitDetailNameDto,
       exampleTitle: '애완동물 상세 이름 조회 예시',
       exampleDescription: '애완동물 상세 이름 조회 성공 예시',
     }   
@@ -91,7 +90,7 @@ export class AnimalTypeController {
   @ApiOperation({ summary: '반려동물 상세 이름으로 삭제 변경', description: '반려동물 상세 이름으로 삭제 변경' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResAnimalTypeDetailNameDto,
+      model: ResAnimalTypeRowDto,
       exampleTitle: '반려동물 상세 이름으로 삭제 변경 예시',
       exampleDescription: '반려동물 상세 이름으로 삭제 변경 성공 예시',
     }   
@@ -108,7 +107,7 @@ export class AnimalTypeController {
   @ApiOperation({ summary: '반려동물 이름으로 삭제', description: '반려동물 이름으로 삭제' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResAnimalTypeDetailNameDto,
+      model: ResAnimalTypeManyRowDto,
       exampleTitle: '반려동물 이름으로 삭제 예시',
       exampleDescription: '반려동물 이름으로 삭제 성공 예시',
     }   
