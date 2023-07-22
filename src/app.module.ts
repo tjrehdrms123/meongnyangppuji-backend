@@ -6,6 +6,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import { AppController } from './app.controller'
 import { AnimalTypeModule } from './animal_type/animal_type.module';
 import { ThrottlerModule } from '@nestjs/throttler'
+import { GuardianModule } from './guardian/guardian.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -48,6 +49,7 @@ const typeOrmModuleOptions = {
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
     AnimalTypeModule,
+    GuardianModule,
     // ThrottlerModule.forRoot({
     //   ttl: process.env.NODE_ENV === 'production' ? 300 : 60,
     //   limit: 3
