@@ -9,8 +9,7 @@ import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_
 import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
-import { AnimalTypeDto } from '../dto/animal_type_dto';
-import { ResAnimalTypeDto, ResAnimalTypeManyRowDto, ResAnimalTypeOmitDetailNameDto, ResAnimalTypeOmitNameDto, ResAnimalTypeRowDto } from '../dto/response/res_animal_type_dto';
+import { ResAnimalTypeDetailNameDto, ResAnimalTypeDto, ResAnimalTypeManyRowDto, ResAnimalTypeNameDto, ResAnimalTypeRowDto } from '../dto/response/res_animal_type_dto';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
@@ -39,7 +38,7 @@ export class AnimalTypeController {
   @ApiOperation({ summary: '애완동물 타입 종류 조회 예시', description: '애완동물 타입 종류 조회 예시' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResAnimalTypeOmitNameDto,
+      model: ResAnimalTypeNameDto,
       exampleTitle: '애완동물 타입 종류 조회 예시',
       exampleDescription: '애완동물 타입 종류 조회 성공 예시',
     }   
@@ -56,7 +55,7 @@ export class AnimalTypeController {
   @ApiOperation({ summary: '애완동물 타입 상세 이름 조회 예시', description: '애완동물 타입 상세 이름 조회 예시' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResAnimalTypeOmitDetailNameDto,
+      model: ResAnimalTypeDetailNameDto,
       exampleTitle: '애완동물 상세 이름 조회 예시',
       exampleDescription: '애완동물 상세 이름 조회 성공 예시',
     }   
