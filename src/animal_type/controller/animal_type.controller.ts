@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put } from '@nestjs/common';
 import { AnimalTypeService } from '../service/animal_type.service';
 import { CreateAnimalTypeDto } from '../dto/request/create_animal_type_dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -81,7 +81,7 @@ export class AnimalTypeController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
-  @Put()
+  @Patch()
   async updateAnimalTypeByDetailName(@Body() animalTypeData: UpdateAnimalTypeByDetailNameDto) {
     return await this.animalTypeService.updateAnimalTypeByDetailName(animalTypeData);
   }

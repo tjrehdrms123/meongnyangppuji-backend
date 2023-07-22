@@ -31,7 +31,7 @@ export class AnimalTypeService {
     return newAnimalType;
   }
 
-  // PUT: 반려동물 상세 이름 수정
+  // PATCH: 반려동물 상세 이름 수정
   async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
     return await this.animalTypeRepository.updateAnimalTypeByDetailName(animalTypeData);
   }

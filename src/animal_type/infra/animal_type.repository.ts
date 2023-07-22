@@ -54,7 +54,7 @@ export class AnimalTypeRepository {
         }
     }
 
-    // PUT: 반려동물 상세 이름 수정
+    // PATCH: 반려동물 상세 이름 수정
     async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
         const { id, detail_name } = animalTypeData;
         const animalType = await this.animalTypeRepository.findOneByOrFail({ id: id });
