@@ -17,7 +17,7 @@
 | 컬럼명               | 타입    | 설명                                  |
 | -------------------- | ------- | ------------------------------------- |
 | id                   | int     | 고유 아이디                           |
-| name                 | varchar | 이름                                  |
+| user_id                 | varchar | 유저 아이디                                  |
 | password             | varchar | 패스워드                              |
 | consent_check        | boolean | 서비스이용약관 (1: 미체크, 2: 체크)   |
 | privacy_policy_check | boolean | 개인정보처리방침 (1: 미체크, 2: 체크) |
