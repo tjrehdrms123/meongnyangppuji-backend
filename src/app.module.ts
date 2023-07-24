@@ -8,7 +8,6 @@ import { AnimalTypeModule } from './animal_type/animal_type.module';
 import { ThrottlerModule } from '@nestjs/throttler'
 import { GuardianModule } from './guardian/guardian.module';
 import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -53,7 +52,6 @@ const typeOrmModuleOptions = {
     AnimalTypeModule,
     GuardianModule,
     UsersModule,
-    AuthModule,
     // ThrottlerModule.forRoot({
     //   ttl: process.env.NODE_ENV === 'production' ? 300 : 60,
     //   limit: 3
