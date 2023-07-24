@@ -3,6 +3,7 @@ import { Column, Entity, Index, JoinColumn, OneToOne } from 'typeorm'
 import { CommonEntity } from 'src/common/entities/common.entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { GuardianEntity } from 'src/guardian/entities/guardian.entity'
+import { Exclude } from 'class-transformer'
 
 @Entity({
   name: 'users',
@@ -26,6 +27,7 @@ export class UsersEntity extends CommonEntity {
       description: '유저의 패스워드',
       required: true
     })
+    @Exclude()
     password: string
 
     @Column({ type: 'boolean', comment: '서비스이용약관', nullable: false, charset: 'utf8mb4' })
