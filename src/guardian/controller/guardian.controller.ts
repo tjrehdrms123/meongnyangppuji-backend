@@ -3,10 +3,10 @@ import { GuardianService } from '../service/guardian.service';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
-import { ResGuardianTypeDto } from '../dto/response/res_guardian_dto';
 import { CreateGuardianDto } from '../dto/request/create_guardian_dto';
 import { UpdateGuardianDto } from '../dto/request/update_guardian_dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ResGuardianDto } from '../dto/response/res_guardian_dto';
 
 @Controller('guardian')
 @ApiTags('guardian API')
@@ -16,7 +16,7 @@ export class GuardianController {
   @ApiOperation({ summary: '보호자 생성', description: '보호자 생성' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResGuardianTypeDto,
+      model: ResGuardianDto,
       exampleTitle: '보호자 생성 성공 예시',
       exampleDescription: '보호자 생성 성공 예시',
     }   
@@ -33,7 +33,7 @@ export class GuardianController {
   @ApiOperation({ summary: '보호자 수정', description: '보호자 수정' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResGuardianTypeDto,
+      model: ResGuardianDto,
       exampleTitle: '보호자 업데이트 성공 예시',
       exampleDescription: '보호자 업데이트 성공 예시',
     }   
