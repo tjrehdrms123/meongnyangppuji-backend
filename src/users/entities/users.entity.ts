@@ -21,7 +21,6 @@ export class UsersEntity extends CommonEntity {
     user_id: string
 
     @Column({ type: 'varchar', comment: '패스워드', nullable: false, charset: 'utf8mb4' })
-    @IsNotEmpty({ message: '유저의 패스워드를 입력해주세요.' })
     @ApiProperty({
       example: '1234',
       description: '유저의 패스워드',
@@ -49,7 +48,7 @@ export class UsersEntity extends CommonEntity {
     privacy_policy_check: boolean
 
     //* Relation */
-    @OneToOne(() => GuardianEntity)
+    @OneToOne(() => GuardianEntity, { eager: true })
     @JoinColumn({ name: 'guardian_id', referencedColumnName: 'id' })
     guardian_id: GuardianEntity
 }

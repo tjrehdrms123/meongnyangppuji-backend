@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Patch, Post, Put } from '@nestjs/common';
 import { UsersService } from '../service/Users.service';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
@@ -16,4 +16,10 @@ export class UsersController {
   async createUsers(@Body() usersData: CreateUsersDto) {
     return await this.usersService.createUsers(usersData);
   }
+
+  @Get()
+  async test(){
+    return await this.usersService.test();
+  }
+
 }

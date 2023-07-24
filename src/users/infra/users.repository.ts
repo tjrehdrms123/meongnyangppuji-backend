@@ -19,4 +19,8 @@ export class UsersRepository {
     async createUsers(usersData: CreateUsersDto){
         return await this.UsersRepository.save(usersData);
     }
+
+    async test(){
+        return await this.UsersRepository.find();
+    }
 }

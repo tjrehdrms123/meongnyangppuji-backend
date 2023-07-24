@@ -12,4 +12,8 @@ export class UsersService {
   async createUsers(usersData: CreateUsersDto){
     return await this.usersRepository.createUsers(usersData);
   }
+
+  async test(){
+    return await this.usersRepository.test();
+  }
 }
