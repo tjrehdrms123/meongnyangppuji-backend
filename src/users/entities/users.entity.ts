@@ -30,7 +30,7 @@ export class UsersEntity extends CommonEntity {
     @Exclude()
     password: string
 
-    @Column({ type: 'boolean', comment: '서비스이용약관', nullable: false, charset: 'utf8mb4' })
+    @Column({ type: 'boolean', comment: '서비스이용약관', nullable: false })
     @IsNotEmpty({ message: '서비스이용약관을 입력해주세요.' })
     @ApiProperty({
       example: true,
@@ -39,7 +39,7 @@ export class UsersEntity extends CommonEntity {
     })
     consent_check: boolean
 
-    @Column({ type: 'varchar', comment: '개인정보처리방침', nullable: false, charset: 'utf8mb4' })
+    @Column({ type: 'varchar', comment: '개인정보처리방침', nullable: false })
     @IsNotEmpty({ message: '개인정보처리방침을 입력해주세요.' })
     @ApiProperty({
       example: true,
