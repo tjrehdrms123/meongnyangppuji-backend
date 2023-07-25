@@ -20,7 +20,13 @@ export class UsersRepository {
         return await this.UsersRepository.save(usersData);
     }
 
-    async test(){
-        return await this.UsersRepository.find();
+    async getByMyId(){
+        const user =  await this.UsersRepository.find({
+            where: {
+                id: "38049bd6-95ab-47b0-adc7-175e32a7d47f"
+              },
+            relations: ['guardian_id']
+        });
+        return user;
     }
 }

@@ -13,7 +13,7 @@ export class UsersService {
     return await this.usersRepository.createUsers(usersData);
   }
 
-  async test(){
-    return await this.usersRepository.test();
+  async getByMyId(){
+    return await this.usersRepository.getByMyId();
   }
 }
