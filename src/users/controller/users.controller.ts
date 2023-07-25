@@ -18,8 +18,7 @@ export class UsersController {
   }
 
   @Get()
-  async test(){
-    return await this.usersService.test();
+  async getByMyId(@Body() usersData: CreateUsersDto){
+    return await this.usersService.getByMyId(usersData);
   }
-
 }
