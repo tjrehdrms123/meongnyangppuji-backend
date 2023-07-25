@@ -1,10 +1,11 @@
-import { Injectable, Logger, PreconditionFailedException } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger, PreconditionFailedException } from '@nestjs/common';
 import { AnimalTypeRepository } from '../infra/animal_type.repository';
 import { CreateAnimalTypeDto } from '../dto/request/create_animal_type_dto';
 import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_detail_name_dto';
 import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
+import { ErrorDefine } from 'src/common/define/ErrorDefine';
 
 @Injectable()
 export class AnimalTypeService {
@@ -26,7 +27,10 @@ export class AnimalTypeService {
   // POST: 반려동물 종류 등록
   async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
     const { detail_name } = animalTypeData;
-    await this.animalTypeRepository.findOneByDetailName(detail_name);
+    const animalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    if(animalType){
+      throw new BadRequestException(ErrorDefine['ERROR-1000']);
+    }
     const newAnimalType = await this.animalTypeRepository.createAnimalType(animalTypeData);
     return newAnimalType;
   }

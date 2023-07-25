@@ -48,10 +48,7 @@ export class AnimalTypeRepository {
      * @param detail_name 
      */
     async findOneByDetailName(detail_name){
-        const animalType = await this.animalTypeRepository.findOne({ where : {detail_name: detail_name} });
-        if(animalType){
-            throw new BadRequestException(ErrorDefine['ERROR-1000']);
-        }
+        return await this.animalTypeRepository.findOne({ where : {detail_name: detail_name} });
     }
 
     // PATCH: 반려동물 상세 이름 수정
