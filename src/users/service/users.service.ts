@@ -18,12 +18,13 @@ export class UsersService {
   ) {}
 
   async createUser(userData: CreateUsersDto){
-    const { user_id: userId, password  } = userData;
-    const user = await this.usersRepository.findByUserId(userId);
-    if(user){
-      // 동일한 유저의 아이디가 존재할떄
-      throw new BadRequestException(ErrorDefine['ERROR-3000']);
-    }
+    const { user_id: userId, password, guardian_id: guardianId } = userData;
+    // 동일한 회원명 처리
+    console.log('--------------------------');
+    await this.usersRepository.findById(userId);
+    console.log('--------------------------');
+    // 동일한 부모를 가진 회원이 있는지 조회
+    await this.usersRepository.findByGuardianId(guardianId);
     const hashedPassword = await bcrypt.hash(password, 10);
     const userHashPasswordData = {
       ...userData,
@@ -34,10 +35,7 @@ export class UsersService {
 
   async login(userData: LoginDto) {
     const { user_id: userId, password } = userData;
-    const user = await this.usersRepository.findByUserId(userId);
-    if (!user)
-      // 회원이 존재하지 않습니다.
-      throw new BadRequestException(ErrorDefine['ERROR-3001']);
+    const user = await this.usersRepository.findById(userId);
     if (!(await bcrypt.compare(password, user.password)))
       // 비밀번호가 같지 않을시 : 로그인 실패
       throw new BadRequestException(ErrorDefine['ERROR-3002']);

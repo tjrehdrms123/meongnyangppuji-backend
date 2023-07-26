@@ -14,6 +14,7 @@ type Keys =
   | 'ERROR-3000'
   | 'ERROR-3001'
   | 'ERROR-3002'
+  | 'ERROR-3003'
   ;
 
 export const ErrorDefine: Record<
@@ -69,8 +70,15 @@ export const ErrorDefine: Record<
   'ERROR-3002': {
     model: UnauthorizedException,
     exampleTitle: 'Users - 에러',
-    exampleDescription: '로그인에 실패했습니다..',
-    message: '로그인에 실패했습니다..',
-    code: 'ERROR-3001'
-  }
+    exampleDescription: '로그인에 실패했습니다.',
+    message: '로그인에 실패했습니다.',
+    code: 'ERROR-3002'
+  },
+  'ERROR-3003': {
+    model: UnauthorizedException,
+    exampleTitle: 'Users - 에러',
+    exampleDescription: '동일한 부모를 가진 계정이 존재합니다.',
+    message: '동일한 부모를 가진 계정이 존재합니다.',
+    code: 'ERROR-3003'
+  },
 };

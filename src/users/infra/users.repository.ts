@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UsersEntity } from '../entities/users.entity';
 import { CreateUsersDto } from '../dto/request/create_users_dto';
 import { GetUsersDto } from '../dto/request/get_users_dto';
+import { ErrorDefine } from 'src/common/define/ErrorDefine';
 
 @Injectable()
 export class UsersRepository {
@@ -21,15 +22,27 @@ export class UsersRepository {
         return await (await this.UsersRepository.save(userData));
     }
 
-    async findByUserId(userId){
-        return await this.UsersRepository.findOne({ where : {user_id: userId} });
+    async findById(userId){
+        const user = await this.UsersRepository.findOne({ where : {user_id: userId} });
+        if (!user) {
+            throw new BadRequestException(ErrorDefine['ERROR-3000']);
+        }
+        return user
+    }
+
+    async findByGuardianId(guardianId){
+        const user = await this.UsersRepository.findOne({ where : {guardian_id: guardianId} });
+        if (!user) {
+            throw new BadRequestException(ErrorDefine['ERROR-3003']);
+        }
+        return user;
     }
 
     async getByMyId(userData: GetUsersDto){
         const user =  await this.UsersRepository.find({
             where: {
                 id: userData.user_id
-              },
+            },
             relations: ['guardian_id']
         });
         return user;
