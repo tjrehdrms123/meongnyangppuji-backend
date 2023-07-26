@@ -11,6 +11,9 @@ type Keys =
   | 'ERROR-0002'
   | 'ERROR-9999'
   | 'ERROR-1000'
+  | 'ERROR-3000'
+  | 'ERROR-3001'
+  | 'ERROR-3002'
   ;
 
 export const ErrorDefine: Record<
@@ -47,5 +50,27 @@ export const ErrorDefine: Record<
     exampleDescription: '동일한 반려 동물의 상세 이름이 존재합니다.',
     message: '동일한 반려 동물의 상세 이름이 존재합니다.',
     code: 'ERROR-1000'
+  },
+  // 3000 : Animal Type
+  'ERROR-3000': {
+    model: BadRequestException,
+    exampleTitle: 'Users - 에러',
+    exampleDescription: '동일한 회원 이름이 존재합니다.',
+    message: '동일한 회원 이름이 존재합니다.',
+    code: 'ERROR-3000'
+  },
+  'ERROR-3001': {
+    model: BadRequestException,
+    exampleTitle: 'Users - 에러',
+    exampleDescription: '회원이 존재하지 않습니다.',
+    message: '회원이 존재하지 않습니다.',
+    code: 'ERROR-3001'
+  },
+  'ERROR-3002': {
+    model: UnauthorizedException,
+    exampleTitle: 'Users - 에러',
+    exampleDescription: '로그인에 실패했습니다..',
+    message: '로그인에 실패했습니다..',
+    code: 'ERROR-3001'
   }
 };
