@@ -24,19 +24,23 @@ export class UsersRepository {
 
     async findById(userId){
         const user = await this.UsersRepository.findOne({ where : {user_id: userId} });
-        if (!user) {
+        if (user) {
             throw new BadRequestException(ErrorDefine['ERROR-3000']);
         }
         return user
     }
 
-    async findByGuardianId(guardianId){
-        const user = await this.UsersRepository.findOne({ where : {guardian_id: guardianId} });
-        if (!user) {
-            throw new BadRequestException(ErrorDefine['ERROR-3003']);
+    async findByGuardianId(guardianId) {
+        const user = await this.UsersRepository.findOne({
+          where: {
+            guardian_id: { id: guardianId }, // guardian 속성과의 관계를 로드할 때 id를 사용합니다.
+          }
+        });
+        if (user) {
+          throw new BadRequestException(ErrorDefine['ERROR-3003']);
         }
         return user;
-    }
+      }
 
     async getByMyId(userData: GetUsersDto){
         const user =  await this.UsersRepository.find({

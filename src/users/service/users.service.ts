@@ -20,10 +20,12 @@ export class UsersService {
   async createUser(userData: CreateUsersDto){
     const { user_id: userId, password, guardian_id: guardianId } = userData;
     // 동일한 회원명 처리
-    console.log('--------------------------');
     await this.usersRepository.findById(userId);
-    console.log('--------------------------');
-    // 동일한 부모를 가진 회원이 있는지 조회
+    
+    // TODO: 보호자가 있는지 확인 처리
+    
+    
+    // 동일한 보호자를 가진 회원이 있는지 조회
     await this.usersRepository.findByGuardianId(guardianId);
     const hashedPassword = await bcrypt.hash(password, 10);
     const userHashPasswordData = {
