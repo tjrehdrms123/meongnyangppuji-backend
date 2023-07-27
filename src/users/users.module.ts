@@ -7,6 +7,7 @@ import { UsersRepository } from './infra/Users.repository';
 import { UsersService } from './service/Users.service';
 import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
+import { GuardianModule } from 'src/guardian/guardian.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { JwtModule } from '@nestjs/jwt'
       secretOrPrivateKey: process.env.SECRET_KEY,
       signOptions: { expiresIn: '1d' },
     }),
+    GuardianModule
   ],
   controllers: [UsersController],
   providers: [UsersRepository, UsersService, JwtStrategy],

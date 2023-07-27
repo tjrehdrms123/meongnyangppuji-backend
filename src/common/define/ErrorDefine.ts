@@ -11,6 +11,7 @@ type Keys =
   | 'ERROR-0002'
   | 'ERROR-9999'
   | 'ERROR-1000'
+  | 'ERROR-2000'
   | 'ERROR-3000'
   | 'ERROR-3001'
   | 'ERROR-3002'
@@ -52,7 +53,15 @@ export const ErrorDefine: Record<
     message: '동일한 반려 동물의 상세 이름이 존재합니다.',
     code: 'ERROR-1000'
   },
-  // 3000 : Animal Type
+  // 2000 : Guardian
+    'ERROR-2000': {
+    model: UnauthorizedException,
+    exampleTitle: 'Guardian - 에러',
+    exampleDescription: '해당 보호자가 존재하지 않습니다.',
+    message: '해당 보호자가 존재하지 않습니다.',
+    code: 'ERROR-2000'
+  },
+  // 3000 : Users
   'ERROR-3000': {
     model: BadRequestException,
     exampleTitle: 'Users - 에러',
@@ -77,8 +86,8 @@ export const ErrorDefine: Record<
   'ERROR-3003': {
     model: UnauthorizedException,
     exampleTitle: 'Users - 에러',
-    exampleDescription: '동일한 부모를 가진 계정이 존재합니다.',
-    message: '동일한 부모를 가진 계정이 존재합니다.',
+    exampleDescription: '동일한 보호자를 가진 계정이 존재합니다.',
+    message: '동일한 보호자를 가진 계정이 존재합니다.',
     code: 'ERROR-3003'
   },
 };

@@ -7,12 +7,14 @@ import { LoginDto } from '../dto/request/login_dto';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { GetUsersDto } from '../dto/request/get_users_dto';
+import { GuardianRepository } from 'src/guardian/infra/guardian.repository';
 
 @Injectable()
 export class UsersService {
   private readonly logger = new Logger(UsersService.name);
   constructor(
     private readonly usersRepository: UsersRepository,
+    private readonly guardianRepository: GuardianRepository,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {}
@@ -20,13 +22,28 @@ export class UsersService {
   async createUser(userData: CreateUsersDto){
     const { user_id: userId, password, guardian_id: guardianId } = userData;
     // 동일한 회원명 처리
-    await this.usersRepository.findById(userId);
+    const duplicateUserId = await this.usersRepository.findById(userId);
+    if (duplicateUserId) {
+      throw new BadRequestException(ErrorDefine['ERROR-3000']);
+    }
+    console.log('A');
     
     // TODO: 보호자가 있는지 확인 처리
-    
+    console.log('guardianId:',guardianId);
+    const isExitsGuardian = await this.guardianRepository.isExitsGuardian(guardianId);
+    if (!isExitsGuardian) {
+      throw new BadRequestException(ErrorDefine['ERROR-2000']);
+    }
+    console.log('isExitsGuardian:',isExitsGuardian);
+    console.log('B');
     
     // 동일한 보호자를 가진 회원이 있는지 조회
-    await this.usersRepository.findByGuardianId(guardianId);
+    console.log('C-1');
+    const duplicateGuardianIdUser = await this.usersRepository.findUserByGuardianId(guardianId);
+    console.log('C-2');
+    if (duplicateGuardianIdUser) {
+      throw new BadRequestException(ErrorDefine['ERROR-3003']);
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const userHashPasswordData = {
       ...userData,

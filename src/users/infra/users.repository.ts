@@ -19,26 +19,30 @@ export class UsersRepository {
      * @returns 
      */
     async createUser(userData: CreateUsersDto){
-        return await (await this.UsersRepository.save(userData));
+        return await this.UsersRepository.save(userData);
     }
 
+    /**
+     * 동일한 회원이 있는지 조회
+     * @param userId 
+     * @returns 
+     */
     async findById(userId){
         const user = await this.UsersRepository.findOne({ where : {user_id: userId} });
-        if (user) {
-            throw new BadRequestException(ErrorDefine['ERROR-3000']);
-        }
         return user
     }
 
-    async findByGuardianId(guardianId) {
+    /**
+     * 동일한 보호자의 ID를 갖고 있는지 조회
+     * @param guardianId 
+     * @returns 
+     */
+    async findUserByGuardianId(guardianId) {
         const user = await this.UsersRepository.findOne({
-          where: {
-            guardian_id: { id: guardianId }, // guardian 속성과의 관계를 로드할 때 id를 사용합니다.
-          }
-        });
-        if (user) {
-          throw new BadRequestException(ErrorDefine['ERROR-3003']);
-        }
+            where: {
+                guardian_id: { id: guardianId }, // guardian 속성과의 관계를 로드할 때 id를 사용합니다.
+            }
+        });        
         return user;
       }
 

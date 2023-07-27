@@ -6,6 +6,7 @@ import { GuardianEntity } from '../entities/guardian.entity';
 import { CreateGuardianDto } from '../dto/request/create_guardian_dto';
 import { UpdateGuardianDto } from '../dto/request/update_guardian_dto';
 import { gravity } from 'sharp';
+import { FindGuardianDto } from '../dto/request/find_guardian_dto';
 
 @Injectable()
 export class GuardianRepository {
@@ -26,9 +27,14 @@ export class GuardianRepository {
     // UPDATE: 보호자 정보 수정
     async updateGuardian(GuardianData: UpdateGuardianDto) {
         const { id, name, phone_number } = GuardianData;
-        const guardian = await this.GuardianRepository.findOneByOrFail({ id: id });
+        const guardian = await this.GuardianRepository.findOneBy({ id: id });
         guardian.name = name;
         guardian.phone_number = phone_number;
         return this.GuardianRepository.save(GuardianData);
+    }
+
+    async isExitsGuardian(guardianId) {
+        const guardian = await this.GuardianRepository.findOneBy({ id: guardianId });
+        return guardian;
     }
 }
