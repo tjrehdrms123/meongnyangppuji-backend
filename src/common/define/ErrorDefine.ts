@@ -9,6 +9,7 @@ import { ErrorResponseOption } from 'src/common/decorators/ErrorResponse.decorat
 type Keys =
   | 'ERROR-0001'
   | 'ERROR-0002'
+  | 'ERROR-0003'
   | 'ERROR-9999'
   | 'ERROR-1000'
   | 'ERROR-2000'
@@ -36,6 +37,13 @@ export const ErrorDefine: Record<
     exampleDescription: 'AccessToken을 입력해주세요.',
     message: 'AccessToken을 입력해주세요.',
     code: 'ERROR-0002'
+  },
+  'ERROR-0003': {
+    model: UnauthorizedException,
+    exampleTitle: 'Unauthorized - 접근 불가',
+    exampleDescription: '관리자만 접근 가능합니다.',
+    message: '관리자만 접근 가능합니다.',
+    code: 'ERROR-0003'
   },
   // 스로틀
   'ERROR-9999': {

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Patch, Post, Put, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Patch, Post, Put, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { Response } from 'express'
 import { UsersService } from '../service/Users.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -12,18 +12,21 @@ import { ErrorDefine } from 'src/common/define/ErrorDefine';
 import { ResUsersOmitPasswordDto } from '../dto/response/res_users_dto';
 import { UsersEntity } from '../entities/users.entity';
 import { ResGuardianMetaData } from 'src/guardian/dto/response/res_guardian_dto';
+import { OnlyPrivateInterceptor } from 'src/common/interceptors/only-private.interceptor';
+import { CurrentUser } from 'src/common/decorators/current-user.decorator';
+import { UsersDto } from '../dto/user.dto';
 
 @Controller('users')
 @ApiTags('users API')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   
-  @ApiOperation({ summary: '유저 생성', description: '유저 생성' })
+  @ApiOperation({ summary: '유저 회원가입', description: '유저 회원가입' })
   @SuccessResponse(HttpStatus.OK, [
     {
       model: UsersEntity,
-      exampleTitle: '유저 생성 성공 예시',
-      exampleDescription: '유저 생성 성공 예시',
+      exampleTitle: '유저 회원가입 성공 예시',
+      exampleDescription: '유저 회원가입 성공 예시',
       overwriteValue: {
         guardian_id: ResGuardianMetaData
       }
@@ -39,18 +42,39 @@ export class UsersController {
     return await this.usersService.createUser(userData);
   }
 
+  @ApiOperation({ summary: '유저 조회', description: '유저 조회' })
+  @SuccessResponse(HttpStatus.OK, [
+    {
+      model: UsersEntity,
+      exampleTitle: '유저 조회 성공 예시',
+      exampleDescription: '유저 조회 성공 예시',
+      overwriteValue: {
+        guardian_id: ResGuardianMetaData
+      }
+    }   
+  ])
+  @ErrorResponse(HttpStatus.BAD_REQUEST, [
+    ErrorDefine['ERROR-3000'],
+    ErrorDefine['ERROR-3003'],
+    ErrorDefine['ERROR-2000'],
+  ])
   @Get()
   @UseGuards(JwtAuthGuard)
-  async getUserById(@Body() userData: GetUsersDto){
-    return await this.usersService.getByMyId(userData);
+  @UseInterceptors(OnlyPrivateInterceptor)
+  async getCurrentUser(@CurrentUser() currentUser: UsersDto) {
+    return currentUser
   }
 
   @Post('login')
+  @ApiOperation({ summary: '유저 로그인 성공', description: '유저 로그인 성공' })
   @SuccessResponse(HttpStatus.OK, [
     {
-      model: ResUsersOmitPasswordDto,
+      model: UsersEntity,
       exampleTitle: '유저 로그인 성공 예시',
       exampleDescription: '유저 로그인 성공 예시',
+      overwriteValue: {
+        guardian_id: ResGuardianMetaData
+      }
     }   
   ])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
