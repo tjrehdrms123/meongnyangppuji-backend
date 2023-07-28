@@ -28,6 +28,7 @@ export class AnimalTypeService {
   async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
     const { detail_name } = animalTypeData;
     const animalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    // Exception: 동일한 반려동물이 존재할 시
     if(animalType){
       throw new BadRequestException(ErrorDefine['ERROR-1000']);
     }

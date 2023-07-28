@@ -5,7 +5,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 import { IsUUID } from 'class-validator'
-import { Exclude, Expose } from 'class-transformer'
+import { Exclude, Expose, instanceToPlain } from 'class-transformer'
 import { ApiProperty } from '@nestjs/swagger'
 
 // 엔터티 생성시 상속 받아야되는 부모 엔터티 Class  
@@ -48,7 +48,11 @@ export abstract class CommonEntity {
   updatedAt: Date
 
   // Soft Delete : 기존에는 null, 삭제시에 timestamp를 찍는다.
-  @Exclude()
+  @Exclude({toPlainOnly: true})
   @DeleteDateColumn({ type: 'timestamp' })
   deletedAt?: Date | null
+
+  toJSON() {                       // 컨트롤러의 응답메서드의 결과에 첨가해줄 메서드
+    return instanceToPlain(this)   // instanceToPlain() 함수 사용
+  }
 }

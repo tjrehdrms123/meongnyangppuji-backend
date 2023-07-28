@@ -51,9 +51,4 @@ export class UsersEntity extends CommonEntity {
     @OneToOne(() => GuardianEntity, { eager: true })
     @JoinColumn({ name: 'guardian_id', referencedColumnName: 'id' })
     guardian_id: GuardianEntity
-
-    toJSON() {                       // 컨트롤러의 응답메서드의 결과에 첨가해줄 메서드
-      return instanceToPlain(this)   // instanceToPlain() 함수 사용
-    }
-    
 }

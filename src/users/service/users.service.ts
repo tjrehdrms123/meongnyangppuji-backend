@@ -21,19 +21,19 @@ export class UsersService {
 
   async createUser(userData: CreateUsersDto){
     const { user_id: userId, password, guardian_id: guardianId } = userData;
-    // 동일한 회원명 처리
+    // Exception: 동일한 회원명 처리
     const duplicateUserId = await this.usersRepository.findById(userId);
     if (duplicateUserId) {
       throw new BadRequestException(ErrorDefine['ERROR-3000']);
     }
     
-    // TODO: 보호자가 있는지 확인 처리
+    // Exception: 보호자가 있는지 확인 처리
     const isExitsGuardian = await this.guardianRepository.isExitsGuardian(guardianId);
     if (!isExitsGuardian) {
       throw new BadRequestException(ErrorDefine['ERROR-2000']);
     }
     
-    // 동일한 보호자를 가진 회원이 있는지 조회
+    // Exception: 동일한 보호자를 가진 회원이 있는지 조회
     const duplicateGuardianIdUser = await this.usersRepository.findUserByGuardianId(guardianId);
     if (duplicateGuardianIdUser) {
       throw new BadRequestException(ErrorDefine['ERROR-3003']);
@@ -43,17 +43,19 @@ export class UsersService {
       ...userData,
       password: hashedPassword
     }
-    return await this.usersRepository.createUser(userHashPasswordData);
+    const { user_id: createUserId } = await this.usersRepository.createUser(userHashPasswordData);
+    return await this.usersRepository.findById(createUserId);
   }
 
   async login(userData: LoginDto) {
     const { user_id: userId, password } = userData;
     const user = await this.usersRepository.findById(userId);
+    // Exception: 동일한 ID를 가진 유저가 없을시
     if(!user){
       throw new BadRequestException(ErrorDefine['ERROR-3001']);
     }
+    // Exception: 비밀번호가 갖지 않을시
     if (!(await bcrypt.compare(password, user.password)))
-      // 비밀번호가 같지 않을시 : 로그인 실패
       throw new BadRequestException(ErrorDefine['ERROR-3002']);
     try {
       const jwt = await this.jwtService.signAsync(
