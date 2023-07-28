@@ -29,9 +29,10 @@ export class UsersController {
     @Body() userData: LoginDto,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const { jwt, user } = await this.usersService.login(userData)
-    response.cookie('jwt', jwt, { httpOnly: true })
-    return user
+    const { jwt, user } = await this.usersService.login(userData);
+    response.cookie('jwt', jwt, { httpOnly: true });
+    console.log('user:',user);
+    return user;
   }
 
   @Post('logout')

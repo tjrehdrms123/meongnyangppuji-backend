@@ -26,21 +26,15 @@ export class UsersService {
     if (duplicateUserId) {
       throw new BadRequestException(ErrorDefine['ERROR-3000']);
     }
-    console.log('A');
     
     // TODO: 보호자가 있는지 확인 처리
-    console.log('guardianId:',guardianId);
     const isExitsGuardian = await this.guardianRepository.isExitsGuardian(guardianId);
     if (!isExitsGuardian) {
       throw new BadRequestException(ErrorDefine['ERROR-2000']);
     }
-    console.log('isExitsGuardian:',isExitsGuardian);
-    console.log('B');
     
     // 동일한 보호자를 가진 회원이 있는지 조회
-    console.log('C-1');
     const duplicateGuardianIdUser = await this.usersRepository.findUserByGuardianId(guardianId);
-    console.log('C-2');
     if (duplicateGuardianIdUser) {
       throw new BadRequestException(ErrorDefine['ERROR-3003']);
     }
@@ -55,6 +49,9 @@ export class UsersService {
   async login(userData: LoginDto) {
     const { user_id: userId, password } = userData;
     const user = await this.usersRepository.findById(userId);
+    if(!user){
+      throw new BadRequestException(ErrorDefine['ERROR-3001']);
+    }
     if (!(await bcrypt.compare(password, user.password)))
       // 비밀번호가 같지 않을시 : 로그인 실패
       throw new BadRequestException(ErrorDefine['ERROR-3002']);

@@ -3,7 +3,7 @@ import { Column, Entity, Index, JoinColumn, OneToOne } from 'typeorm'
 import { CommonEntity } from 'src/common/entities/common.entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { GuardianEntity } from 'src/guardian/entities/guardian.entity'
-import { Exclude } from 'class-transformer'
+import { Exclude, instanceToPlain } from 'class-transformer'
 
 @Entity({
   name: 'users',
@@ -26,7 +26,7 @@ export class UsersEntity extends CommonEntity {
       description: '유저의 패스워드',
       required: true
     })
-    @Exclude()
+    @Exclude({toPlainOnly: true})
     password: string
 
     @Column({ type: 'boolean', comment: '서비스이용약관', nullable: false })
@@ -51,4 +51,9 @@ export class UsersEntity extends CommonEntity {
     @OneToOne(() => GuardianEntity, { eager: true })
     @JoinColumn({ name: 'guardian_id', referencedColumnName: 'id' })
     guardian_id: GuardianEntity
+
+    toJSON() {                       // 컨트롤러의 응답메서드의 결과에 첨가해줄 메서드
+      return instanceToPlain(this)   // instanceToPlain() 함수 사용
+    }
+    
 }
