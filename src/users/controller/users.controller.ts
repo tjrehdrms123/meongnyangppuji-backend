@@ -15,6 +15,7 @@ import { ResGuardianMetaData } from 'src/guardian/dto/response/res_guardian_dto'
 import { OnlyPrivateInterceptor } from 'src/common/interceptors/only-private.interceptor';
 import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { UsersDto } from '../dto/user.dto';
+import { SuccessDefine } from 'src/common/define/SuccessDefine';
 
 @Controller('users')
 @ApiTags('users API')
@@ -22,16 +23,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   
   @ApiOperation({ summary: '유저 회원가입', description: '유저 회원가입' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: UsersEntity,
-      exampleTitle: '유저 회원가입 성공 예시',
-      exampleDescription: '유저 회원가입 성공 예시',
-      overwriteValue: {
-        guardian_id: ResGuardianMetaData
-      }
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-3000']])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-3000'],
     ErrorDefine['ERROR-3003'],
@@ -43,16 +35,7 @@ export class UsersController {
   }
 
   @ApiOperation({ summary: '유저 조회', description: '유저 조회' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: UsersEntity,
-      exampleTitle: '유저 조회 성공 예시',
-      exampleDescription: '유저 조회 성공 예시',
-      overwriteValue: {
-        guardian_id: ResGuardianMetaData
-      }
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-3001']])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-3000'],
     ErrorDefine['ERROR-3003'],
@@ -67,16 +50,7 @@ export class UsersController {
 
   @Post('login')
   @ApiOperation({ summary: '유저 로그인 성공', description: '유저 로그인 성공' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: UsersEntity,
-      exampleTitle: '유저 로그인 성공 예시',
-      exampleDescription: '유저 로그인 성공 예시',
-      overwriteValue: {
-        guardian_id: ResGuardianMetaData
-      }
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-3002']])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-3001'],
     ErrorDefine['ERROR-3002']

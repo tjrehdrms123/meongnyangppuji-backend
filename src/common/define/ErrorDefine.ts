@@ -62,7 +62,7 @@ export const ErrorDefine: Record<
     code: 'ERROR-1000'
   },
   // 2000 : Guardian
-    'ERROR-2000': {
+  'ERROR-2000': {
     model: UnauthorizedException,
     exampleTitle: 'Guardian - 에러',
     exampleDescription: '해당 보호자가 존재하지 않습니다.',

@@ -10,22 +10,15 @@ import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_ty
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
 import { ResAnimalTypeDetailNameDto, ResAnimalTypeDto, ResAnimalTypeManyRowDto, ResAnimalTypeNameDto, ResAnimalTypeRowDto } from '../dto/response/res_animal_type_dto';
+import { SuccessDefine } from 'src/common/define/SuccessDefine';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
 export class AnimalTypeController {
   constructor(private readonly animalTypeService: AnimalTypeService) {}
   @ApiOperation({ summary: '애완 동물 타입 생성', description: '애완 동물 타입 생성' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: ResAnimalTypeDto,
-      exampleTitle: '애완동물 타입 생성 성공 예시',
-      exampleDescription: '애완동물 타입 생성 성공 예시',
-    }   
-  ])
-  @ErrorResponse(HttpStatus.BAD_REQUEST, [
-    ErrorDefine['ERROR-1000']
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1000']])
+  @ErrorResponse(HttpStatus.BAD_REQUEST, [ErrorDefine['ERROR-1000']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
@@ -36,13 +29,7 @@ export class AnimalTypeController {
   }
 
   @ApiOperation({ summary: '애완동물 타입 종류 조회 예시', description: '애완동물 타입 종류 조회 예시' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: ResAnimalTypeNameDto,
-      exampleTitle: '애완동물 타입 종류 조회 예시',
-      exampleDescription: '애완동물 타입 종류 조회 성공 예시',
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1001']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
@@ -53,13 +40,7 @@ export class AnimalTypeController {
   }
 
   @ApiOperation({ summary: '애완동물 타입 상세 이름 조회 예시', description: '애완동물 타입 상세 이름 조회 예시' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: ResAnimalTypeDetailNameDto,
-      exampleTitle: '애완동물 상세 이름 조회 예시',
-      exampleDescription: '애완동물 상세 이름 조회 성공 예시',
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1002']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
@@ -70,13 +51,7 @@ export class AnimalTypeController {
   }
 
   @ApiOperation({ summary: '애완동물 타입 내용 변경', description: '애완동물 타입 내용 변경' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: ResAnimalTypeDto,
-      exampleTitle: '애완동물 타입 내용 변경 예시',
-      exampleDescription: '애완동물 타입 내용 변경 성공 예시',
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
@@ -87,13 +62,7 @@ export class AnimalTypeController {
   }
 
   @ApiOperation({ summary: '반려동물 상세 이름으로 삭제 변경', description: '반려동물 상세 이름으로 삭제 변경' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: ResAnimalTypeRowDto,
-      exampleTitle: '반려동물 상세 이름으로 삭제 변경 예시',
-      exampleDescription: '반려동물 상세 이름으로 삭제 변경 성공 예시',
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1003']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
@@ -104,13 +73,7 @@ export class AnimalTypeController {
   }
 
   @ApiOperation({ summary: '반려동물 이름으로 삭제', description: '반려동물 이름으로 삭제' })
-  @SuccessResponse(HttpStatus.OK, [
-    {
-      model: ResAnimalTypeManyRowDto,
-      exampleTitle: '반려동물 이름으로 삭제 예시',
-      exampleDescription: '반려동물 이름으로 삭제 성공 예시',
-    }   
-  ])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1004']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],

@@ -4,7 +4,7 @@ import { SuccessCommonResponseDto } from '../dtos/SuccessCommonResponse.dto';
 import { makeInstanceByApiProperty } from '../utils/makeInstanceByApiProperty';
 import { mergeObjects } from '../utils/mergeTwoObj';
 
-interface SuccessResponseOption {
+export interface SuccessResponseOption {
   /**
    * 응답 디티오를 인자로받습니다
    * 예시 : ResponseRequestValidationDto
@@ -41,7 +41,6 @@ export const SuccessResponse = (
       const commonResponseInstance = makeInstanceByApiProperty<
         SuccessCommonResponseDto<any>
       >(SuccessCommonResponseDto);
-
       const DtoModel = response.model;
 
       // dto 객체를 만든다. 제네릭은 옵셔널 한 값이라 없으면 없는대로 만든다.
