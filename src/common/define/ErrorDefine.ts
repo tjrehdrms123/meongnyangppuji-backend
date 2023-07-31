@@ -56,7 +56,7 @@ export const ErrorDefine: Record<
   // 1000 : Animal Type
   'ERROR-1000': {
     model: BadRequestException,
-    exampleTitle: 'Animal Type - 에러',
+    exampleTitle: 'Animal Type - 1000',
     exampleDescription: '동일한 반려 동물의 상세 이름이 존재합니다.',
     message: '동일한 반려 동물의 상세 이름이 존재합니다.',
     code: 'ERROR-1000'
@@ -64,7 +64,7 @@ export const ErrorDefine: Record<
   // 2000 : Guardian
   'ERROR-2000': {
     model: UnauthorizedException,
-    exampleTitle: 'Guardian - 에러',
+    exampleTitle: 'Guardian - 2000',
     exampleDescription: '해당 보호자가 존재하지 않습니다.',
     message: '해당 보호자가 존재하지 않습니다.',
     code: 'ERROR-2000'
@@ -72,28 +72,28 @@ export const ErrorDefine: Record<
   // 3000 : Users
   'ERROR-3000': {
     model: BadRequestException,
-    exampleTitle: 'Users - 에러',
+    exampleTitle: 'Users - 3000',
     exampleDescription: '동일한 회원 이름이 존재합니다.',
     message: '동일한 회원 이름이 존재합니다.',
     code: 'ERROR-3000'
   },
   'ERROR-3001': {
     model: BadRequestException,
-    exampleTitle: 'Users - 에러',
+    exampleTitle: 'Users - 3001',
     exampleDescription: '회원이 존재하지 않습니다.',
     message: '회원이 존재하지 않습니다.',
     code: 'ERROR-3001'
   },
   'ERROR-3002': {
     model: UnauthorizedException,
-    exampleTitle: 'Users - 에러',
+    exampleTitle: 'Users - 3002',
     exampleDescription: '로그인에 실패했습니다.',
     message: '로그인에 실패했습니다.',
     code: 'ERROR-3002'
   },
   'ERROR-3003': {
     model: UnauthorizedException,
-    exampleTitle: 'Users - 에러',
+    exampleTitle: 'Users - 3003',
     exampleDescription: '동일한 보호자를 가진 계정이 존재합니다.',
     message: '동일한 보호자를 가진 계정이 존재합니다.',
     code: 'ERROR-3003'
