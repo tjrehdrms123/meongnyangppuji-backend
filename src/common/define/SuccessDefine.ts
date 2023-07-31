@@ -1,7 +1,7 @@
 import { ResAnimalTypeDetailNameDto, ResAnimalTypeDto, ResAnimalTypeManyRowDto, ResAnimalTypeNameDto } from 'src/animal_type/dto/response/res_animal_type_dto';
 import { ResGuardianDto, ResGuardianMetaData } from 'src/guardian/dto/response/res_guardian_dto';
-import { UsersEntity } from 'src/users/entities/users.entity';
 import { SuccessResponseOption } from '../decorators/SuccessResponse.decorator';
+import { ResUsersTypeDto } from 'src/users/dto/response/res_users_dto';
 type Keys =
   | 'SUCCESS-1000'
   | 'SUCCESS-1001'
@@ -58,7 +58,7 @@ export const SuccessDefine: Record<
   },
   // 3000 : Users
   'SUCCESS-3000': {
-    model: UsersEntity,
+    model: ResUsersTypeDto,
     exampleTitle: '유저 회원가입 성공 예시',
     exampleDescription: '유저 회원가입 성공 예시',
     overwriteValue: {
@@ -66,7 +66,7 @@ export const SuccessDefine: Record<
     }
   },
   'SUCCESS-3001': {
-    model: UsersEntity,
+    model: ResUsersTypeDto,
     exampleTitle: '유저 조회 성공 예시',
     exampleDescription: '유저 조회 성공 예시',
     overwriteValue: {
@@ -74,7 +74,7 @@ export const SuccessDefine: Record<
     }
   },
   'SUCCESS-3002': {
-    model: UsersEntity,
+    model: ResUsersTypeDto,
     exampleTitle: '유저 로그인 성공 예시',
     exampleDescription: '유저 로그인 성공 예시',
     overwriteValue: {
