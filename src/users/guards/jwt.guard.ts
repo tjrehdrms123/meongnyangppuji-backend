@@ -13,7 +13,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   handleRequest(err: any, user: any, info: any) {
     if (err || !user) {
-      return new UnauthorizedException('인증 문제가 있습니다.')
+      //return new UnauthorizedException('인증 문제가 있습니다.')
     }
     return user
   }

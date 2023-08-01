@@ -4,12 +4,13 @@ import { PassportStrategy } from '@nestjs/passport'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { jwtExtractorFromCookies } from '../../common/utils/jwtExtractorFromCookies'
 import { ConfigService } from '@nestjs/config'
-import { UsersService } from '../service/Users.service'
+import { UsersRepository } from '../infra/Users.repository'
+import { ErrorDefine } from 'src/common/define/ErrorDefine'
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
-    private readonly usersService: UsersService,
+    private readonly usersRepository: UsersRepository,
     private readonly configService: ConfigService,
   ) {
     super({
@@ -21,12 +22,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: JwtPayload) {
     try {
-      const user = ''
-      // await this.usersService.getByMyId(payload.sub)
+      const { sub: user_id } = payload;
+      const user = this.usersRepository.getByMyId({user_id});
       if (user) {
         return user
       } else {
-        throw new Error('해당하는 유저는 없습니다.')
+        return ErrorDefine['ERROR-0004'];
       }
     } catch (error) {
       throw new UnauthorizedException(error)

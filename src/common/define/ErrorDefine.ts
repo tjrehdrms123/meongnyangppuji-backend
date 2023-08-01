@@ -10,6 +10,7 @@ type Keys =
   | 'ERROR-0001'
   | 'ERROR-0002'
   | 'ERROR-0003'
+  | 'ERROR-0004'
   | 'ERROR-9999'
   | 'ERROR-1000'
   | 'ERROR-2000'
@@ -34,8 +35,8 @@ export const ErrorDefine: Record<
   'ERROR-0002': {
     model: UnauthorizedException,
     exampleTitle: 'Unauthorized - 접근 불가',
-    exampleDescription: 'AccessToken을 입력해주세요.',
-    message: 'AccessToken을 입력해주세요.',
+    exampleDescription: '로그인 후 이용해주세요.',
+    message: '로그인 후 이용해주세요.',
     code: 'ERROR-0002'
   },
   'ERROR-0003': {
@@ -44,6 +45,13 @@ export const ErrorDefine: Record<
     exampleDescription: '관리자만 접근 가능합니다.',
     message: '관리자만 접근 가능합니다.',
     code: 'ERROR-0003'
+  },
+  'ERROR-0004': {
+    model: UnauthorizedException,
+    exampleTitle: 'Unauthorized - 유저 없음',
+    exampleDescription: '해당 하는 유저가 존재하지 않습니다.',
+    message: '해당 하는 유저가 존재하지 않습니다.',
+    code: 'ERROR-0004'
   },
   // 스로틀
   'ERROR-9999': {
