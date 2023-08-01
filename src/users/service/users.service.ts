@@ -59,7 +59,7 @@ export class UsersService {
       throw new BadRequestException(ErrorDefine['ERROR-3002']);
     try {
       const jwt = await this.jwtService.signAsync(
-        { sub: user.id },
+        { user_id: user.id },
         { secret: this.configService.get('SECRET_KEY') },
       )
       return { jwt, user }
