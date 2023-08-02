@@ -4,6 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
+import { ErrorDefine } from 'src/common/define/ErrorDefine';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
@@ -13,9 +14,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   handleRequest(err: any, user: any, info: any) {
     if (err || !user) {
-      //return new UnauthorizedException('인증 문제가 있습니다.')
+      throw new UnauthorizedException(ErrorDefine['ERROR-0002']);
     }
-    return user
+    return user;
   }
 }
 

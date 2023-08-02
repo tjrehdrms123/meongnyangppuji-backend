@@ -1,11 +1,11 @@
 import { JwtPayload } from './jwt.payload'
-import { ExtractJwt, Strategy } from 'passport-jwt'
 import { PassportStrategy } from '@nestjs/passport'
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { jwtExtractorFromCookies } from '../../common/utils/jwtExtractorFromCookies'
 import { ConfigService } from '@nestjs/config'
 import { UsersRepository } from '../infra/Users.repository'
 import { ErrorDefine } from 'src/common/define/ErrorDefine'
+import { ExtractJwt, Strategy } from 'passport-jwt'
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -27,7 +27,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       if (user) {
         return user
       } else {
-        return ErrorDefine['ERROR-0004'];
+        throw new UnauthorizedException(ErrorDefine['ERROR-0004']);
       }
     } catch (error) {
       throw new UnauthorizedException(error)
