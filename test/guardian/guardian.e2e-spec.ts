@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../../src/app.module';
 
-describe('GuardianController (e2e)', () => {
+describe('Guardian Controller (e2e)', () => {
   let app: INestApplication;
   let _id;
 
@@ -27,7 +27,7 @@ describe('GuardianController (e2e)', () => {
     await app.init();
   });
 
-  describe('/guardian/:id : (POST) : 보호자 생성하기', ()=>{
+  describe('/guardian : (POST) : 보호자 생성', ()=>{
     it('보호자 생성하기 성공 테스트', async () => {
       const response = await request(app.getHttpServer())
       .post(`/guardian`)
@@ -37,7 +37,7 @@ describe('GuardianController (e2e)', () => {
     });
   });
 
-  describe('/guardian : (PUT) : 보호자 수정하기', ()=>{
+  describe('/guardian : (PUT) : 보호자 수정', ()=>{
     it('보호자 생성하기 수정하기 테스트', async () => {
       const response = await request(app.getHttpServer())
       .put(`/guardian`)

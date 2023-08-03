@@ -43,7 +43,7 @@ export class UsersController {
   ])
   @Get()
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(OnlyPrivateInterceptor)
+  // @UseInterceptors(OnlyPrivateInterceptor)
   async getCurrentUser(@CurrentUser() currentUser: UsersDto) {
     return currentUser
   }
