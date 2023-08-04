@@ -5,7 +5,7 @@ import { AppModule } from '../../src/app.module';
 
 describe('animal_type Controller (e2e)', () => {
   let app: INestApplication;
-  let cookie;
+  let token;
   let _id;
 
   const testData = {
@@ -34,17 +34,19 @@ describe('animal_type Controller (e2e)', () => {
       user_id: "e2e",
       password: "1234",
     });
-    cookie = login.headers['set-cookie'][0];
+    
+    token = login.body.jwt; //토근 셋팅
   });
 
   describe('/animal_type : (POST) : 반려동물 타입 생성', ()=>{
     it('반려동물 타입 생성 성공 테스트', async () => {
       const response = await request(app.getHttpServer())
       .post(`/animal_type`)
-      .set('Cookie',cookie)
+      .set('Authorization', `Bearer ${token}`)
       .send(testData['animalType']);
+
       _id = response.body.id;
-      expect(response.statusCode).toBe(201)
+      expect(response.statusCode).toBe(201);
     });
   });
 
@@ -53,7 +55,8 @@ describe('animal_type Controller (e2e)', () => {
       const response = await request(app.getHttpServer())
       .get(`/animal_type/name`)
       .send();
-      expect(response.statusCode).toBe(200)
+
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -62,7 +65,8 @@ describe('animal_type Controller (e2e)', () => {
       const response = await request(app.getHttpServer())
       .get(`/animal_type/detail_name`)
       .send(testData['animalType'].name);
-      expect(response.statusCode).toBe(200)
+
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -70,9 +74,10 @@ describe('animal_type Controller (e2e)', () => {
     it('반려동물 타입 내용 변경 성공 테스트', async () => {
       const response = await request(app.getHttpServer())
       .patch(`/animal_type`)
-      .set('Cookie',cookie)
+      .set('Authorization', `Bearer ${token}`)
       .send(testData['newAnimalType']);
-      expect(response.statusCode).toBe(200)
+
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -80,9 +85,10 @@ describe('animal_type Controller (e2e)', () => {
     it('반려동물 상세 이름으로 삭제 성공 테스트', async () => {
       const response = await request(app.getHttpServer())
       .delete(`/animal_type/detail_name`)
-      .set('Cookie',cookie)
+      .set('Authorization', `Bearer ${token}`)
       .send(testData['animalType'].detail_name);
-      expect(response.statusCode).toBe(200)
+
+      expect(response.statusCode).toBe(200);
     });
   });
 
@@ -90,9 +96,9 @@ describe('animal_type Controller (e2e)', () => {
     it('반려동물 이름으로 삭제 성공 테스트', async () => {
       const response = await request(app.getHttpServer())
       .delete(`/animal_type/name`)
-      .set('Cookie',cookie)
-      .send(testData['animalType'].name);
-      expect(response.statusCode).toBe(200)
+      .set('Authorization', `Bearer ${token}`)
+      .send(testData['animalType'].name);      
+      expect(response.statusCode).toBe(200);
     });
   });
 });

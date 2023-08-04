@@ -43,7 +43,7 @@ export class UsersController {
   ])
   @Get()
   @UseGuards(JwtAuthGuard)
-  // @UseInterceptors(OnlyPrivateInterceptor)
+  //@UseInterceptors(OnlyPrivateInterceptor)
   async getCurrentUser(@CurrentUser() currentUser: UsersDto) {
     return currentUser
   }
@@ -56,12 +56,10 @@ export class UsersController {
     ErrorDefine['ERROR-3002']
   ])
   async logIn(
-    @Body() userData: LoginDto,
-    @Res({ passthrough: true }) response: Response,
+    @Body() userData: LoginDto
   ) {
     const { jwt, user } = await this.usersService.login(userData);
-    response.cookie('jwt', jwt, { httpOnly: true });
-    return user;
+    return {jwt};
   }
 
   @Post('logout')
