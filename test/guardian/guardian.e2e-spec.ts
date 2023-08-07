@@ -8,14 +8,23 @@ describe('Guardian Controller (e2e)', () => {
   let _id;
 
   const testData = {
-    guardian : {
-      name: "김민서",
-      phone_number: "010-1234-1234"
-    },
-    newGuardian : {
-      name: "강민서",
-      phone_number: "010-3322-4422"
-    }
+    name: "김민서",
+    phoneNumber: "010-1234-1234",
+    updateName: "강민서",
+    updatePhoneNumber: "010-1111-1234",
+    guardian: {},
+    updateGuardian: {}
+  }
+
+  testData.guardian = {
+    name: testData.name,
+    phone_number: testData.phoneNumber
+  }
+
+  testData.updateGuardian = {
+    id: _id,
+    name: testData.updateName,
+    phone_number: testData.updatePhoneNumber
   }
 
   beforeEach(async () => {
@@ -41,7 +50,7 @@ describe('Guardian Controller (e2e)', () => {
     it('보호자 생성하기 수정하기 테스트', async () => {
       const response = await request(app.getHttpServer())
       .put(`/guardian`)
-      .send(testData['newGuardian']);
+      .send(testData['updateGuardian']);
       expect(response.statusCode).toBe(200)
     });
   });
