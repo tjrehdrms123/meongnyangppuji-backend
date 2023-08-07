@@ -9,15 +9,32 @@ describe('animal_type Controller (e2e)', () => {
   let _id;
 
   const testData = {
-    animalType : {
-      name: "강아지",
-      detail_name: "푸들"
-    },
-    newAnimalType : {
-      id: _id,
-      detail_name: "진돗개"
-    }
-  }
+    name: "강아지",
+    detailName: "푸들",
+    updateDetailNAme: "진돗개",
+    animalType: {},
+    updateAnimalType: {},
+    deleteAnimalType: {},
+    deleteAnimalTypeName: {},
+  };
+  
+  testData.animalType = {
+    name: testData.name,
+    detail_name: testData.detailName
+  };
+  
+  testData.updateAnimalType = {
+    id: _id, 
+    detail_name: testData.updateDetailNAme
+  };
+  
+  testData.deleteAnimalType = {
+    detail_name: testData.updateDetailNAme
+  };
+  
+  testData.deleteAnimalTypeName = {
+    name: testData.name
+  };
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -64,7 +81,7 @@ describe('animal_type Controller (e2e)', () => {
     it('반려동물 타입 상세 이름 성공 테스트', async () => {
       const response = await request(app.getHttpServer())
       .get(`/animal_type/detail_name`)
-      .send(testData['animalType'].name);
+      .send(testData.name);
 
       expect(response.statusCode).toBe(200);
     });
@@ -75,7 +92,7 @@ describe('animal_type Controller (e2e)', () => {
       const response = await request(app.getHttpServer())
       .patch(`/animal_type`)
       .set('Authorization', `Bearer ${token}`)
-      .send(testData['newAnimalType']);
+      .send(testData['updateAnimalType']);
 
       expect(response.statusCode).toBe(200);
     });
@@ -86,7 +103,7 @@ describe('animal_type Controller (e2e)', () => {
       const response = await request(app.getHttpServer())
       .delete(`/animal_type/detail_name`)
       .set('Authorization', `Bearer ${token}`)
-      .send({detail_name: testData['newAnimalType'].detail_name});
+      .send(testData['deleteAnimalType']);
       expect(response.statusCode).toBe(200);
     });
   });
@@ -96,7 +113,7 @@ describe('animal_type Controller (e2e)', () => {
       const response = await request(app.getHttpServer())
       .delete(`/animal_type/name`)
       .set('Authorization', `Bearer ${token}`)
-      .send({name: testData['animalType'].name});      
+      .send(testData['deleteAnimalTypeName']);      
       expect(response.statusCode).toBe(200);
     });
   });
