@@ -38,16 +38,30 @@ export class AnimalTypeService {
 
   // PATCH: 반려동물 상세 이름 수정
   async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
+    const { detail_name } = animalTypeData;
+    const animalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    // Exception: 동일한 반려동물이 존재할 시
+    if(animalType){
+      throw new BadRequestException(ErrorDefine['ERROR-1000']);
+    }
     return await this.animalTypeRepository.updateAnimalTypeByDetailName(animalTypeData);
   }
 
   // DELETE: 반려동물 상세 이름으로 삭제
   async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
+    const { detail_name } = animalTypeData;
+    if(!detail_name){
+      throw new BadRequestException(ErrorDefine['ERROR-1001']);
+    }
     return await this.animalTypeRepository.deleteAnimalTypeByDetailName(animalTypeData);
   }
 
   // DELETE: 반려동물 이름으로 삭제
   async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
+    const { name } = animalTypeData;
+    if(!name){
+      throw new BadRequestException(ErrorDefine['ERROR-1001']);
+    }
     return await this.animalTypeRepository.deleteAnimalByName(animalTypeData);
   }
 }

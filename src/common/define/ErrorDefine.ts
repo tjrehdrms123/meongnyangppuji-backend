@@ -13,6 +13,7 @@ type Keys =
   | 'ERROR-0004'
   | 'ERROR-9999'
   | 'ERROR-1000'
+  | 'ERROR-1001'
   | 'ERROR-2000'
   | 'ERROR-3000'
   | 'ERROR-3001'
@@ -69,9 +70,16 @@ export const ErrorDefine: Record<
     message: '동일한 반려 동물의 상세 이름이 존재합니다.',
     code: 'ERROR-1000'
   },
+  'ERROR-1001': {
+    model: BadRequestException,
+    exampleTitle: 'Animal Type - 1001',
+    exampleDescription: '필수 값이 없어 반려동물의 종류 삭제가 불가능 합니다.',
+    message: '필수 값이 없어 반려동물의 종류 삭제가 불가능 합니다.',
+    code: 'ERROR-1001'
+  },
   // 2000 : Guardian
   'ERROR-2000': {
-    model: UnauthorizedException,
+    model: BadRequestException,
     exampleTitle: 'Guardian - 2000',
     exampleDescription: '해당 보호자가 존재하지 않습니다.',
     message: '해당 보호자가 존재하지 않습니다.',
@@ -93,14 +101,14 @@ export const ErrorDefine: Record<
     code: 'ERROR-3001'
   },
   'ERROR-3002': {
-    model: UnauthorizedException,
+    model: BadRequestException,
     exampleTitle: 'Users - 3002',
     exampleDescription: '로그인에 실패했습니다.',
     message: '로그인에 실패했습니다.',
     code: 'ERROR-3002'
   },
   'ERROR-3003': {
-    model: UnauthorizedException,
+    model: BadRequestException,
     exampleTitle: 'Users - 3003',
     exampleDescription: '동일한 보호자를 가진 계정이 존재합니다.',
     message: '동일한 보호자를 가진 계정이 존재합니다.',

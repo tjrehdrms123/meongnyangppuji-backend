@@ -86,8 +86,7 @@ describe('animal_type Controller (e2e)', () => {
       const response = await request(app.getHttpServer())
       .delete(`/animal_type/detail_name`)
       .set('Authorization', `Bearer ${token}`)
-      .send(testData['animalType'].detail_name);
-
+      .send({detail_name: testData['newAnimalType'].detail_name});
       expect(response.statusCode).toBe(200);
     });
   });
@@ -97,7 +96,7 @@ describe('animal_type Controller (e2e)', () => {
       const response = await request(app.getHttpServer())
       .delete(`/animal_type/name`)
       .set('Authorization', `Bearer ${token}`)
-      .send(testData['animalType'].name);      
+      .send({name: testData['animalType'].name});      
       expect(response.statusCode).toBe(200);
     });
   });
