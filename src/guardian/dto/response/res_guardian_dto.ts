@@ -1,4 +1,4 @@
-import { OmitType } from "@nestjs/swagger";
+import { ApiProperty, OmitType } from "@nestjs/swagger";
 import { GuardianEntity } from "src/guardian/entities/guardian.entity";
 
 export class ResGuardianDto extends OmitType(GuardianEntity , [] as const){}
@@ -10,4 +10,12 @@ export const ResGuardianMetaData = {
   "deletedAt": null,
   "name": "강길동",
   "phone_number": "010-1234-1234"
+}
+
+export class ResGuardianRowDto {
+    @ApiProperty({
+        example: 1,
+        description: 'SoftDelete를 통해 삭제된 행'
+    })
+    row: number;
 }
