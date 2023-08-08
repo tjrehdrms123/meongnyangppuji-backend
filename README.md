@@ -7,9 +7,60 @@
 멍냥뿌지 Backend Repo 입니다.
 
 아래의 기술을 사용하여 만들어졌습니다.
-패키지 [package.json](./package.json)를 확인해주시면 감사하겠습니다.
+세부 기술은 [package.json](./package.json)를 확인해주시면 감사하겠습니다.
+
+## 🌿 Skill
+
+### 👩‍💻 Languages
+
+![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
+### 🚀 Frameworks & Library
+
+![nestjs](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+
+### ⚡ Database
+
+![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+
+### ☁ Cloud
+
+![AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+
+## 📂 Module Folder Architecture
+
+```
+📂 example
+├── 📂 controller
+│   └── example.controller.ts
+├── 📂 dto
+│   ├─── 📂 request
+│   │   └── (method)_example.dto.ts
+│   ├─── 📂 response
+│   │   └── res_example.dto.ts
+│   └── example.dto.ts
+├── 📂 entities
+│   └── example.entity.ts
+├── 📂 infra
+│   └── example.repository.ts
+├── 📂 service
+│   └── example.service.ts
+└── example.module.ts
+```
+
+## 📝 Success & Error Code
+
+API response파일을 기준으로 성공과 에러의 코드를 작성하였고, Swagger Docs의 성공, 에러의 대해서 관리하는 파일입니다.
+
+- [Success Code](./src/common/define/SuccessDefine.ts)
+- [Error Code](./src/common/define/ErrorDefine.ts)
+- [API response](./docs/Swagger.md)
 
 ## 📝 DB Table
+
+서비스 구현 전 설계한 DB 설계 파일입니다.
 
 - [Version 0.0.1](./docs/DB.md)
 
