@@ -30,8 +30,8 @@ export class AnimalTypeService {
     const { detail_name } = animalTypeData;
 
     // Exception: 동일한 반려동물이 존재할 시
-    const exceptionExistingAnimalType  = await this.animalTypeRepository.findOneByDetailName(detail_name);
-    if(exceptionExistingAnimalType){
+    const exceptionExitsAnimalType  = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    if(exceptionExitsAnimalType){
       throw new BadRequestException(ErrorDefine['ERROR-1000']);
     }
 
@@ -50,8 +50,8 @@ export class AnimalTypeService {
     }
 
     // Exception: 동일한 반려동물이 존재할 시
-    const exceptionExistingAnimalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
-    if(exceptionExistingAnimalType){
+    const exceptionExitsAnimalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    if(exceptionExitsAnimalType){
       throw new BadRequestException(ErrorDefine['ERROR-1000']);
     }
 

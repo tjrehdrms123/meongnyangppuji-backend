@@ -28,6 +28,7 @@ export class UsersService {
     }
     
     // Exception: 보호자가 있는지 확인 처리
+    
     const isExitsGuardian = await this.guardianRepository.isExitsGuardian(guardianId);
     if (!isExitsGuardian) {
       throw new BadRequestException(ErrorDefine['ERROR-2000']);
@@ -58,6 +59,7 @@ export class UsersService {
     if (!(await bcrypt.compare(password, user.password)))
       throw new BadRequestException(ErrorDefine['ERROR-3002']);
     try {
+      // Read: JWT 토근 발급(토큰을 복호화했을때 유저의 ID가 나옵니다.)
       const jwt = await this.jwtService.signAsync(
         { user_id: user.id },
         { secret: this.configService.get('SECRET_KEY') },

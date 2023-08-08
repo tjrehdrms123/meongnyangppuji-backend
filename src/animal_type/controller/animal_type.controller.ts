@@ -43,6 +43,10 @@ export class AnimalTypeController {
 
   @ApiOperation({ summary: '반려동물 타입 상세 이름 조회', description: '반려동물 타입 상세 이름 조회' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1002']])
+  @ErrorResponse(HttpStatus.BAD_REQUEST, [
+    ErrorDefine['ERROR-1000'],
+    ErrorDefine['ERROR-0005']
+  ])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
