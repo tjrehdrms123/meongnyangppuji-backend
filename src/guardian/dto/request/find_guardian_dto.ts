@@ -1,4 +1,4 @@
-import { ApiProperty, PartialType, PickType } from '@nestjs/swagger'
+import { PickType } from '@nestjs/swagger'
 import { IsNotEmpty } from 'class-validator'
 import { GuardianEntity } from 'src/guardian/entities/guardian.entity'
 
