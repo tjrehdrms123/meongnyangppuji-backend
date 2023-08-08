@@ -11,6 +11,7 @@ type Keys =
   | 'ERROR-0002'
   | 'ERROR-0003'
   | 'ERROR-0004'
+  | 'ERROR-0005'
   | 'ERROR-9999'
   | 'ERROR-1000'
   | 'ERROR-1001'
@@ -53,6 +54,13 @@ export const ErrorDefine: Record<
     exampleDescription: '해당 하는 유저가 존재하지 않습니다.',
     message: '해당 하는 유저가 존재하지 않습니다.',
     code: 'ERROR-0004'
+  },
+  'ERROR-0005': {
+    model: BadRequestException,
+    exampleTitle: 'BadRequest - ID 존재 하지 않음',
+    exampleDescription: '해당 ID가 존재 하지 않습니다.',
+    message: '해당 ID가 존재 하지 않습니다.',
+    code: 'ERROR-0005'
   },
   // 스로틀
   'ERROR-9999': {

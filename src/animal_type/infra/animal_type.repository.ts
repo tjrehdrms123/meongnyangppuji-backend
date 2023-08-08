@@ -47,8 +47,17 @@ export class AnimalTypeRepository {
      * ERROR-1000 : 반려동물 상세 이름 있는지 검사
      * @param detail_name 
      */
-    async findOneByDetailName(detail_name){
-        return await this.animalTypeRepository.findOne({ where : {detail_name: detail_name} });
+    async findOneByDetailName(detail_name: string){
+        return await this.animalTypeRepository.findOneBy({ detail_name: detail_name });
+    }
+
+    /**
+     * ERROR-0005 : 해당 ID가 존재하지 않습니다.
+     * @param id 
+     * @returns 
+     */
+    async findOneById(id: string){
+        return await this.animalTypeRepository.findOneBy({ id: id });
     }
 
     // PATCH: 반려동물 상세 이름 수정

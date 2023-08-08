@@ -25,43 +25,46 @@ export class AnimalTypeService {
   }
 
   // POST: 반려동물 종류 등록
+  // E2E: 테스트에서 삭제된 행에 있는 detail_name값과 동일한 값을 넣었을떄 500에러 발생 -> 하지만 해당 경우는 없을거기 떄문에 발생하면 추 후 예외처리
   async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
     const { detail_name } = animalTypeData;
-    const animalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
+
     // Exception: 동일한 반려동물이 존재할 시
-    if(animalType){
+    const exceptionExistingAnimalType  = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    if(exceptionExistingAnimalType){
       throw new BadRequestException(ErrorDefine['ERROR-1000']);
     }
+
     const newAnimalType = await this.animalTypeRepository.createAnimalType(animalTypeData);
     return newAnimalType;
   }
 
   // PATCH: 반려동물 상세 이름 수정
   async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
-    const { detail_name } = animalTypeData;
-    const animalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    const { id, detail_name } = animalTypeData;
+
+    // Exception: 업데이트하려고하는 Row가 없을시
+    const exceptionNotFoundRow = await this.animalTypeRepository.findOneById(id);
+    if(!exceptionNotFoundRow){
+      throw new BadRequestException(ErrorDefine['ERROR-0005']);
+    }
+
     // Exception: 동일한 반려동물이 존재할 시
-    if(animalType){
+    const exceptionExistingAnimalType = await this.animalTypeRepository.findOneByDetailName(detail_name);
+    if(exceptionExistingAnimalType){
       throw new BadRequestException(ErrorDefine['ERROR-1000']);
     }
+
     return await this.animalTypeRepository.updateAnimalTypeByDetailName(animalTypeData);
   }
 
   // DELETE: 반려동물 상세 이름으로 삭제
   async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
-    const { detail_name } = animalTypeData;
-    if(!detail_name){
-      throw new BadRequestException(ErrorDefine['ERROR-1001']);
-    }
     return await this.animalTypeRepository.deleteAnimalTypeByDetailName(animalTypeData);
   }
 
   // DELETE: 반려동물 이름으로 삭제
   async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
-    const { name } = animalTypeData;
-    if(!name){
-      throw new BadRequestException(ErrorDefine['ERROR-1001']);
-    }
     return await this.animalTypeRepository.deleteAnimalByName(animalTypeData);
   }
 }
