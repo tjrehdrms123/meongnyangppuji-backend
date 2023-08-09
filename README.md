@@ -99,7 +99,7 @@ API response파일을 기준으로 성공과 에러의 코드를 작성하였고
 
 ### 수정) 리팩토링 / 버그
 
-- `리팩토링`을 진행할때는 버그가 발생해도 수정하지 않고, `버그`가 발생해 수정할때는 코드 리팩토링을 진행하도록 구분해서 작업합니다.
+- `리팩토링`을 진행할때는 버그가 발생해도 수정하지 않고, `버그`가 발생해 수정할때는 코드 리팩토링을 진행하지 않도록 구분해서 작업합니다.
   - [참고: 리팩토링의 중요성](https://github.com/tjrehdrms123/TIL/blob/main/study/ETC/Refactoring/%5B%EB%A7%88%ED%8B%B4%20%ED%8C%8C%EC%9A%B8%EB%9F%AC%5D%20%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EC%9D%98%20%EC%A4%91%EC%9A%94%EC%84%B1%20feat.%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%BD%94%EB%93%9C%EB%A5%BC%20%EC%A7%9C%EB%8A%94%20%EC%9D%B4%EC%9C%A0%20%EC%A0%95%EB%A6%AC.md)
 
 ### 삭제) 기능삭제
