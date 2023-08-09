@@ -74,23 +74,44 @@ NODE_ENV=production
 <br/>
 
 # 📚 아키텍쳐
-## Module Folder Architecture
 
-```
+## Project Architecture
+```bash
+📂 src
+├── 📂 animal        # 반려동물 모듈 
+├── 📂 animal_type   # 반려동물 타입 모듈
+├── 📂 common        
+|   ├── decorators   # 커스텀 데코레이터
+|   ├── define       # Swagger 성공, 에러 코드 
+|   ├── dtos         # 공통 DTO
+|   ├── entities
+|   ├── exceptions   # exception 필터
+|   ├── interceptors # 성공응답 인터셉터
+│   └── utils
+├── 📂 guardian       # 반려자 모듈
+├── 📂 users          # 유저 모듈
+├── 📂 qr             # QR 모듈
+├── app.controller.ts
+├── app.module.ts
+└── main.ts
+``` 
+## Module Architecture
+
+```bash
 📂 example
-├── 📂 controller
+├── 📂 controller                   # 컨트롤러
 │   └── example.controller.ts
-├── 📂 dto
-│   ├─── 📂 request
+├── 📂 dto                          # 공통 응답 DTO
+│   ├─── 📂 request                 # 요청 DTO
 │   │   └── (method)_example.dto.ts
-│   ├─── 📂 response
+│   ├─── 📂 response                # 응답 DTO
 │   │   └── res_example.dto.ts
 │   └── example.dto.ts
-├── 📂 entities
+├── 📂 entities                     # Entity
 │   └── example.entity.ts
-├── 📂 infra
+├── 📂 infra                        # Repository
 │   └── example.repository.ts
-├── 📂 service
+├── 📂 service                      # Service
 │   └── example.service.ts
 └── example.module.ts
 ```
