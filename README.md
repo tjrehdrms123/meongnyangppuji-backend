@@ -1,5 +1,5 @@
 # 멍냥뿌지 Backend<img src="https://nestjs.com/img/logo-small.svg" align=left width="100" alt="Nest Logo" />
-> 멍냥뿌지 Backend 레포지토리입니다.
+> 멍냥뿌지는 자신의 반려동물을 소개하고 반려동물의 QR을 발급해 사용할 수 있습니다.
 
 
 <br/>
@@ -36,6 +36,10 @@
 
 # 🐈 시작 가이드
 
+Application을 빌드 또는 실행하기 위해 필요합니다.
+- Node v16.13.1
+- NPM v8.1.2
+- MariaDB v10.1.13
 ## Installation
 
 - [.env 샘플](./docs/Env.md)
