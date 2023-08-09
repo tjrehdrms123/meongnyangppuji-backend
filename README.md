@@ -4,7 +4,6 @@
 
 <br/>
 
-
 # ✨ 서비스 페이지
 [mn.donggeun.co.kr](mn.donggeun.co.kr)
 
@@ -32,6 +31,45 @@
 
 ![AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
 
+
+<br/>
+
+# 🐈 시작 가이드
+
+## Installation
+
+- [.env 샘플](./docs/Env.md)
+
+```bash
+$ git@github.com:tjrehdrms123/meongnyangppuji-backend.git
+$ cd meongnyangppuji-backend
+$ nvm install 16.13.1
+$ nvm use 16.13.1
+$ npm install
+# 자신의 환경에 맞게 .env 구성
+```
+
+## Dev
+```bash
+$ npm run start:dev
+```
+
+```bash
+# .env
+NODE_ENV=development
+```
+
+## Production
+```bash
+$ npm run test:e2e
+# 테스트 후 문제 없다면
+$ npm run build
+```
+
+```bash
+# .env
+NODE_ENV=production
+```
 
 <br/>
 
