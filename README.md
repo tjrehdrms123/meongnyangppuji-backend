@@ -1,35 +1,42 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 멍냥뿌지 Backend<img src="https://nestjs.com/img/logo-small.svg" align=left width="100" alt="Nest Logo" />
+> 멍냥뿌지 Backend 레포지토리입니다.
 
-# 💻 Project Description
 
-멍냥뿌지 Backend Repo 입니다.
+<br/>
 
-아래의 기술을 사용하여 만들어졌습니다.
-세부 기술은 [package.json](./package.json)를 확인해주시면 감사하겠습니다.
 
-## 🌿 Skill
+# ✨ 서비스 페이지
+[mn.donggeun.co.kr](mn.donggeun.co.kr)
 
-### 👩‍💻 Languages
+
+</br>
+
+
+# 🌿 사용 스택
+
+### Languages
 
 ![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-### 🚀 Frameworks & Library
+### Frameworks & Library
 
 ![nestjs](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
 ![docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 ![nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
 
-### ⚡ Database
+### Database
 
 ![mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
-### ☁ Cloud
+### Cloud
 
 ![AWS](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
 
-## 📂 Module Folder Architecture
+
+<br/>
+
+# 📚 아키텍쳐
+## Module Folder Architecture
 
 ```
 📂 example
@@ -50,7 +57,18 @@
 └── example.module.ts
 ```
 
-## 📝 Success & Error Code
+
+<br/>
+
+
+# 📝 문서
+
+## API Docs
+
+Swagger API Docs 문서 입니다.
+
+- [Version 0.0.1](./docs/api/swagger.html)
+## Success & Error Code
 
 API response파일을 기준으로 성공과 에러의 코드를 작성하였고, Swagger Docs의 성공, 에러의 대해서 관리하는 파일입니다.
 
@@ -58,16 +76,17 @@ API response파일을 기준으로 성공과 에러의 코드를 작성하였고
 - [Error Code](./src/common/define/ErrorDefine.ts)
 - [API response](./docs/Swagger.md)
 
-## 📝 DB Table
+## DB Table
 
 서비스 구현 전 설계한 DB 설계 파일입니다.
 
 - [Version 0.0.1](./docs/DB.md)
 
-## 📝 Convention
+## Convention
+
 
 <details>
-  <summary> 🐱 구현 </summary>
+  <summary> 구현 </summary>
 
   <div markdown="1">
 
@@ -92,7 +111,7 @@ API response파일을 기준으로 성공과 에러의 코드를 작성하였고
 </details>
 
 <details>
-  <summary> 🐱 주석 </summary>
+  <summary> 주석 </summary>
   <div markdown="1">
 
 ### Repository
@@ -153,3 +172,49 @@ if (!exceptionExitsGuardian) {
 ### Controller
 
 컨트롤러의 주석은 ApiOperation을 통해 이해 할 수 없을때 작성합니다.
+</details>
+
+<details>
+  <summary> 테스팅 </summary>
+
+  <div markdown="1">
+  
+
+  ### E2E
+
+  모듈별로 테스트하기 위해 `package.json`에 다음과 같이 셋팅을 진행 합니다.
+  ```json
+  "scripts": {
+    ...
+    "test:e2e": "jest --config ./test/test/test-jest-e2e.json",
+  }
+  ```
+
+  `테스트 객체`를 만들떄는 아래와 같이 `testData` 프로퍼티를 통해 필요한 테스트 객체를 만들고 있습니다.
+  ```typescript
+  const testData = {
+    name: "강아지",
+    detailName: "푸들",
+    animalType: {},
+    ...
+  };
+  
+  testData.animalType = {
+    name: testData.name,
+    detail_name: testData.detailName
+  };
+  ```
+
+  </div>
+</details>
+
+
+</br>
+
+
+# 📢 해결한 이슈 & 알게된 것
+  - [Nestjs에서 Swagger 같은 코드 여러 응답 예시 만들기](https://github.com/tjrehdrms123/TIL/blob/main/study/JS/Node.js/Nest.js/Utility/Swagger/Nestjs%EC%97%90%EC%84%9C%20Swagger%20%EA%B0%99%EC%9D%80%20%EC%BD%94%EB%93%9C%20%EC%97%AC%EB%9F%AC%20%EC%9D%91%EB%8B%B5%20%EC%98%88%EC%8B%9C%20%EB%A7%8C%EB%93%A4%EA%B8%B0.md)
+    - [Nestjs에서 Swagger 같은 코드 여러 응답 예시 만들기 - 성공 응답 데코레이터](https://github.com/tjrehdrms123/TIL/blob/main/study/JS/Node.js/Nest.js/Utility/Swagger/Nestjs%EC%97%90%EC%84%9C%20Swagger%20%EA%B0%99%EC%9D%80%20%EC%BD%94%EB%93%9C%20%EC%97%AC%EB%9F%AC%20%EC%9D%91%EB%8B%B5%20%EC%98%88%EC%8B%9C%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20%EC%84%B1%EA%B3%B5%20%EC%9D%91%EB%8B%B5%20%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0.md)
+    - [Nestjs에서 Swagger 같은 코드 여러 응답 예시 만들기 - 에러 응답 데코레이터](https://github.com/tjrehdrms123/TIL/blob/main/study/JS/Node.js/Nest.js/Utility/Swagger/Nestjs%EC%97%90%EC%84%9C%20Swagger%20%EA%B0%99%EC%9D%80%20%EC%BD%94%EB%93%9C%20%EC%97%AC%EB%9F%AC%20%EC%9D%91%EB%8B%B5%20%EC%98%88%EC%8B%9C%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20%EC%97%90%EB%9F%AC%20%EC%9D%91%EB%8B%B5%20%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0.md)
+  - [관습적 추상화](https://github.com/tjrehdrms123/TIL/blob/main/study/Codereview/%EA%B4%80%EC%8A%B5%EC%A0%81%20%EC%B6%94%EC%83%81%ED%99%94.md)
+  - [MySQL 스토리지 엔진](https://github.com/tjrehdrms123/TIL/blob/main/study/Database/Basic/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%20%EC%97%94%EC%A7%84.md)
