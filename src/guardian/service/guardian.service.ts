@@ -13,10 +13,12 @@ export class GuardianService {
     private readonly guardianRepository: GuardianRepository,
   ) {}
 
+  // POST: 보호자 등록
   async createGuardian(guardianData: CreateGuardianDto): Promise<GuardianEntity | null> {
     return await this.guardianRepository.createGuardian(guardianData);
   }
 
+  // UPDATE: 보호자 정보 수정
   async updateGuardian(guardianData: UpdateGuardianDto): Promise<GuardianEntity | null> {
     const { id } = guardianData;
 
@@ -29,6 +31,7 @@ export class GuardianService {
     return await this.guardianRepository.updateGuardian(guardianData);
   }
 
+  // DELETE: 보호자 삭제
   async deleteGuardian(guardianData: DeleteGuardianDto): Promise<any> {
     const { id } = guardianData;
 

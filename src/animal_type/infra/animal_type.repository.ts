@@ -17,7 +17,7 @@ export class AnimalTypeRepository {
     ){}
 
     // GET: name을 distinct로 반환
-    async getAnimalTypeName() {
+    async getAnimalTypeName(): Promise<AnimalTypeEntity[]> {
         const distinctValues = await this.animalTypeRepository
         .createQueryBuilder('animal_type')
         .select('DISTINCT animal_type.name')
@@ -27,7 +27,7 @@ export class AnimalTypeRepository {
     }
 
     // GET: name을 줬을때 detail_name값을 반환
-    async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto) {
+    async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]> {
         const { name } = animalTypeData;
         const animalType = await this.animalTypeRepository.find({ where : {name: name} });
         const animalTypeDetailName = animalType.map((value) => value.detail_name);
@@ -39,7 +39,7 @@ export class AnimalTypeRepository {
      * @param animalTypeData: 생성 정보
      * @returns 
      */
-    async createAnimalType(animalTypeData: CreateAnimalTypeDto){
+    async createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<AnimalTypeEntity | null> {
         return await this.animalTypeRepository.save(animalTypeData);
     }
 
@@ -47,7 +47,7 @@ export class AnimalTypeRepository {
      * ERROR-1000 : 반려동물 상세 이름 있는지 검사
      * @param detail_name 
      */
-    async findOneByDetailName(detail_name: string){
+    async findOneByDetailName(detail_name: string): Promise<AnimalTypeEntity | null> {
         return await this.animalTypeRepository.findOneBy({ detail_name: detail_name });
     }
 
@@ -56,12 +56,12 @@ export class AnimalTypeRepository {
      * @param id 
      * @returns 
      */
-    async findOneById(id: string){
+    async findOneById(id: string): Promise<AnimalTypeEntity | null> {
         return await this.animalTypeRepository.findOneBy({ id: id });
     }
 
     // PATCH: 반려동물 상세 이름 수정
-    async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
+    async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto): Promise<AnimalTypeEntity | null> {
         const { id, detail_name } = animalTypeData;
         const animalType = await this.animalTypeRepository.findOneBy({ id: id });
 
@@ -70,14 +70,15 @@ export class AnimalTypeRepository {
     }
 
     // DELETE: 반려동물 상세 이름으로 삭제
-    async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
+    async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto): Promise<any> {
         const { detail_name } = animalTypeData;
         const deleteResult = await this.animalTypeRepository.softDelete({ detail_name });
         const affectedRows = deleteResult.affected;
         return affectedRows;
     }
+    
     // DELETE: 반려동물 이름으로 삭제
-    async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
+    async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto): Promise<any> {
         const { name } = animalTypeData;
         const deleteResult = await this.animalTypeRepository.softDelete({ name });
         const affectedRows = deleteResult.affected;

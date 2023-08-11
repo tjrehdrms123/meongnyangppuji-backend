@@ -6,6 +6,7 @@ import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_ty
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
+import { AnimalTypeEntity } from '../entities/animal_type.entity';
 
 @Injectable()
 export class AnimalTypeService {
@@ -15,18 +16,18 @@ export class AnimalTypeService {
   ) {}
 
   // GET: name을 distinct로 반환
-  async getAnimalTypeName() {
+  async getAnimalTypeName(): Promise<AnimalTypeEntity[]> {
     return await this.animalTypeRepository.getAnimalTypeName();
   }
 
   // GET: name을 줬을때 detail_name값을 반환
-  async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto) {
+  async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]> {
     return await this.animalTypeRepository.getAnimalTypeByDetailName(animalTypeData);
   }
 
   // POST: 반려동물 종류 등록
   // E2E: 테스트에서 삭제된 행에 있는 detail_name값과 동일한 값을 넣었을떄 500에러 발생 -> 하지만 해당 경우는 없을거기 떄문에 발생하면 추 후 예외처리
-  async createAnimalType(animalTypeData: CreateAnimalTypeDto) {
+  async createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<AnimalTypeEntity | null>  {
     const { detail_name } = animalTypeData;
 
     // Exception: 동일한 반려동물이 존재할 시
@@ -40,7 +41,7 @@ export class AnimalTypeService {
   }
 
   // PATCH: 반려동물 상세 이름 수정
-  async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto) {
+  async updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto): Promise<AnimalTypeEntity | null>  {
     const { id, detail_name } = animalTypeData;
 
     // Exception: 업데이트하려고하는 Row가 없을시
@@ -59,12 +60,12 @@ export class AnimalTypeService {
   }
 
   // DELETE: 반려동물 상세 이름으로 삭제
-  async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto) {
+  async deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto): Promise<any>  {
     return await this.animalTypeRepository.deleteAnimalTypeByDetailName(animalTypeData);
   }
 
   // DELETE: 반려동물 이름으로 삭제
-  async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto) {
+  async deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto): Promise<any>  {
     return await this.animalTypeRepository.deleteAnimalByName(animalTypeData);
   }
 }
