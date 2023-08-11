@@ -21,24 +21,29 @@ describe('animal_type Controller (e2e)', () => {
     deleteAnimalTypeName: {},
   };
   
+  // 반려동물 종류 생성 객체
   testData.animalType = {
     name: testData.name,
     detail_name: testData.detailName
   };
   
+  // 반려동물 상세 이름 변경 객체
   testData.updateAnimalType = {
     id: _id, 
     detail_name: testData.updateDetailNAme
   };
   
+  // 반려동물 상세이름으로 삭제를 위한 객체
   testData.deleteAnimalType = {
     detail_name: testData.updateDetailNAme
   };
   
+  // 반려동물 종류로 삭제를 위한 객체
   testData.deleteAnimalTypeName = {
     name: testData.name
   };
 
+  // before login 로그인을 위한 객체
   testData.loginData = {
     user_id: testData.user_id,
     password: testData.password

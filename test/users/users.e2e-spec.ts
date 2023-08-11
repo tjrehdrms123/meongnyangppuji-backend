@@ -20,21 +20,22 @@ describe('Guardian Controller (e2e)', () => {
     guardianData: {}
   }
 
+  // before guardian 보호자 생성 후 연결
   testData.guardianData = {
     name: testData.name,
     phone_number: testData.phoneNumber
   }
 
-  // POST: 회원가입 데이터
+  // 회원가입 객체
   testData.registerData = {
     user_id: testData.user_id,
     consent_check: testData.consent_check,
     privacy_policy_check: testData.privacy_policy_check,
     password: testData.password,
-    // guardian_id
+    // React: guardian_id는 유저를 생성할때 추가해줍니다.`
   }
 
-  // POST: 로그인 데이터
+  // 로그인 객체
   testData.loginData = {
     user_id: testData.user_id,
     password: testData.password

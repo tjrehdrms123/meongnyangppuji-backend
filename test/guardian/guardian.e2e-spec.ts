@@ -16,11 +16,13 @@ describe('Guardian Controller (e2e)', () => {
     updateGuardian: {}
   }
 
+  // 보호자 생성 객체
   testData.guardian = {
     name: testData.name,
     phone_number: testData.phoneNumber
   }
 
+  // 보호자 정보 변경 객체
   testData.updateGuardian = {
     id: _id,
     name: testData.updateName,
