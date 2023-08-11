@@ -12,6 +12,9 @@ describe('animal_type Controller (e2e)', () => {
     name: "강아지",
     detailName: "푸들",
     updateDetailNAme: "진돗개",
+    user_id: "e2e",
+    password: "1234",
+    loginData: {},
     animalType: {},
     updateAnimalType: {},
     deleteAnimalType: {},
@@ -36,6 +39,11 @@ describe('animal_type Controller (e2e)', () => {
     name: testData.name
   };
 
+  testData.loginData = {
+    user_id: testData.user_id,
+    password: testData.password
+  }
+
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -47,10 +55,7 @@ describe('animal_type Controller (e2e)', () => {
     // before login
     const login = await request(app.getHttpServer())
     .post('/users/login')
-    .send({
-      user_id: "e2e",
-      password: "1234",
-    });
+    .send(testData['loginData']);
     
     token = login.body.jwt; //토근 셋팅
   });

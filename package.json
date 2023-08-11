@@ -20,7 +20,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "guardian:e2e": "jest --config ./test/guardian/guardian-jest-e2e.json",
-    "animal_type:e2e": "jest --config ./test/animal_type/animal_type-jest-e2e.json"
+    "animal_type:e2e": "jest --config ./test/animal_type/animal_type-jest-e2e.json",
+    "users:e2e": "jest --config ./test/users/users-jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
