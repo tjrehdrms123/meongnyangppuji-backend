@@ -8,6 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { GetUsersDto } from '../dto/request/get_users_dto';
 import { GuardianRepository } from 'src/guardian/infra/guardian.repository';
+import { UsersEntity } from '../entities/users.entity';
 
 @Injectable()
 export class UsersService {
@@ -19,7 +20,8 @@ export class UsersService {
     private readonly configService: ConfigService,
   ) {}
 
-  async createUser(userData: CreateUsersDto){
+  // POST: 유저 등록
+  async createUser(userData: CreateUsersDto): Promise<UsersEntity | null> {
     const { user_id: userId, password, guardian_id: guardianId } = userData;
     // Exception: 동일한 회원명 처리
     const duplicateUserId = await this.usersRepository.findById(userId);
@@ -28,7 +30,6 @@ export class UsersService {
     }
     
     // Exception: 보호자가 있는지 확인 처리
-    
     const isExitsGuardian = await this.guardianRepository.isExitsGuardian(guardianId);
     if (!isExitsGuardian) {
       throw new BadRequestException(ErrorDefine['ERROR-2000']);
@@ -39,16 +40,20 @@ export class UsersService {
     if (duplicateGuardianIdUser) {
       throw new BadRequestException(ErrorDefine['ERROR-3003']);
     }
+
+    // Read: 비밀번호 해시화 후 대조
     const hashedPassword = await bcrypt.hash(password, 10);
     const userHashPasswordData = {
       ...userData,
       password: hashedPassword
     }
+
     const { user_id: createUserId } = await this.usersRepository.createUser(userHashPasswordData);
     return await this.usersRepository.findById(createUserId);
   }
 
-  async login(userData: LoginDto) {
+  // POST: 유저 로그인
+  async login(userData: LoginDto): Promise<{jwt: string, user: UsersEntity} | null> {
     const { user_id: userId, password } = userData;
     const user = await this.usersRepository.findById(userId);
     // Exception: 동일한 ID를 가진 유저가 없을시
@@ -70,7 +75,9 @@ export class UsersService {
     }
   }
 
-  async getByMyId(userData: GetUsersDto){
+  // GET: ID에 해당 하는 유저 반환
+  // @CurrentUser()로 대신 사용중 현재 사용하고 있지 않음
+  async getByMyId(userData: GetUsersDto): Promise<UsersEntity | null> {
     return await this.usersRepository.getByMyId(userData);
   }
 }

@@ -18,7 +18,7 @@ export class UsersRepository {
      * @param UsersData: 생성 정보
      * @returns 
      */
-    async createUser(userData: CreateUsersDto){
+    async createUser(userData: CreateUsersDto): Promise<UsersEntity | null> {
         return await this.UsersRepository.save(userData);
     }
 
@@ -27,7 +27,7 @@ export class UsersRepository {
      * @param userId 
      * @returns 
      */
-    async findById(userId){
+    async findById(userId): Promise<UsersEntity | null> {
         const user = await this.UsersRepository.findOne({ where : {user_id: userId} });
         return user
     }
@@ -37,7 +37,7 @@ export class UsersRepository {
      * @param guardianId 
      * @returns 
      */
-    async findUserByGuardianId(guardianId) {
+    async findUserByGuardianId(guardianId): Promise<UsersEntity | null> {
         const user = await this.UsersRepository.findOne({
             where: {
                 guardian_id: { id: guardianId }, // guardian 속성과의 관계를 로드할 때 id를 사용합니다.
@@ -46,13 +46,13 @@ export class UsersRepository {
         return user;
       }
 
-    async getByMyId(userData: GetUsersDto){
+    async getByMyId(userData: GetUsersDto): Promise<UsersEntity | null> {
         const user =  await this.UsersRepository.find({
             where: {
                 id: userData.user_id
             },
             relations: ['guardian_id']
         });
-        return user;
+        return user[0];
     }
 }

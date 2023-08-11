@@ -43,7 +43,6 @@ export class UsersController {
   ])
   @Get()
   @UseGuards(JwtAuthGuard)
-  //@UseInterceptors(OnlyPrivateInterceptor)
   async getCurrentUser(@CurrentUser() currentUser: UsersDto) {
     return currentUser
   }
@@ -60,10 +59,5 @@ export class UsersController {
   ) {
     const { jwt, user } = await this.usersService.login(userData);
     return {jwt};
-  }
-
-  @Post('logout')
-  async logOut(@Res({ passthrough: true }) response: Response) {
-    response.clearCookie('jwt');
   }
 }
