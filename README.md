@@ -176,65 +176,71 @@ API response파일을 기준으로 성공과 에러의 코드를 작성하였고
 <details>
   <summary> 주석 </summary>
   <div markdown="1">
+  
+  ### 주석 설정 셋팅
+  `TODO Highlight` Extension을 사용해 아래의 문서의 JSON을 `settting.json`에 추가합니다.
+  - [TODO Highlight](./docs/Highlight.md)
 
-### Repository
+  ### Read: `핵심 로직`이거나 주석이 있을때 `가독성이 상승하는 로직`에는 다음과 같이 주석을 작성합니다.
 
-`CRUD` 작업인 경우는 아래와 같이 주석을 답니다.
+  ```typescript
+  // Read: JWT 토근 발급(토큰을 복호화했을때 유저의 ID가 나옵니다.)
+  const jwt = await this.jwtService.signAsync(
+    { user_id: user.id },
+    { secret: this.configService.get('SECRET_KEY') },
+  )
+  ```
 
-```typescript
-/**
- * POST: 보호자 등록
- * @param GuardianData
- * @returns 등록된 보호자 정보
- */
-async createGuardian(GuardianData: CreateGuardianDto): Promise<GuardianEntity | null>{
-    return await this.GuardianRepository.save(GuardianData);
-}
-```
+  ### E2E: `테스팅 후` 오류가 발생하거나 추 후 수정이 필요할때 다음과 같이 주석을 작성합니다.
 
-`예외 처리` 또는 `그외의 경우`는 아래와 같이 주석을 답니다.
+  ```typescript
+  // E2E: 테스트에서 삭제된 행에 있는 detail_name값과 동일한 값을 넣었을떄 500에러 발생 -> 하지만 해당 경우는 없을거기 떄문에 발생하면 추 후 예외처리`
+  ```
 
-```typescript
+  ### Method: `CRUD` 작업인 경우는 아래와 같이 주석을 답니다.
+
+  ```typescript
   /**
-   * Exception: 동일한 반려자가 있는지 확인
-   * @param guardianId 반려자의 ID
-   * @returns
+   * POST: 반려동물 종류 등록
+   * @param animalTypeData: 생성 정보
+   * @returns 
    */
-  async isExitsGuardian(guardianId): Promise<GuardianEntity | null> {
-      const guardian = await this.GuardianRepository.findOneBy({ id: guardianId });
-      return guardian;
+  ```
+
+  ### Exception: `예외 처리`는 아래와 같이 주석을 답니다.
+  - 해당 코드는 보통 `Service Layer`에서 처리합니다.
+
+  ```typescript
+  // Exception: 동일한 반려동물이 존재할 시
+  const exceptionExitsAnimalType  = await this.animalTypeRepository.findOneByDetailName(detail_name);
+  if(exceptionExitsAnimalType){
+    throw new BadRequestException(ErrorDefine['ERROR-1000']);
   }
-```
+  ```
+
+
+
+
+
+  ### FEAT: `기능 구현이 필요한 경우` 다음과 같이 주석을 작성합니다.
+
+  ```typescript
+  // FEAT: 반려자 삭제 기능 구현이 필요합니다. 
+  ```
+
+  ### MODIF: `기능 변경이 필요한 경우` 다음과 같이 주석을 작성합니다.
+
+  ```typescript
+  // MODIF: 반려자 삭제 기능 변경이 필요합니다. 
+  ```
+
+  ### ERROR: `기능 오류가 발생한 경우` 다음과 같이 주석을 작성합니다.
+
+  ```typescript
+  // ERROR: 유저 삭제 후 생성시 오류 발생 원인은(SoftDelete로 예상). 
+  ```
 
   </div>
-
-### Service
-
-`핵심 로직`이거나 주석이 있을때 `가독성이 상승하는 로직`에는 다음과 같이 주석을 작성합니다.
-
-```typescript
-// Read: JWT 토근 발급(토큰을 복호화했을때 유저의 ID가 나옵니다.)
-const jwt = await this.jwtService.signAsync(
-  { user_id: user.id },
-  { secret: this.configService.get('SECRET_KEY') },
-);
-```
-
-예외처리를 할때는 다음과 같이 `Exception주석`을 답니다.
-
-```typescript
-// Exception: 업데이트 하려고 하는 Row가 없을시
-const exceptionExitsGuardian = await this.guardianRepository.isExitsGuardian(
-  id,
-);
-if (!exceptionExitsGuardian) {
-  throw new BadRequestException(ErrorDefine['ERROR-2000']);
-}
-```
-
-### Controller
-
-컨트롤러의 주석은 ApiOperation을 통해 이해 할 수 없을때 작성합니다.
 </details>
 
 <details>
