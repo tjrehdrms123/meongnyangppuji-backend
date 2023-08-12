@@ -17,10 +17,10 @@
 | 컬럼명               | 타입    | 설명                                  |
 | -------------------- | ------- | ------------------------------------- |
 | id                   | int     | 고유 아이디                           |
-| user_id                 | varchar | 유저 아이디                                  |
+| user_id              | varchar | 유저 아이디                           |
 | password             | varchar | 패스워드                              |
-| consent_check        | boolean | 서비스이용약관 (1: 미체크, 2: 체크)   |
-| privacy_policy_check | boolean | 개인정보처리방침 (1: 미체크, 2: 체크) |
+| consent_check        | boolean | 서비스이용약관 (0: 미체크, 1: 체크)   |
+| privacy_policy_check | boolean | 개인정보처리방침 (0: 미체크, 1: 체크) |
 | guardian_id          | number  | 보호자 FK                             |
 
 ---
@@ -53,7 +53,7 @@
 | name         | varchar | 이름                    |
 | introduction | varchar | 소개                    |
 | age          | int     | 나이                    |
-| sex          | boolean | 성별 (1: 남자, 2: 여자) |
+| sex          | boolean | 성별 (0: 남자, 1: 여자) |
 | profile_img  | varchar | 프로필 이미지           |
 | animal_type  | number  | 반려동물 종류 FK        |
 | qr_id        | int     | QR FK                   |
@@ -75,6 +75,6 @@
 | 컬럼명      | 타입    | 설명                              |
 | ----------- | ------- | --------------------------------- |
 | id          | number  | 고유 아이디                       |
-| qr_issuance | boolean | QR 발행 여부 (1: 미발행, 2: 발행) |
-| qr_use      | boolean | QR 사용 여부 (1: 미사용, 2: 사용) |
+| qr_issuance | boolean | QR 발행 여부 (0: 미발행, 1: 발행) |
+| qr_use      | boolean | QR 사용 여부 (0: 미사용, 1: 사용) |
 | animal_id   | number  | animal FK                         |
