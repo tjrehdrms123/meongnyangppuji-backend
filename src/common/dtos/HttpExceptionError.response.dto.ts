@@ -17,7 +17,7 @@ export class HttpExceptionErrorResponseDto {
     description: '에러메시지'
   })
   @Expose()
-  message: string;
+  message: any;
 
   @ApiProperty({
     enum: EnumToArray(HttpStatus),
@@ -37,7 +37,7 @@ export class HttpExceptionErrorResponseDto {
   constructor(
     statusCode: number,
     error: string,
-    message: string,
+    message: any,
     code?: string
   ) {
     this.error = error;

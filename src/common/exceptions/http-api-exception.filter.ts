@@ -55,7 +55,7 @@ export class HttpApiExceptionFilter implements ExceptionFilter {
         const objError = getError as HttpExceptionErrorResponseDto;
         error = {
           code: objError.code,
-          message: objError.message.toString(), // classValidator Message 배열로 넘어와서 문자열 처리
+          message: getError, // classValidator Message 배열로 넘어와서 문자열 처리
           error: exception.name,
           statusCode: statusCode
         };

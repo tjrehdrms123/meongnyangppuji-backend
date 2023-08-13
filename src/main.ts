@@ -1,6 +1,7 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import {
+  BadRequestException,
   ClassSerializerInterceptor,
   Logger,
   ValidationPipe,
@@ -60,6 +61,18 @@ class Application {
     this.server.useGlobalPipes(
       new ValidationPipe({
         transform: true,
+        exceptionFactory: (errors) => {
+        const validationErrors = {};
+        errors.forEach(error => {
+          const constraints = error.constraints;
+          if (constraints) {
+            validationErrors[error.property] = Object.values(constraints);
+              // Read: 에러 객체의 속성 (property)을 키로 사용하여, 해당 속성의 제약 조건 메시지들을 배열로 만들어 저장합니다.
+              // Read: 예를 들어, 'age' 필드에 대한 에러가 있다면, validationErrors['age']에 해당 에러 메시지를 배열로 저장합니다.
+          }
+        });
+        return new BadRequestException(validationErrors);
+      },
       }),
     );
 
