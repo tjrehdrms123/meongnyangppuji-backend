@@ -10,8 +10,8 @@ import { UpdateAnimalDto } from '../dto/request/update_qr_dto';
 import { DeleteAnimalDto } from '../dto/request/delete_qr_dto';
 import { GetAnimalDto } from '../dto/request/get_animal_dto';
 
-@Controller('guardian')
-@ApiTags('guardian API')
+@Controller('animal')
+@ApiTags('animal API')
 export class AnimalController {
   constructor(private readonly animalService: AnimalService) {}
   

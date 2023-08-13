@@ -1,4 +1,4 @@
 import { OmitType } from '@nestjs/swagger'
-import { GuardianEntity } from 'src/guardian/entities/guardian.entity'
+import { QrEntity } from 'src/qr/entities/qr.entity';
 
-export class CreateQrDto extends OmitType(GuardianEntity , [] as const) {}
+export class CreateQrDto extends OmitType(QrEntity , [] as const) {}

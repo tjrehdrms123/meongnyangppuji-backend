@@ -9,8 +9,8 @@ import { CreateQrDto } from '../dto/request/create_qr_dto';
 import { UpdateQrDto } from '../dto/request/update_qr_dto';
 import { DeleteQrDto } from '../dto/request/delete_qr_dto';
 
-@Controller('guardian')
-@ApiTags('guardian API')
+@Controller('qr')
+@ApiTags('qr API')
 export class QrController {
   constructor(private readonly qrService: QrService) {}
   

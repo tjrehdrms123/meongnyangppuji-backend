@@ -13,4 +13,4 @@ import { AnimalRepository } from './infra/animal.repository';
   providers: [AnimalService, AnimalRepository],
   exports: [AnimalRepository]
 })
-export class GuardianModule {}
+export class AnimalModule {}

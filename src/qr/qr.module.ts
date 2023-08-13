@@ -13,4 +13,4 @@ import { QrRepository } from './infra/qr.repository';
   providers: [QrService, QrRepository],
   exports: [QrRepository]
 })
-export class GuardianModule {}
+export class QrModule {}

@@ -10,7 +10,7 @@ import { QrEntity } from 'src/qr/entities/qr.entity'
 })
 export class AnimalEntity extends CommonEntity {
 
-    @Column({ type: 'string', comment: '이름', nullable: false, charset: 'utf8mb4' })
+    @Column({ type: 'varchar', comment: '이름', nullable: false, charset: 'utf8mb4' })
     @IsNotEmpty({ message: '이름을 입력해주세요.' })
     @ApiProperty({
       example: '홍길동',
@@ -19,7 +19,7 @@ export class AnimalEntity extends CommonEntity {
     })
     name: string
 
-    @Column({ type: 'string', comment: '소개', nullable: false, charset: 'utf8mb4' })
+    @Column({ type: 'varchar', comment: '소개', nullable: false, charset: 'utf8mb4' })
     @IsNotEmpty({ message: '소개를 입력해주세요.' })
     @ApiProperty({
       example: '멍냥이를 키우는 홍길동 입니다.',
@@ -28,7 +28,7 @@ export class AnimalEntity extends CommonEntity {
     })
     introduction: string
 
-    @Column({ type: 'number', comment: '나이', nullable: false })
+    @Column({ type: 'int', comment: '나이', nullable: false })
     @IsNotEmpty({ message: '나이를 입력해주세요.' })
     @ApiProperty({
       example: '22',
@@ -46,7 +46,7 @@ export class AnimalEntity extends CommonEntity {
     })
     sex: boolean
 
-    @Column({ type: 'string', comment: '프로빌 이미지', nullable: false })
+    @Column({ type: 'varchar', comment: '프로빌 이미지', nullable: false })
     @IsNotEmpty({ message: '프로필 이미지를 선택해주세요.' })
     @ApiProperty({
       example: '프로필 이미지',
