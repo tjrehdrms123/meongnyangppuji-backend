@@ -5,6 +5,7 @@ import { CreateGuardianDto } from '../dto/request/create_guardian_dto';
 import { DeleteGuardianDto } from '../dto/request/delete_guardian_dto';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
 import { GuardianEntity } from '../entities/guardian.entity';
+import { FindGuardianDto } from '../dto/request/find_guardian_dto';
 
 @Injectable()
 export class GuardianService {
@@ -12,6 +13,11 @@ export class GuardianService {
   constructor(
     private readonly guardianRepository: GuardianRepository,
   ) {}
+
+  // GET: 보호자 조회
+  async getGuardian(guardianData: FindGuardianDto): Promise<GuardianEntity | null> {
+    return await this.guardianRepository.getGuardian(guardianData);
+  }
 
   // POST: 보호자 등록
   async createGuardian(guardianData: CreateGuardianDto): Promise<GuardianEntity | null> {

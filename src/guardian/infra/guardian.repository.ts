@@ -17,6 +17,16 @@ export class GuardianRepository {
     ){}
     
     /**
+     * GET: 보호자 조회
+     * @param GuardianData
+     * @returns 등록된 보호자 정보
+     */
+    async getGuardian(GuardianData: FindGuardianDto): Promise<GuardianEntity | null>{
+        const { id } = GuardianData;
+        return await this.GuardianRepository.findOneBy({ id: id });
+    }
+
+    /**
      * POST: 보호자 등록
      * @param GuardianData
      * @returns 등록된 보호자 정보

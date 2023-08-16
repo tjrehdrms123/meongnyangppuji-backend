@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, HttpStatus, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put } from '@nestjs/common';
 import { GuardianService } from '../service/guardian.service';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
@@ -9,12 +9,19 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ResGuardianDto } from '../dto/response/res_guardian_dto';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { DeleteGuardianDto } from '../dto/request/delete_guardian_dto';
+import { FindGuardianDto } from '../dto/request/find_guardian_dto';
 
 @Controller('guardian')
 @ApiTags('guardian API')
 export class GuardianController {
   constructor(private readonly guardianService: GuardianService) {}
   
+  @ApiOperation({ summary: '보호자 조회', description: '보호자 조회' })
+  @Get()
+  async getGuardian(@Body() guardianData: FindGuardianDto) {
+    return await this.guardianService.getGuardian(guardianData);
+  }
+
   @ApiOperation({ summary: '보호자 생성', description: '보호자 생성' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-2000']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
@@ -22,7 +29,7 @@ export class GuardianController {
     ErrorDefine['ERROR-0002'],
   ])
   @Post()
-  async createAnimalType(@Body() guardianData: CreateGuardianDto) {
+  async createGuardian(@Body() guardianData: CreateGuardianDto) {
     return await this.guardianService.createGuardian(guardianData);
   }
 
@@ -34,7 +41,7 @@ export class GuardianController {
     ErrorDefine['ERROR-0002'],
   ])
   @Put()
-  async updateAnimalType(@Body() guardianData: UpdateGuardianDto) {
+  async updateGuardian(@Body() guardianData: UpdateGuardianDto) {
     return await this.guardianService.updateGuardian(guardianData);
   }
 
@@ -46,7 +53,7 @@ export class GuardianController {
     ErrorDefine['ERROR-0002'],
   ])
   @Delete()
-  async deleteAnimalType(@Body() guardianData: DeleteGuardianDto) {
+  async deleteGuardian(@Body() guardianData: DeleteGuardianDto) {
     return await this.guardianService.deleteGuardian(guardianData);
   }
 }
