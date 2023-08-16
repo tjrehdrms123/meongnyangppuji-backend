@@ -10,6 +10,7 @@ import { GuardianModule } from './guardian/guardian.module';
 import { UsersModule } from './users/users.module';
 import { QrModule } from './qr/qr.module'
 import { AnimalModule } from './animal/animal.module'
+import { GuardianAnimalModule } from './guardian_animal/guardian_animal.module'
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -55,7 +56,8 @@ const typeOrmModuleOptions = {
     GuardianModule,
     UsersModule,
     QrModule,
-    AnimalModule
+    AnimalModule,
+    GuardianAnimalModule
     // ThrottlerModule.forRoot({
     //   ttl: process.env.NODE_ENV === 'production' ? 300 : 60,
     //   limit: 3
