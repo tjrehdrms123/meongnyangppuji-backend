@@ -2,9 +2,9 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { AnimalRepository } from '../infra/animal.repository';
 import { AnimalEntity } from '../entities/animal.entity';
 import { CreateAnimalDto } from '../dto/request/create_animal_dto';
-import { UpdateAnimalDto } from '../dto/request/update_qr_dto';
-import { DeleteAnimalDto } from '../dto/request/delete_qr_dto';
 import { GetAnimalDto } from '../dto/request/get_animal_dto';
+import { UpdateAnimalDto } from '../dto/request/update_animal_dto';
+import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
 
 @Injectable()
 export class AnimalService {

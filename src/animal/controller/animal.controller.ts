@@ -7,6 +7,8 @@ import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { AnimalService } from '../service/animal.service';
 import { CreateAnimalDto } from '../dto/request/create_animal_dto';
 import { GetAnimalDto } from '../dto/request/get_animal_dto';
+import { UpdateAnimalDto } from '../dto/request/update_animal_dto';
+import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
 
 @Controller('animal')
 @ApiTags('animal API')
