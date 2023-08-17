@@ -3,9 +3,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AnimalEntity } from '../entities/animal.entity';
 import { CreateAnimalDto } from '../dto/request/create_animal_dto';
-import { UpdateAnimalDto } from '../dto/request/update_qr_dto';
-import { DeleteAnimalDto } from '../dto/request/delete_qr_dto';
 import { GetAnimalDto } from '../dto/request/get_animal_dto';
+import { UpdateAnimalDto } from '../dto/request/update_animal_dto';
+import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
 
 @Injectable()
 export class AnimalRepository {
@@ -68,13 +68,13 @@ export class AnimalRepository {
         return animal;
     }
 
-        /**
+    /**
      * Exception: 4000 동일한 반려동물이 있는지 확인 
      * @param guardianId 반려둥물 ID
      * @returns 
      */
-        // async isExitsAnimal(animalId): Promise<AnimalEntity | null> {
-        //     const animal = await this.AnimalRepository.findOneBy({ id: animalId });
-        //     return animal;
-        // }
+    async isExitsAnimal(animalId): Promise<AnimalEntity | null> {
+        const animal = await this.AnimalRepository.findOneBy({ id: animalId });
+        return animal;
+    }
 }

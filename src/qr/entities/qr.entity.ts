@@ -28,7 +28,7 @@ export class QrEntity extends CommonEntity {
     qr_use: boolean
 
     //* Relation */
-    @OneToOne(() => AnimalEntity, { eager: true })
-    @JoinColumn({ name: 'animal_id', referencedColumnName: 'id' })
-    animal_id: AnimalEntity
+    // @OneToOne(() => AnimalEntity, { eager: true })
+    // @JoinColumn({ name: 'animal_id', referencedColumnName: 'id' })
+    // animal_id: AnimalEntity
 }

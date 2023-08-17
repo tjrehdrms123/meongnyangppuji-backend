@@ -12,8 +12,8 @@ import { GuardianAnimalService } from './service/guardian_animal.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([GuardianAnimalEntity]),
-    // GuardianModule,
-    // AnimalModule
+    GuardianModule,
+    AnimalModule
   ],
   controllers: [GuardianAnimalController],
   providers: [GuardianAnimalService, GuardianAnimalRepository],

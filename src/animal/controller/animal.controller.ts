@@ -6,8 +6,6 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { AnimalService } from '../service/animal.service';
 import { CreateAnimalDto } from '../dto/request/create_animal_dto';
-import { UpdateAnimalDto } from '../dto/request/update_qr_dto';
-import { DeleteAnimalDto } from '../dto/request/delete_qr_dto';
 import { GetAnimalDto } from '../dto/request/get_animal_dto';
 
 @Controller('animal')

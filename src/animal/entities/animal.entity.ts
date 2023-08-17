@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator'
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToOne, ManyToOne } from 'typeorm'
 import { CommonEntity } from 'src/common/entities/common.entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity'
@@ -56,9 +56,9 @@ export class AnimalEntity extends CommonEntity {
     profile_img: string
 
     //* Relation */
-    @OneToOne(() => AnimalTypeEntity, { eager: true })
+    @ManyToOne(() => AnimalTypeEntity, { eager: true })
     @JoinColumn({ name: 'animal_type_id', referencedColumnName: 'id' })
-    animal_type_id: AnimalEntity
+    animal_type_id: AnimalTypeEntity
 
     @OneToOne(() => QrEntity, { eager: true })
     @JoinColumn({ name: 'qr_id', referencedColumnName: 'id' })
