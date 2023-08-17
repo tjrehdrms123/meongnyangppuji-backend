@@ -2,12 +2,12 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { UpdateGuardianDto } from '../dto/request/update_guardian_dto';
 import { DeleteGuardianDto } from '../dto/request/delete_guardian_dto';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
-import { FindGuardianDto } from '../dto/request/find_guardian_dto';
 import { GuardianAnimalEntity } from '../entities/guardian_animal.entity';
 import { GuardianAnimalRepository } from '../infra/guardian_animal.repository';
 import { CreateGuardianAnimalDto } from '../dto/request/create_guardian_animal_dto';
 import { GuardianRepository } from 'src/guardian/infra/guardian.repository';
 import { AnimalRepository } from 'src/animal/infra/animal.repository';
+import { FindGuardianAnimalDto } from '../dto/request/find_guardian_dto';
 
 @Injectable()
 export class GuardianAnimalService {
@@ -35,5 +35,9 @@ export class GuardianAnimalService {
     }
 
     return await this.guardianAnimalRepository.createGuardian(GuardianAnimalData);
+  }
+
+  async getByIdGuardianAnimal(GuardianAnimalData: FindGuardianAnimalDto){
+    return await this.guardianAnimalRepository.getByIdGuardianAnimal(GuardianAnimalData);
   }
 }

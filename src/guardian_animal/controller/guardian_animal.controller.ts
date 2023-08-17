@@ -7,9 +7,9 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ResGuardianDto } from '../dto/response/res_guardian_dto';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { DeleteGuardianDto } from '../dto/request/delete_guardian_dto';
-import { FindGuardianDto } from '../dto/request/find_guardian_dto';
 import { GuardianAnimalService } from '../service/guardian_animal.service';
 import { CreateGuardianAnimalDto } from '../dto/request/create_guardian_animal_dto';
+import { FindGuardianAnimalDto } from '../dto/request/find_guardian_dto';
 
 @Controller('guardian_animal')
 @ApiTags('guardian_animal API')
@@ -24,5 +24,10 @@ export class GuardianAnimalController {
   @Post()
   async createGuardian(@Body() guardianAnimalData: CreateGuardianAnimalDto) {
     return await this.guardianAnimalService.createGuardian(guardianAnimalData);
+  }
+
+  @Get()
+  async getByIdGuardianAnimal(@Body() guardianAnimalData: FindGuardianAnimalDto) {
+    return await this.guardianAnimalService.getByIdGuardianAnimal(guardianAnimalData);
   }
 }

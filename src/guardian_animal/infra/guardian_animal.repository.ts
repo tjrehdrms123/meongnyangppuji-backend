@@ -1,10 +1,9 @@
 import { Repository } from 'typeorm';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ErrorDefine } from 'src/common/define/ErrorDefine';
-import { gravity } from 'sharp';
 import { GuardianAnimalEntity } from '../entities/guardian_animal.entity';
 import { CreateGuardianAnimalDto } from '../dto/request/create_guardian_animal_dto';
+import { FindGuardianAnimalDto } from '../dto/request/find_guardian_dto';
 
 @Injectable()
 export class GuardianAnimalRepository {
@@ -20,5 +19,15 @@ export class GuardianAnimalRepository {
      */
     async createGuardian(GuardianAnimalData: CreateGuardianAnimalDto): Promise<GuardianAnimalEntity | null>{
         return await this.GuardianAnimalRepository.save(GuardianAnimalData);
+    }
+
+    async getByIdGuardianAnimal(GuardianAnimalData: FindGuardianAnimalDto): Promise<GuardianAnimalEntity | null> {
+        const user =  await this.GuardianAnimalRepository.find({
+            where: {
+                id: GuardianAnimalData.id
+            },
+            relations: ['guardian_id','animal_id']
+        });
+        return user[0];
     }
 }
