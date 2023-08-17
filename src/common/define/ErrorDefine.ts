@@ -20,6 +20,7 @@ type Keys =
   | 'ERROR-3001'
   | 'ERROR-3002'
   | 'ERROR-3003'
+  | 'ERROR-4000'
   ;
 
 export const ErrorDefine: Record<
@@ -121,5 +122,13 @@ export const ErrorDefine: Record<
     exampleDescription: '동일한 보호자를 가진 계정이 존재합니다.',
     message: '동일한 보호자를 가진 계정이 존재합니다.',
     code: 'ERROR-3003'
+  },
+  // 4000 : Animal
+  'ERROR-4000': {
+    model: BadRequestException,
+    exampleTitle: 'Animal - 4000',
+    exampleDescription: '해당 반려동물이 존재하지 않습니다.',
+    message: '해당 반려동물이 존재하지 않습니다.',
+    code: 'ERROR-4000'
   },
 };

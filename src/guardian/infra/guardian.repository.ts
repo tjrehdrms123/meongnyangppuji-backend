@@ -49,7 +49,7 @@ export class GuardianRepository {
     }
 
     /**
-     * Exception: 동일한 반려자가 있는지 확인
+     * Exception: 2000 동일한 반려자가 있는지 확인 
      * @param guardianId 반려자의 ID
      * @returns 
      */

@@ -67,4 +67,14 @@ export class AnimalRepository {
         })
         return animal;
     }
+
+        /**
+     * Exception: 4000 동일한 반려동물이 있는지 확인 
+     * @param guardianId 반려둥물 ID
+     * @returns 
+     */
+        // async isExitsAnimal(animalId): Promise<AnimalEntity | null> {
+        //     const animal = await this.AnimalRepository.findOneBy({ id: animalId });
+        //     return animal;
+        // }
 }
