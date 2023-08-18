@@ -45,4 +45,14 @@ export class QrRepository {
         const qr = await this.QrRepository.softDelete({ id: id });
         return qr;
     }
+
+    /**
+     * ERROR-5000 등록된 QR이 있는지 확인
+     * @param guardianId QR ID
+     * @returns 
+     */
+    async isExitsQr(qrId): Promise<QrEntity | null> {
+        const qr = await this.QrRepository.findOneBy({ id: qrId });
+        return qr;
+    }
 }

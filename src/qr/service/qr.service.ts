@@ -14,7 +14,7 @@ export class QrService {
   ) {}
 
   // POST: QR 등록
-async createQr(qrData: CreateQrDto): Promise<QrEntity | null> {
+  async createQr(qrData: CreateQrDto): Promise<QrEntity | null> {
     return await this.qrRepository.createQr(qrData);
   }
 
