@@ -22,13 +22,13 @@ export class GuardianAnimalService {
   async createGuardian(GuardianAnimalData: CreateGuardianAnimalDto): Promise<GuardianAnimalEntity | null> {
     const { guardian_id, animal_id } = GuardianAnimalData;
 
-    // Exception: 보호자의 ID가 없을시
+    // Exception: 등록된 보호자의 ID가 존재하지 않을시
     const exceptionExitsGuardian = await this.guardianRepository.isExitsGuardian(guardian_id);
     if (!exceptionExitsGuardian) {
       throw new BadRequestException(ErrorDefine['ERROR-2000']);
     }
 
-    // Exception: 반려동물의 ID가 없을시
+    // Exception: 등록된 반려동물의 ID가 존재하지 않을시
     const exceptionExitsAnimal = await this.animalRepository.isExitsAnimal(animal_id);
     if (!exceptionExitsAnimal) {
       throw new BadRequestException(ErrorDefine['ERROR-4000']);

@@ -1,15 +1,13 @@
-import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
-import { UpdateGuardianDto } from '../dto/request/update_guardian_dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { ResGuardianDto } from '../dto/response/res_guardian_dto';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
-import { DeleteGuardianDto } from '../dto/request/delete_guardian_dto';
 import { GuardianAnimalService } from '../service/guardian_animal.service';
 import { CreateGuardianAnimalDto } from '../dto/request/create_guardian_animal_dto';
 import { FindGuardianAnimalDto } from '../dto/request/find_guardian_dto';
+import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 
 @Controller('guardian_animal')
 @ApiTags('guardian_animal API')
@@ -21,12 +19,18 @@ export class GuardianAnimalController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
+  @ErrorResponse(HttpStatus.BAD_REQUEST, [
+    ErrorDefine['ERROR-2000'],
+    ErrorDefine['ERROR-4000'],
+  ])
   @Post()
+  @UseGuards(JwtAuthGuard)
   async createGuardian(@Body() guardianAnimalData: CreateGuardianAnimalDto) {
     return await this.guardianAnimalService.createGuardian(guardianAnimalData);
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   async getByIdGuardianAnimal(@Body() guardianAnimalData: FindGuardianAnimalDto) {
     return await this.guardianAnimalService.getByIdGuardianAnimal(guardianAnimalData);
   }
