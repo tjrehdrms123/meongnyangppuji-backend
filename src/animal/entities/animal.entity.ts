@@ -58,9 +58,21 @@ export class AnimalEntity extends CommonEntity {
     //* Relation */
     @ManyToOne(() => AnimalTypeEntity, { eager: true })
     @JoinColumn({ name: 'animal_type_id', referencedColumnName: 'id' })
+    @IsNotEmpty({ message: 'Animal Type ID를 입력해주세요.' })
+    @ApiProperty({
+      example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
+      description: '반려견 종류 ID',
+      required: true
+    })
     animal_type_id: AnimalTypeEntity
 
     @OneToOne(() => QrEntity, { eager: true })
     @JoinColumn({ name: 'qr_id', referencedColumnName: 'id' })
+    @IsNotEmpty({ message: 'QR ID를 입력해주세요.' })
+    @ApiProperty({
+      example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
+      description: 'QR ID',
+      required: true
+    })
     qr_id: QrEntity
 }

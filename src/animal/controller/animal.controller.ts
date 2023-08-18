@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
@@ -9,6 +9,7 @@ import { CreateAnimalDto } from '../dto/request/create_animal_dto';
 import { GetAnimalDto } from '../dto/request/get_animal_dto';
 import { UpdateAnimalDto } from '../dto/request/update_animal_dto';
 import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
+import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 
 @Controller('animal')
 @ApiTags('animal API')
@@ -21,7 +22,12 @@ export class AnimalController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
+  @ErrorResponse(HttpStatus.BAD_REQUEST, [
+    ErrorDefine['ERROR-1002'],
+    ErrorDefine['ERROR-5000']
+  ])
   @Post()
+  @UseGuards(JwtAuthGuard)
   async createAnimal(@Body() animalData: CreateAnimalDto) {
     return await this.animalService.createAnimal(animalData);
   }
@@ -32,7 +38,12 @@ export class AnimalController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
+  @ErrorResponse(HttpStatus.BAD_REQUEST, [
+    ErrorDefine['ERROR-1002'],
+    ErrorDefine['ERROR-5000']
+  ])
   @Put()
+  @UseGuards(JwtAuthGuard)
   async updateAnimal(@Body() animalData: UpdateAnimalDto) {
     return await this.animalService.updateAnimal(animalData);
   }
@@ -44,6 +55,7 @@ export class AnimalController {
     ErrorDefine['ERROR-0002'],
   ])
   @Delete()
+  @UseGuards(JwtAuthGuard)
   async deleteAnimal(@Body() animalData: DeleteAnimalDto) {
     return await this.animalService.deleteAnimal(animalData);
   }
@@ -55,6 +67,7 @@ export class AnimalController {
     ErrorDefine['ERROR-0002'],
   ])
   @Get()
+  @UseGuards(JwtAuthGuard)
   async getAnimal(@Body() animalData: GetAnimalDto) {
     return await this.animalService.getAniaml(animalData);
   }

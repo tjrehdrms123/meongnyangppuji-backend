@@ -52,11 +52,11 @@ export class AnimalTypeRepository {
     }
 
     /**
-     * ERROR-0005 : 해당 ID가 존재하지 않습니다.
+     * ERROR-1002 : 반려동물 타입이 존재하지 않습니다.
      * @param id 
      * @returns 
      */
-    async findOneById(id: string): Promise<AnimalTypeEntity | null> {
+    async isExitsAnimalType(id): Promise<AnimalTypeEntity | null> {
         return await this.animalTypeRepository.findOneBy({ id: id });
     }
 

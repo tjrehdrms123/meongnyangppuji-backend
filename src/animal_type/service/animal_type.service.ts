@@ -45,9 +45,9 @@ export class AnimalTypeService {
     const { id, detail_name } = animalTypeData;
 
     // Exception: 업데이트하려고하는 Row가 없을시
-    const exceptionNotFoundRow = await this.animalTypeRepository.findOneById(id);
+    const exceptionNotFoundRow = await this.animalTypeRepository.isExitsAnimalType(id);
     if(!exceptionNotFoundRow){
-      throw new BadRequestException(ErrorDefine['ERROR-0005']);
+      throw new BadRequestException(ErrorDefine['ERROR-1002']);
     }
 
     // Exception: 동일한 반려동물이 존재할 시

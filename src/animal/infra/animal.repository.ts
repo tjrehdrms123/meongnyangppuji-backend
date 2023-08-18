@@ -69,7 +69,7 @@ export class AnimalRepository {
     }
 
     /**
-     * Exception: 4000 동일한 반려동물이 있는지 확인 
+     * ERROR-4000 동일한 반려동물이 있는지 확인 
      * @param guardianId 반려둥물 ID
      * @returns 
      */
