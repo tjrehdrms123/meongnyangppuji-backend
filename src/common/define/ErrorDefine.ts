@@ -15,12 +15,14 @@ type Keys =
   | 'ERROR-9999'
   | 'ERROR-1000'
   | 'ERROR-1001'
+  | 'ERROR-1002'
   | 'ERROR-2000'
   | 'ERROR-3000'
   | 'ERROR-3001'
   | 'ERROR-3002'
   | 'ERROR-3003'
   | 'ERROR-4000'
+  | 'ERROR-5000'
   ;
 
 export const ErrorDefine: Record<
@@ -86,6 +88,13 @@ export const ErrorDefine: Record<
     message: '필수 값이 없어 반려동물의 종류 삭제가 불가능 합니다.',
     code: 'ERROR-1001'
   },
+  'ERROR-1002': {
+    model: BadRequestException,
+    exampleTitle: 'Animal Type - 1002',
+    exampleDescription: '반려동물 타입이 존재하지 않습니다.',
+    message: '반려동물 타입이 존재하지 않습니다.',
+    code: 'ERROR-1002'
+  },
   // 2000 : Guardian
   'ERROR-2000': {
     model: BadRequestException,
@@ -130,5 +139,13 @@ export const ErrorDefine: Record<
     exampleDescription: '해당 반려동물이 존재하지 않습니다.',
     message: '해당 반려동물이 존재하지 않습니다.',
     code: 'ERROR-4000'
+  },
+  // 5000 : QR
+  'ERROR-5000': {
+    model: BadRequestException,
+    exampleTitle: 'QR - 5000',
+    exampleDescription: '해당 QR정보가 존재하지 않습니다.',
+    message: '해당 QR정보가 존재하지 않습니다.',
+    code: 'ERROR-5000'
   },
 };
