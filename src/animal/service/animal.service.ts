@@ -34,6 +34,8 @@ export class AnimalService {
       throw new BadRequestException(ErrorDefine['ERROR-5000']);
     }
 
+    // FEAT: ID에 해당하는 프로필 이미지 예외처리 추가 필요합니다.
+
     return await this.animalRepository.createAnimal(animalData);
   }
 

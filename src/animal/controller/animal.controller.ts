@@ -1,8 +1,8 @@
-import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put, UploadedFile, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { AnimalService } from '../service/animal.service';
 import { CreateAnimalDto } from '../dto/request/create_animal_dto';
@@ -10,11 +10,15 @@ import { GetAnimalDto } from '../dto/request/get_animal_dto';
 import { UpdateAnimalDto } from '../dto/request/update_animal_dto';
 import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
 import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
+import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { AwsService } from 'src/uploads/service/aws.service';
 
 @Controller('animal')
 @ApiTags('animal API')
 export class AnimalController {
-  constructor(private readonly animalService: AnimalService) {}
+  constructor(
+    private readonly animalService: AnimalService
+  ) {}
   
   @ApiOperation({ summary: '반려동물 생성', description: '반려동물 생성' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-5000']])

@@ -29,13 +29,13 @@ export class AnimalRepository {
      * @returns 변경된 Animal 정보
      */
     async updateAnimal(animalData: UpdateAnimalDto): Promise<AnimalEntity | null> {
-        const { id, name, introduction, age, sex, profile_img, animal_type_id, qr_id } = animalData;
+        const { id, name, introduction, age, sex, uploads_id, animal_type_id, qr_id } = animalData;
         const animal = await this.AnimalRepository.findOneBy({ id: id });
         animal.name = name;
         animal.introduction = introduction;
         animal.age = age;
         animal.sex = sex;
-        animal.profile_img = profile_img;
+        animal.uploads_id = uploads_id;
         animal.animal_type_id = animal_type_id;
         animal.qr_id = qr_id;
         return this.AnimalRepository.save(animal);

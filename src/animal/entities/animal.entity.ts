@@ -4,6 +4,7 @@ import { CommonEntity } from 'src/common/entities/common.entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity'
 import { QrEntity } from 'src/qr/entities/qr.entity'
+import { UploadsEntity } from 'src/uploads/entities/uplosds.entity'
 
 @Entity({
   name: 'animal',
@@ -54,6 +55,16 @@ export class AnimalEntity extends CommonEntity {
       required: true
     })
     profile_img: string
+
+    @OneToOne(() => UploadsEntity, { eager: true })
+    @JoinColumn({ name: 'uploads_id', referencedColumnName: 'id' })
+    @IsNotEmpty({ message: '프로필을 넣어주세요.' })
+    @ApiProperty({
+      example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
+      description: 'Profile Image ID',
+      required: true
+    })
+    uploads_id: UploadsEntity
 
     //* Relation */
     @ManyToOne(() => AnimalTypeEntity, { eager: true })
