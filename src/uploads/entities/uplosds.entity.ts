@@ -12,7 +12,7 @@ export class UploadsEntity extends CommonEntity {
     @IsNotEmpty({ message: '이미지를 넣어주세요.' })
     @ApiProperty({
       example: 'https://s3.ap-northeast-2.amazonaws.com/test.png',
-      description: 'QR 발행 여부 (0: 미발행, 1: 발행)',
+      description: '원본 이미지 S3 URL',
       required: true
     })
     img: string
@@ -20,7 +20,7 @@ export class UploadsEntity extends CommonEntity {
     @Column({ type: 'varchar', comment: '크롭 이미지', nullable: true })
     @ApiProperty({
       example: 'https://s3.ap-northeast-2.amazonaws.com/test.png',
-      description: 'QR 사용 여부 (0: 미사용, 1: 사용)'
+      description: '크롭된 이미지 S3 URL'
     })
     img_crop: string
 }
