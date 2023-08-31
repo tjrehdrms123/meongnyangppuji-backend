@@ -19,4 +19,13 @@ export class UploadsRepository {
     async createImg(uploadsData: UploadsDto): Promise<UploadsEntity | null>{
         return await this.UploadsRepository.save(uploadsData);
     }
+
+    /**
+     * ERROR-6000 : 해당 프로필 이미지가 존재하지 않습니다.
+     * @param id 
+     * @returns 
+     */
+    async isExitsImg(id): Promise<UploadsEntity | null> {
+        return await this.UploadsRepository.findOneBy({ id: id });
+    }
 }

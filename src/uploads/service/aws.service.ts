@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as AWS from 'aws-sdk';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PromiseResult } from 'aws-sdk/lib/request';
+import { ErrorDefine } from 'src/common/define/ErrorDefine';
 
 // sharp
 
@@ -28,9 +29,13 @@ export class AwsService {
     contentType: string;
     url: string;
   }> {
+    // Exception: 프로필 이미지를 업로드하지 않았을 시
+    if(!file?.[0]){
+      throw new BadRequestException(ErrorDefine['ERROR-6001']);
+    }
     try {
       const key = `${process.env.S3_BASEFOLDER}/${folder}/${Date.now()}_${path.basename(
-        file.originalname,
+        file[0].originalname,
       )}`.replace(/ /g, '');
       // 공백을 제거해주는 정규식
 
@@ -38,13 +43,13 @@ export class AwsService {
         .putObject({
           Bucket: this.S3_BUCKET_NAME,
           Key: key,
-          Body: file.buffer,
+          Body: file[0].buffer,
           ACL: 'public-read',
-          ContentType: file.mimetype,
+          ContentType: file[0].mimetype,
         })
         .promise();
         const imgUrl = `https://${this.S3_BUCKET_NAME}.s3.amazonaws.com/${key}`;
-      return { key, s3Object, contentType: file.mimetype, url: imgUrl };
+      return { key, s3Object, contentType: file[0].mimetype, url: imgUrl };
     } catch (error) {
       throw new BadRequestException(`File upload failed : ${error}`);
     }
