@@ -29,6 +29,7 @@ export class GuardianAnimalController {
     return await this.guardianAnimalService.createGuardian(guardianAnimalData);
   }
 
+  @ApiOperation({ summary: '보호자/반려동물 데이터 조회', description: '보호자/반려동물 데이터 조회' })
   @Get()
   @UseGuards(JwtAuthGuard)
   async getByIdGuardianAnimal(@Body() guardianAnimalData: FindGuardianAnimalDto) {

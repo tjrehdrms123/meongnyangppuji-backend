@@ -17,6 +17,7 @@ export class UploadsController {
     private readonly awsService: AwsService
   ) {}
   
+  @ApiOperation({ summary: '반려동물 썸네일 이미지 업로드', description: '반려동물 썸네일 이미지 업로드' })
   @UseInterceptors(FileFieldsInterceptor([
     { name: 'img', maxCount: 1 },
     { name: 'img_crop', maxCount: 1 },

@@ -1,18 +1,12 @@
-import { Body, Controller, Get, HttpStatus, Patch, Post, Put, Res, UseGuards, UseInterceptors } from '@nestjs/common';
-import { Response } from 'express'
+import { Body, Controller, Get, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { UsersService } from '../service/Users.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateUsersDto } from '../dto/request/create_users_dto';
 import { JwtAuthGuard } from '../guards/jwt.guard';
 import { LoginDto } from '../dto/request/login_dto';
-import { GetUsersDto } from '../dto/request/get_users_dto';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
-import { ResUsersOmitPasswordDto } from '../dto/response/res_users_dto';
-import { UsersEntity } from '../entities/users.entity';
-import { ResGuardianMetaData } from 'src/guardian/dto/response/res_guardian_dto';
-import { OnlyPrivateInterceptor } from 'src/common/interceptors/only-private.interceptor';
 import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { UsersDto } from '../dto/user.dto';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
