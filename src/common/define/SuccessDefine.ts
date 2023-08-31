@@ -4,6 +4,7 @@ import { SuccessResponseOption } from '../decorators/SuccessResponse.decorator';
 import { ResUsersTypeDto } from 'src/users/dto/response/res_users_dto';
 import { ResQrDto, ResQrMetaData, ResQrRowDto } from 'src/qr/dto/response/res_qr_dto';
 import { ResAnimalDto, ResAnimalRowDto } from 'src/animal/dto/response/res_animal_dto';
+import { ResUploadsDto } from 'src/uploads/dto/response/res_uploads_dto';
 type Keys =
   | 'SUCCESS-1000'
   | 'SUCCESS-1001'
@@ -23,6 +24,7 @@ type Keys =
   | 'SUCCESS-5001'
   | 'SUCCESS-5002'
   | 'SUCCESS-5003'
+  | 'SUCCESS-6000'
   ;
 
 export const SuccessDefine: Record<
@@ -136,5 +138,11 @@ export const SuccessDefine: Record<
       animal_type_id: ResAnimalTypeMetaData,
       qr_id: ResQrMetaData
     }
+  },
+  // 6000 : Uploads
+  'SUCCESS-6000': {
+    model: ResUploadsDto,
+    exampleTitle: '프로필 이미지 성공 예시',
+    exampleDescription: '프로필 이미지 성공 예시'
   },
 };

@@ -23,6 +23,8 @@ type Keys =
   | 'ERROR-3003'
   | 'ERROR-4000'
   | 'ERROR-5000'
+  | 'ERROR-6000'
+  | 'ERROR-6001'
   ;
 
 export const ErrorDefine: Record<
@@ -147,5 +149,20 @@ export const ErrorDefine: Record<
     exampleDescription: '해당 QR정보가 존재하지 않습니다.',
     message: '해당 QR정보가 존재하지 않습니다.',
     code: 'ERROR-5000'
+  },
+  // 6000 : Uploads
+  'ERROR-6000': {
+    model: BadRequestException,
+    exampleTitle: 'Uploads - 6000',
+    exampleDescription: '해당 프로필 이미지가 존재하지 않습니다.',
+    message: '해당 프로필 이미지가 존재하지 않습니다.',
+    code: 'ERROR-6000'
+  },
+  'ERROR-6001': {
+    model: BadRequestException,
+    exampleTitle: 'Uploads - 6001',
+    exampleDescription: '프로필 이미지는 필수 값 입니다.',
+    message: '프로필 이미지는 필수 값 입니다.',
+    code: 'ERROR-6001'
   },
 };
