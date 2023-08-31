@@ -8,6 +8,7 @@ import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
 import { AnimalTypeRepository } from 'src/animal_type/infra/animal_type.repository';
 import { QrRepository } from 'src/qr/infra/qr.repository';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
+import { UploadsRepository } from 'src/uploads/infra/uploads.repository';
 
 @Injectable()
 export class AnimalService {
@@ -16,11 +17,12 @@ export class AnimalService {
     private readonly animalRepository: AnimalRepository,
     private readonly animalTypeRepository: AnimalTypeRepository,
     private readonly qrRepository: QrRepository,
+    private readonly uploadsRepository: UploadsRepository,
   ) {}
 
   // POST: Animal 등록
   async createAnimal(animalData: CreateAnimalDto): Promise<AnimalEntity | null> {
-    const { animal_type_id, qr_id } = animalData;
+    const { animal_type_id, qr_id, uploads_id } = animalData;
 
     // Exception: ID에 해당하는 반려동물 타입이 없을시
     const exceptionExitsAnimalType = this.animalTypeRepository.isExitsAnimalType(animal_type_id);
@@ -34,14 +36,18 @@ export class AnimalService {
       throw new BadRequestException(ErrorDefine['ERROR-5000']);
     }
 
-    // FEAT: ID에 해당하는 프로필 이미지 예외처리 추가 필요합니다.
+    // Exception: ID에 해당하는 Image가 없을시
+    const exceptionExitsImg = this.uploadsRepository.isExitsImg(uploads_id);
+    if(!exceptionExitsImg){
+      throw new BadRequestException(ErrorDefine['ERROR-6000']);
+    }
 
     return await this.animalRepository.createAnimal(animalData);
   }
 
   // UPDATE: Animal 정보 수정
   async updateAnimal(animalData: UpdateAnimalDto): Promise<AnimalEntity | null> {
-    const { animal_type_id, qr_id } = animalData;
+    const { animal_type_id, uploads_id, qr_id } = animalData;
 
     // Exception: ID에 해당하는 반려동물 타입이 없을시
     const exceptionExitsAnimalType = this.animalTypeRepository.isExitsAnimalType(animal_type_id);
@@ -53,6 +59,12 @@ export class AnimalService {
     const exceptionExitsQr = this.qrRepository.isExitsQr(qr_id);
     if(!exceptionExitsQr){
       throw new BadRequestException(ErrorDefine['ERROR-5000']);
+    }
+
+    // Exception: ID에 해당하는 Image가 없을시
+    const exceptionExitsImg = this.uploadsRepository.isExitsImg(uploads_id);
+    if(!exceptionExitsImg){
+      throw new BadRequestException(ErrorDefine['ERROR-6000']);
     }
 
     return await this.animalRepository.updateAnimal(animalData);

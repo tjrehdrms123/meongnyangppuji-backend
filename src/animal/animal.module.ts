@@ -6,12 +6,14 @@ import { AnimalService } from './service/animal.service';
 import { AnimalRepository } from './infra/animal.repository';
 import { QrModule } from 'src/qr/qr.module';
 import { AnimalTypeModule } from 'src/animal_type/animal_type.module';
+import { UploadsModule } from 'src/uploads/uplosds.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([AnimalEntity]),
     AnimalTypeModule,
-    QrModule
+    QrModule,
+    UploadsModule
   ],
   controllers: [AnimalController],
   providers: [AnimalService, AnimalRepository],

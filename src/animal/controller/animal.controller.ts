@@ -28,7 +28,8 @@ export class AnimalController {
   ])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-1002'],
-    ErrorDefine['ERROR-5000']
+    ErrorDefine['ERROR-5000'],
+    ErrorDefine['ERROR-6000']
   ])
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -44,7 +45,8 @@ export class AnimalController {
   ])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-1002'],
-    ErrorDefine['ERROR-5000']
+    ErrorDefine['ERROR-5000'],
+    ErrorDefine['ERROR-6000']
   ])
   @Put()
   @UseGuards(JwtAuthGuard)
