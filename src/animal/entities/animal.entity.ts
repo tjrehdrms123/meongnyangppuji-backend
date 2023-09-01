@@ -1,4 +1,4 @@
-import { IsNotEmpty } from 'class-validator'
+import { IsBoolean, IsInt, IsNotEmpty, IsString, IsUUID, Max } from 'class-validator'
 import { Column, Entity, JoinColumn, OneToOne, ManyToOne } from 'typeorm'
 import { CommonEntity } from 'src/common/entities/common.entity'
 import { ApiProperty } from '@nestjs/swagger'
@@ -12,6 +12,7 @@ import { UploadsEntity } from 'src/uploads/entities/uplosds.entity'
 export class AnimalEntity extends CommonEntity {
 
     @Column({ type: 'varchar', comment: '이름', nullable: false, charset: 'utf8mb4' })
+    @IsString({ message: '문자로 입력해주세요.' })
     @IsNotEmpty({ message: '이름을 입력해주세요.' })
     @ApiProperty({
       example: '홍길동',
@@ -21,6 +22,7 @@ export class AnimalEntity extends CommonEntity {
     name: string
 
     @Column({ type: 'varchar', comment: '소개', nullable: false, charset: 'utf8mb4' })
+    @IsString({ message: '문자로 입력해주세요.' })
     @IsNotEmpty({ message: '소개를 입력해주세요.' })
     @ApiProperty({
       example: '멍냥이를 키우는 홍길동 입니다.',
@@ -30,6 +32,8 @@ export class AnimalEntity extends CommonEntity {
     introduction: string
 
     @Column({ type: 'int', comment: '나이', nullable: false })
+    @IsInt({ message: '숫자로 입력해주세요.' })
+    @Max(120, { message: '120이하로 입력해주세요.' })
     @IsNotEmpty({ message: '나이를 입력해주세요.' })
     @ApiProperty({
       example: '22',
@@ -39,6 +43,7 @@ export class AnimalEntity extends CommonEntity {
     age: number
 
     @Column({ type: 'boolean', comment: '성별', nullable: false })
+    @IsBoolean({ message: 'Boolean형식으로 입력해주세요.' })
     @IsNotEmpty({ message: '나이를 입력해주세요.' })
     @ApiProperty({
       example: '0',
@@ -48,6 +53,9 @@ export class AnimalEntity extends CommonEntity {
     sex: boolean
 
     @Column({ type: 'varchar', comment: '프로빌 이미지', nullable: false })
+    @IsUUID(4,{
+      message: "입력한 프로필 ID가 옳바르지 않습니다."
+    })
     @IsNotEmpty({ message: '프로필 이미지를 선택해주세요.' })
     @ApiProperty({
       example: '프로필 이미지',
@@ -58,6 +66,9 @@ export class AnimalEntity extends CommonEntity {
 
     @OneToOne(() => UploadsEntity, { eager: true })
     @JoinColumn({ name: 'uploads_id', referencedColumnName: 'id' })
+    @IsUUID(4,{
+      message: "입력한 프로필 ID가 옳바르지 않습니다."
+    })
     @IsNotEmpty({ message: '프로필을 넣어주세요.' })
     @ApiProperty({
       example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
@@ -69,6 +80,9 @@ export class AnimalEntity extends CommonEntity {
     //* Relation */
     @ManyToOne(() => AnimalTypeEntity, { eager: true })
     @JoinColumn({ name: 'animal_type_id', referencedColumnName: 'id' })
+    @IsUUID(4,{
+      message: "입력한 Animal Type ID가 옳바르지 않습니다."
+    })
     @IsNotEmpty({ message: 'Animal Type ID를 입력해주세요.' })
     @ApiProperty({
       example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
@@ -79,6 +93,9 @@ export class AnimalEntity extends CommonEntity {
 
     @OneToOne(() => QrEntity, { eager: true })
     @JoinColumn({ name: 'qr_id', referencedColumnName: 'id' })
+    @IsUUID(4,{
+      message: "입력한 QR ID가 옳바르지 않습니다."
+    })
     @IsNotEmpty({ message: 'QR ID를 입력해주세요.' })
     @ApiProperty({
       example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
