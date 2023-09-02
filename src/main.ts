@@ -14,6 +14,8 @@ import { HttpApiExceptionFilter } from './common/exceptions/http-api-exception.f
 import * as expressSession from 'express-session';
 import { setupSwagger } from './common/utils/swagger';
 import { SuccessInterceptor } from './common/exceptions/success.interceptor';
+import { setupHelmet } from './common/utils/helmet';
+import helmet from 'helmet';
 
 class Application {
   private logger = new Logger(Application.name);
@@ -52,6 +54,11 @@ class Application {
   }
 
   private async setUpGlobalMiddleware() {
+    this.server.use(
+      helmet({
+        contentSecurityPolicy: false,
+      }),
+    );
     this.server.enableCors({
       origin: this.corsOriginList,
       credentials: true,
@@ -83,9 +90,6 @@ class Application {
         saveUninitialized: true,
       }),
     );
-
-    this.server.use(passport.initialize());
-    this.server.use(passport.session());
 
     // 성공시 인터셉터
     this.server.useGlobalInterceptors(new SuccessInterceptor());
