@@ -54,11 +54,6 @@ class Application {
   }
 
   private async setUpGlobalMiddleware() {
-    this.server.use(
-      helmet({
-        contentSecurityPolicy: false,
-      }),
-    );
     this.server.enableCors({
       origin: this.corsOriginList,
       credentials: true,
@@ -118,6 +113,7 @@ class Application {
 async function init(): Promise<void> {
   const server = await NestFactory.create<NestExpressApplication>(AppModule);
   const app = new Application(server);
+  setupHelmet(server);
   setupSwagger(server);
   await app.bootstrap();
   app.startLog();
