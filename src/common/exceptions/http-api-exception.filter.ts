@@ -84,6 +84,7 @@ export class HttpApiExceptionFilter implements ExceptionFilter {
     }
 
     const errorResponse = {
+      success: false,
       timestamp: new Date(),
       path: request.url,
       method: request.method,

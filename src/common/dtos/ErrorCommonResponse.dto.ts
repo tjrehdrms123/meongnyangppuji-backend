@@ -4,6 +4,9 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose, Type as transformerType } from 'class-transformer';
 
 export class ErrorCommonResponse<T> {
+  @ApiProperty({ type: Boolean, description: '성공여부' })
+  @Expose()
+  readonly success: boolean;
 
   @ApiProperty({ type: String, description: '에러 발생시간' })
   @Expose()
