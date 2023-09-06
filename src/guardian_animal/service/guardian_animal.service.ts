@@ -38,6 +38,14 @@ export class GuardianAnimalService {
   }
 
   async getByIdGuardianAnimal(GuardianAnimalData: FindGuardianAnimalDto){
+    const { id } = GuardianAnimalData;
+
+    // Exception: 등록된 보호자의 ID가 존재하지 않을시
+    const exceptionExitsGuardian = await this.guardianRepository.isExitsGuardian(id);
+    if (!exceptionExitsGuardian) {
+      throw new BadRequestException(ErrorDefine['ERROR-2000']);
+    }
+    
     return await this.guardianAnimalRepository.getByIdGuardianAnimal(GuardianAnimalData);
   }
 }
