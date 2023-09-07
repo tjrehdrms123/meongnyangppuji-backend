@@ -289,3 +289,4 @@ testData.animalType = {
 - [관습적 추상화](https://github.com/tjrehdrms123/TIL/blob/main/study/Codereview/%EA%B4%80%EC%8A%B5%EC%A0%81%20%EC%B6%94%EC%83%81%ED%99%94.md)
 - [Class-Validation 응답 key value 형태로 내보내기](https://github.com/tjrehdrms123/TIL/blob/main/study/JS/Node.js/Nest.js/Utility/Class-Validation%20%EC%9D%91%EB%8B%B5%20key%20value%20%ED%98%95%ED%83%9C%EB%A1%9C%20%EB%82%B4%EB%B3%B4%EB%82%B4%EA%B8%B0.md)
 - [MySQL 스토리지 엔진](https://github.com/tjrehdrms123/TIL/blob/main/study/Database/Basic/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%20%EC%97%94%EC%A7%84.md)
+- [데이터베이스 정규화](https://github.com/tjrehdrms123/TIL/blob/main/study/Database/Basic/%EC%A0%95%EA%B7%9C%ED%99%94.md)
