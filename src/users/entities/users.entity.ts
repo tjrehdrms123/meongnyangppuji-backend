@@ -4,6 +4,7 @@ import { CommonEntity } from 'src/common/entities/common.entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { GuardianEntity } from 'src/guardian/entities/guardian.entity'
 import { Exclude, instanceToPlain } from 'class-transformer'
+import { Role } from 'src/common/define/EnumDefine'
 
 @Entity({
   name: 'users',
@@ -28,6 +29,14 @@ export class UsersEntity extends CommonEntity {
     })
     @Exclude({toPlainOnly: true})
     password: string
+
+    @Column({ type: 'enum', enum: Role, default: Role.User })
+    @ApiProperty({
+      example: 'User',
+      description: '유저 권한',
+      enum: Role,
+    })
+    role: Role;
 
     @Column({ type: 'boolean', comment: '서비스이용약관', nullable: false })
     @IsNotEmpty({ message: '서비스이용약관을 입력해주세요.' })

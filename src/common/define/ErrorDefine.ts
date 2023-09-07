@@ -12,6 +12,7 @@ type Keys =
   | 'ERROR-0003'
   | 'ERROR-0004'
   | 'ERROR-0005'
+  | 'ERROR-0006'
   | 'ERROR-9999'
   | 'ERROR-1000'
   | 'ERROR-1001'
@@ -56,8 +57,8 @@ export const ErrorDefine: Record<
   'ERROR-0004': {
     model: UnauthorizedException,
     exampleTitle: 'Unauthorized - 유저 없음',
-    exampleDescription: '해당 하는 유저가 존재하지 않습니다.',
-    message: '해당 하는 유저가 존재하지 않습니다.',
+    exampleDescription: '해당 유저가 존재하지 않습니다.',
+    message: '해당 유저가 존재하지 않습니다.',
     code: 'ERROR-0004'
   },
   'ERROR-0005': {
@@ -66,6 +67,13 @@ export const ErrorDefine: Record<
     exampleDescription: '해당 ID가 존재 하지 않습니다.',
     message: '해당 ID가 존재 하지 않습니다.',
     code: 'ERROR-0005'
+  },
+  'ERROR-0006': {
+    model: ForbiddenException,
+    exampleTitle: 'Forbidden - 권한 부족',
+    exampleDescription: '해당 유저는 접근할 수 있는 권한 없습니다.',
+    message: '해당 유저는 접근할 수 있는 권한 없습니다.',
+    code: 'ERROR-0006'
   },
   // 스로틀
   'ERROR-9999': {

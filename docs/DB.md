@@ -21,6 +21,7 @@
 | user_id              | varchar | 유저 아이디                           |
 | password             | varchar | 패스워드                              |
 | consent_check        | boolean | 서비스이용약관 (0: 미체크, 1: 체크)   |
+| role                 | enum    | 사용자 권한 (User, Admin)   |
 | privacy_policy_check | boolean | 개인정보처리방침 (0: 미체크, 1: 체크) |
 | guardian_id          | number  | 보호자 FK                             |
 
