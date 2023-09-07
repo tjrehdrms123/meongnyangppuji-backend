@@ -16,6 +16,14 @@ export class GuardianService {
 
   // GET: 보호자 조회
   async getGuardian(guardianData: FindGuardianDto): Promise<GuardianEntity | null> {
+    const { id } = guardianData;
+    
+    // Exception: 조회 하려고 하는 Row가 없을시
+    const exceptionExitsGuardian = await this.guardianRepository.isExitsGuardian(id);
+    if (!exceptionExitsGuardian) {
+      throw new BadRequestException(ErrorDefine['ERROR-2000']);
+    }
+    
     return await this.guardianRepository.getGuardian(guardianData);
   }
 

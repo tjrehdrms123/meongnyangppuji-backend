@@ -20,6 +20,12 @@ export class AwsService {
     this.S3_BUCKET_NAME = process.env.S3_BUCKET; // nest-s3
   }
 
+  /**
+   * POST: 이미지 업로드
+   * @param folder 폴더 명
+   * @param file 이미지 객체
+   * @returns S3 imgUrl
+   */
   async uploadFileToS3(
     folder: string,
     file: Express.Multer.File,
