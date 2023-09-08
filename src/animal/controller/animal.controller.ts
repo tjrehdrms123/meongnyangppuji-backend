@@ -15,6 +15,7 @@ import { AwsService } from 'src/uploads/service/aws.service';
 
 @Controller('animal')
 @ApiTags('animal API')
+@UseGuards(JwtAuthGuard)
 export class AnimalController {
   constructor(
     private readonly animalService: AnimalService
@@ -31,8 +32,8 @@ export class AnimalController {
     ErrorDefine['ERROR-5000'],
     ErrorDefine['ERROR-6000']
   ])
+  @ApiBearerAuth('access-token')
   @Post()
-  @UseGuards(JwtAuthGuard)
   async createAnimal(@Body() animalData: CreateAnimalDto) {
     return await this.animalService.createAnimal(animalData);
   }
@@ -48,8 +49,8 @@ export class AnimalController {
     ErrorDefine['ERROR-5000'],
     ErrorDefine['ERROR-6000']
   ])
+  @ApiBearerAuth('access-token')
   @Put()
-  @UseGuards(JwtAuthGuard)
   async updateAnimal(@Body() animalData: UpdateAnimalDto) {
     return await this.animalService.updateAnimal(animalData);
   }
@@ -60,8 +61,8 @@ export class AnimalController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
+  @ApiBearerAuth('access-token')
   @Delete()
-  @UseGuards(JwtAuthGuard)
   async deleteAnimal(@Body() animalData: DeleteAnimalDto) {
     return await this.animalService.deleteAnimal(animalData);
   }
@@ -72,8 +73,8 @@ export class AnimalController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
+  @ApiBearerAuth('access-token')
   @Get()
-  @UseGuards(JwtAuthGuard)
   async getAnimal(@Body() animalData: GetAnimalDto) {
     return await this.animalService.getAniaml(animalData);
   }

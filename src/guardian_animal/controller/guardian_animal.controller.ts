@@ -11,6 +11,7 @@ import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 
 @Controller('guardian_animal')
 @ApiTags('guardian_animal API')
+@UseGuards(JwtAuthGuard)
 export class GuardianAnimalController {
   constructor(private readonly guardianAnimalService: GuardianAnimalService) {}
   @ApiOperation({ summary: '보호자/반려동물 연결 데이터 생성', description: '보호자/반려동물 연결 데이터 생성' })
@@ -25,7 +26,6 @@ export class GuardianAnimalController {
   ])
   @ApiBearerAuth('access-token')
   @Post()
-  @UseGuards(JwtAuthGuard)
   async createGuardian(@Body() guardianAnimalData: CreateGuardianAnimalDto) {
     return await this.guardianAnimalService.createGuardian(guardianAnimalData);
   }
@@ -40,7 +40,6 @@ export class GuardianAnimalController {
   ])
   @ApiBearerAuth('access-token')
   @Get()
-  @UseGuards(JwtAuthGuard)
   async getByIdGuardianAnimal(@Body() guardianAnimalData: FindGuardianAnimalDto) {
     return await this.guardianAnimalService.getByIdGuardianAnimal(guardianAnimalData);
   }

@@ -18,7 +18,6 @@ import { RolesGuard } from 'src/common/guard/Roles.guard';
 @Controller('guardian')
 @ApiTags('guardian API')
 @UseGuards(JwtAuthGuard)
-@UseGuards(RolesGuard)
 export class GuardianController {
   constructor(private readonly guardianService: GuardianService) {}
   
@@ -60,7 +59,7 @@ export class GuardianController {
     return await this.guardianService.updateGuardian(guardianData);
   }
 
-  @ApiOperation({ summary: '[ ADMIN ] 보호자 삭제', description: '보호자 삭제' })
+  @ApiOperation({ summary: '보호자 삭제', description: '보호자 삭제' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-2002']])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [ErrorDefine['ERROR-2000']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
@@ -70,7 +69,6 @@ export class GuardianController {
     ErrorDefine['ERROR-2000']
   ])
   @ApiBearerAuth('access-token')
-  @Roles(Role.Admin)
   @Delete()
   async deleteGuardian(@Body() guardianData: DeleteGuardianDto) {
     return await this.guardianService.deleteGuardian(guardianData);
