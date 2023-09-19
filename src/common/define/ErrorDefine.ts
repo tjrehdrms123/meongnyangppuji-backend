@@ -26,6 +26,7 @@ type Keys =
   | 'ERROR-5000'
   | 'ERROR-6000'
   | 'ERROR-6001'
+  | 'ERROR-7000'
   ;
 
 export const ErrorDefine: Record<
@@ -172,5 +173,13 @@ export const ErrorDefine: Record<
     exampleDescription: '프로필 이미지는 필수 값 입니다.',
     message: '프로필 이미지는 필수 값 입니다.',
     code: 'ERROR-6001'
+  },
+  // 7000 : Card
+  'ERROR-7000': {
+    model: BadRequestException,
+    exampleTitle: 'Card - 7000',
+    exampleDescription: '해당 카드 정보가 존재하지 않습니다.',
+    message: '해당 카드 정보가 존재하지 않습니다.',
+    code: 'ERROR-7000'
   },
 };

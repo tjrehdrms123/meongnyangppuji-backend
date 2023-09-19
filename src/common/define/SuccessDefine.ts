@@ -5,6 +5,7 @@ import { ResUsersTypeDto } from 'src/users/dto/response/res_users_dto';
 import { ResQrDto, ResQrMetaData, ResQrRowDto } from 'src/qr/dto/response/res_qr_dto';
 import { ResAnimalDto, ResAnimalRowDto } from 'src/animal/dto/response/res_animal_dto';
 import { ResUploadsDto } from 'src/uploads/dto/response/res_uploads_dto';
+import { ResCardDto, ResCardRowDto } from 'src/card/dto/response/res_card_dto';
 type Keys =
   | 'SUCCESS-1000'
   | 'SUCCESS-1001'
@@ -25,6 +26,9 @@ type Keys =
   | 'SUCCESS-5002'
   | 'SUCCESS-5003'
   | 'SUCCESS-6000'
+  | 'SUCCESS-7000'
+  | 'SUCCESS-7001'
+  | 'SUCCESS-7002'
   ;
 
 export const SuccessDefine: Record<
@@ -144,5 +148,21 @@ export const SuccessDefine: Record<
     model: ResUploadsDto,
     exampleTitle: '프로필 이미지 성공 예시',
     exampleDescription: '프로필 이미지 성공 예시'
+  },
+  // 7000 : Card
+  'SUCCESS-7000': {
+    model: ResCardDto,
+    exampleTitle: 'Card 생성 성공 예시',
+    exampleDescription: 'Card 생성 성공 예시'
+  },
+  'SUCCESS-7001': {
+    model: ResCardDto,
+    exampleTitle: 'Card 정보 수정 성공 예시',
+    exampleDescription: 'Card 정보 수정 성공 예시'
+  },
+  'SUCCESS-7002': {
+    model: ResCardRowDto,
+    exampleTitle: 'Card 삭제 성공 예시',
+    exampleDescription: 'Card 삭제 성공 예시'
   },
 };

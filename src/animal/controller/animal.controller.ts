@@ -30,7 +30,8 @@ export class AnimalController {
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-1002'],
     ErrorDefine['ERROR-5000'],
-    ErrorDefine['ERROR-6000']
+    ErrorDefine['ERROR-6000'],
+    ErrorDefine['ERROR-7000'],
   ])
   @ApiBearerAuth('access-token')
   @Post()
@@ -47,7 +48,8 @@ export class AnimalController {
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-1002'],
     ErrorDefine['ERROR-5000'],
-    ErrorDefine['ERROR-6000']
+    ErrorDefine['ERROR-6000'],
+    ErrorDefine['ERROR-7000'],
   ])
   @ApiBearerAuth('access-token')
   @Put()

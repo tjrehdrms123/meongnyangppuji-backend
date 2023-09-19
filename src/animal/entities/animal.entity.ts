@@ -5,6 +5,7 @@ import { ApiProperty } from '@nestjs/swagger'
 import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity'
 import { QrEntity } from 'src/qr/entities/qr.entity'
 import { UploadsEntity } from 'src/uploads/entities/uplosds.entity'
+import { CardEntity } from 'src/card/entities/card.entity'
 
 @Entity({
   name: 'animal',
@@ -52,7 +53,7 @@ export class AnimalEntity extends CommonEntity {
     })
     sex: boolean
 
-    @Column({ type: 'varchar', comment: '프로빌 이미지', nullable: false })
+    @Column({ type: 'varchar', comment: '등록증 배경 색상', nullable: false })
     @IsUUID(4,{
       message: "입력한 프로필 ID가 옳바르지 않습니다."
     })
@@ -62,7 +63,7 @@ export class AnimalEntity extends CommonEntity {
       description: '프로필 이미지',
       required: true
     })
-    profile_img: string
+    backgroundColor: string
 
     @OneToOne(() => UploadsEntity, { eager: true })
     @JoinColumn({ name: 'uploads_id', referencedColumnName: 'id' })
@@ -103,4 +104,17 @@ export class AnimalEntity extends CommonEntity {
       required: true
     })
     qr_id: QrEntity
+
+    @OneToOne(() => CardEntity, { eager: true })
+    @JoinColumn({ name: 'card_id', referencedColumnName: 'id' })
+    @IsUUID(4,{
+      message: "입력한 Card ID가 옳바르지 않습니다."
+    })
+    @IsNotEmpty({ message: 'Card ID를 입력해주세요.' })
+    @ApiProperty({
+      example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
+      description: 'Card ID',
+      required: true
+    })
+    card_id: CardEntity
 }

@@ -29,7 +29,8 @@ export class AnimalRepository {
      * @returns 변경된 Animal 정보
      */
     async updateAnimal(animalData: UpdateAnimalDto): Promise<AnimalEntity | null> {
-        const { id, name, introduction, age, sex, uploads_id, animal_type_id, qr_id } = animalData;
+        //Read: 추 후 update 코드 for in 문으로 변경
+        const { id, name, introduction, age, sex, uploads_id, animal_type_id, qr_id, card_id } = animalData;
         const animal = await this.AnimalRepository.findOneBy({ id: id });
         animal.name = name;
         animal.introduction = introduction;
@@ -38,6 +39,7 @@ export class AnimalRepository {
         animal.uploads_id = uploads_id;
         animal.animal_type_id = animal_type_id;
         animal.qr_id = qr_id;
+        animal.card_id = card_id;
         return this.AnimalRepository.save(animal);
     }
 
@@ -63,7 +65,7 @@ export class AnimalRepository {
             where: {
                 id: id
             },
-            relations: ['animal_type_id','qr_id']
+            relations: ['animal_type_id','qr_id','card_id']
         })
         return animal;
     }

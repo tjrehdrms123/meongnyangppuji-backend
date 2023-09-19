@@ -22,7 +22,7 @@ export class AnimalService {
 
   // POST: Animal 등록
   async createAnimal(animalData: CreateAnimalDto): Promise<AnimalEntity | null> {
-    const { animal_type_id, qr_id, uploads_id } = animalData;
+    const { animal_type_id, qr_id, uploads_id, card_id } = animalData;
 
     // Exception: ID에 해당하는 반려동물 타입이 없을시
     const exceptionExitsAnimalType = this.animalTypeRepository.isExitsAnimalType(animal_type_id);
@@ -40,6 +40,12 @@ export class AnimalService {
     const exceptionExitsImg = this.uploadsRepository.isExitsImg(uploads_id);
     if(!exceptionExitsImg){
       throw new BadRequestException(ErrorDefine['ERROR-6000']);
+    }
+
+    // Exception: ID에 해당하는 Card가 없을시
+    const exceptionExitsCard = this.uploadsRepository.isExitsImg(card_id);
+    if(!exceptionExitsCard){
+      throw new BadRequestException(ErrorDefine['ERROR-7000']);
     }
 
     return await this.animalRepository.createAnimal(animalData);
@@ -47,7 +53,7 @@ export class AnimalService {
 
   // UPDATE: Animal 정보 수정
   async updateAnimal(animalData: UpdateAnimalDto): Promise<AnimalEntity | null> {
-    const { animal_type_id, uploads_id, qr_id } = animalData;
+    const { animal_type_id, uploads_id, qr_id, card_id } = animalData;
 
     // Exception: ID에 해당하는 반려동물 타입이 없을시
     const exceptionExitsAnimalType = this.animalTypeRepository.isExitsAnimalType(animal_type_id);
@@ -65,6 +71,12 @@ export class AnimalService {
     const exceptionExitsImg = this.uploadsRepository.isExitsImg(uploads_id);
     if(!exceptionExitsImg){
       throw new BadRequestException(ErrorDefine['ERROR-6000']);
+    }
+
+    // Exception: ID에 해당하는 Card가 없을시
+    const exceptionExitsCard = this.uploadsRepository.isExitsImg(card_id);
+    if(!exceptionExitsCard){
+      throw new BadRequestException(ErrorDefine['ERROR-7000']);
     }
 
     return await this.animalRepository.updateAnimal(animalData);
