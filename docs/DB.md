@@ -61,6 +61,7 @@
 | uploads_id     | int     | Upload FK              |
 | animal_type_id | int     | Animal Type FK         |
 | qr_id          | int     | QR FK                  |
+| card_id        | int     | Card FK                  |
 
 ---
 
@@ -81,7 +82,14 @@
 | id          | number  | 고유 아이디                       |
 | qr_issuance | boolean | QR 발행 여부 (0: 미발행, 1: 발행) |
 | qr_use      | boolean | QR 사용 여부 (0: 미사용, 1: 사용) |
-| animal_id   | number  | animal FK                        |
+
+### card | 등록증 정보 테이블
+
+| 컬럼명      | 타입    | 설명                                   |
+| ----------- | ------- | ------------------------------------- |
+| id               | number  | 고유 아이디                       |
+| background_color | varchar | 등록증 배경 색상                  |
+| option    | number  | 배경 레이아웃 (0: 기본, 1: 옵션1) |
 
 ---
 
