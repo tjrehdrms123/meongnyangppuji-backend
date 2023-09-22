@@ -53,18 +53,6 @@ export class AnimalEntity extends CommonEntity {
     })
     sex: boolean
 
-    @Column({ type: 'varchar', comment: '등록증 배경 색상', nullable: false })
-    @IsUUID(4,{
-      message: "입력한 프로필 ID가 옳바르지 않습니다."
-    })
-    @IsNotEmpty({ message: '프로필 이미지를 선택해주세요.' })
-    @ApiProperty({
-      example: '프로필 이미지',
-      description: '프로필 이미지',
-      required: true
-    })
-    backgroundColor: string
-
     @OneToOne(() => UploadsEntity, { eager: true })
     @JoinColumn({ name: 'uploads_id', referencedColumnName: 'id' })
     @IsUUID(4,{
