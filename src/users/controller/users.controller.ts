@@ -25,7 +25,7 @@ export class UsersController {
     ErrorDefine['ERROR-3003'],
     ErrorDefine['ERROR-2000'],
   ])
-  @Post()
+  @Post('register')
   async createUsers(@Body() userData: CreateUsersDto) {
     return await this.usersService.createUser(userData);
   }
