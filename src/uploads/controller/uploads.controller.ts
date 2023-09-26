@@ -30,7 +30,7 @@ export class UploadsController {
     ErrorDefine['ERROR-3002'],
     ErrorDefine['ERROR-6001'],
   ])
-  @Post('/')
+  @Post()
   async createAnimalProfileImg(
     @UploadedFiles() files,
   ) {
