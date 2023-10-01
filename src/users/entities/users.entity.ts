@@ -57,13 +57,13 @@ export class UsersEntity extends CommonEntity {
     privacy_policy_check: boolean
 
     //* Relation */
-    @OneToOne(() => GuardianEntity, { eager: true })
-    @IsNotEmpty({ message: 'Guardian ID를 입력해주세요.' })
-    @JoinColumn({ name: 'guardian_id', referencedColumnName: 'id' })
-    @ApiProperty({
-      example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
-      description: '보호자 ID',
-      required: true
-    })
-    guardian_id: GuardianEntity
+    // @OneToOne(() => GuardianEntity, { eager: true })
+    // @IsNotEmpty({ message: 'Guardian ID를 입력해주세요.' })
+    // @JoinColumn({ name: 'guardian_id', referencedColumnName: 'id' })
+    // @ApiProperty({
+    //   example: "09995694-ccba-4a6b-a5be-5a4bdf7133db",
+    //   description: '보호자 ID',
+    //   required: true
+    // })
+    // guardian_id: GuardianEntity
 }

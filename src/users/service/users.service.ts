@@ -22,24 +22,24 @@ export class UsersService {
 
   // POST: 유저 등록
   async createUser(userData: CreateUsersDto): Promise<UsersEntity | null> {
-    const { user_id: userId, password, guardian_id: guardianId } = userData;
+    const { user_id: userId, password } = userData;
     // Exception: 동일한 회원명 처리
     const duplicateUserId = await this.usersRepository.findById(userId);
     if (duplicateUserId) {
       throw new BadRequestException(ErrorDefine['ERROR-3000']);
     }
-    
-    // Exception: 보호자가 있는지 확인 처리
-    const isExitsGuardian = await this.guardianRepository.isExitsGuardian(guardianId);
-    if (!isExitsGuardian) {
-      throw new BadRequestException(ErrorDefine['ERROR-2000']);
-    }
-    
-    // Exception: 동일한 보호자를 가진 회원이 있는지 조회
-    const duplicateGuardianIdUser = await this.usersRepository.findUserByGuardianId(guardianId);
-    if (duplicateGuardianIdUser) {
-      throw new BadRequestException(ErrorDefine['ERROR-3003']);
-    }
+    // Read: 2023-10-02 석동근 /회원가입할때 보호자가 없음 그에 따른 주석 처리
+      // Exception: 보호자가 있는지 확인 처리
+      // const isExitsGuardian = await this.guardianRepository.isExitsGuardian(guardianId);
+      // if (!isExitsGuardian) {
+      //   throw new BadRequestException(ErrorDefine['ERROR-2000']);
+      // }
+      
+      // // Exception: 동일한 보호자를 가진 회원이 있는지 조회
+      // const duplicateGuardianIdUser = await this.usersRepository.findUserByGuardianId(guardianId);
+      // if (duplicateGuardianIdUser) {
+      //   throw new BadRequestException(ErrorDefine['ERROR-3003']);
+      // }
 
     // Read: 비밀번호 해시화 후 대조
     const hashedPassword = await bcrypt.hash(password, 10);

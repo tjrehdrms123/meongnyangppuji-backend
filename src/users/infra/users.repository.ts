@@ -39,9 +39,9 @@ export class UsersRepository {
      */
     async findUserByGuardianId(guardianId): Promise<UsersEntity | null> {
         const user = await this.UsersRepository.findOne({
-            where: {
-                guardian_id: { id: guardianId }, // guardian 속성과의 관계를 로드할 때 id를 사용합니다.
-            }
+            // where: {
+            //     guardian_id: { id: guardianId }, // guardian 속성과의 관계를 로드할 때 id를 사용합니다.
+            // }
         });        
         return user;
       }
