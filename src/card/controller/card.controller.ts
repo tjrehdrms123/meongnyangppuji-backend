@@ -27,8 +27,8 @@ export class CardController {
     ErrorDefine['ERROR-0002'],
   ])
   @Post()
-  async createCard(@Body() qrData: CreateCardDto) {
-    return await this.cardService.createCard(qrData);
+  async createCard(@Body() CardData: CreateCardDto) {
+    return await this.cardService.createCard(CardData);
   }
 
   @ApiOperation({ summary: 'Card 수정', description: 'Card 수정' })
@@ -38,8 +38,8 @@ export class CardController {
     ErrorDefine['ERROR-0002'],
   ])
   @Put()
-  async updateCard(@Body() qrData: UpdateCardDto) {
-    return await this.cardService.updateCard(qrData);
+  async updateCard(@Body() CardData: UpdateCardDto) {
+    return await this.cardService.updateCard(CardData);
   }
 
   @ApiOperation({ summary: '[ ADMIN ] Card 삭제', description: 'Card 삭제' })
@@ -50,7 +50,7 @@ export class CardController {
   ])
   @Roles(Role.Admin)
   @Delete()
-  async deleteCard(@Body() CardDto: DeleteCardDto) {
-    return await this.cardService.deleteCard(CardDto);
+  async deleteCard(@Body() CardData: DeleteCardDto) {
+    return await this.cardService.deleteCard(CardData);
   }
 }
