@@ -23,7 +23,13 @@ export class GuardianRepository {
      */
     async getGuardian(GuardianData: FindGuardianDto): Promise<GuardianEntity | null>{
         const { id } = GuardianData;
-        return await this.GuardianRepository.findOneBy({ id: id });
+        const guardian = await this.GuardianRepository.find({ 
+            where: {
+                id: id 
+            },
+            relations: ['users_id']
+        });
+        return guardian[0];
     }
 
     /**
