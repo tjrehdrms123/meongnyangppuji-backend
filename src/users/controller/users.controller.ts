@@ -21,9 +21,7 @@ export class UsersController {
   @ApiOperation({ summary: '유저 회원가입', description: '유저 회원가입' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-3000']])
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
-    ErrorDefine['ERROR-3000'],
-    // ErrorDefine['ERROR-3003'],
-    // ErrorDefine['ERROR-2000'],
+    ErrorDefine['ERROR-3000']
   ])
   @Post('register')
   async createUsers(@Body() userData: CreateUsersDto) {
