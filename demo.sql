@@ -19,7 +19,7 @@
 -- Table structure for table `animal`
 --
 
-DROP TABLE IF EXISTS `animal`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `animal` (
@@ -60,7 +60,7 @@ UNLOCK TABLES;
 -- Table structure for table `animal_type`
 --
 
-DROP TABLE IF EXISTS `animal_type`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `animal_type` (
@@ -89,7 +89,7 @@ UNLOCK TABLES;
 -- Table structure for table `card`
 --
 
-DROP TABLE IF EXISTS `card`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `card` (
@@ -116,7 +116,7 @@ UNLOCK TABLES;
 -- Table structure for table `guardian`
 --
 
-DROP TABLE IF EXISTS `guardian`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `guardian` (
@@ -147,7 +147,7 @@ UNLOCK TABLES;
 -- Table structure for table `guardian_animal`
 --
 
-DROP TABLE IF EXISTS `guardian_animal`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `guardian_animal` (
@@ -178,7 +178,7 @@ UNLOCK TABLES;
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
@@ -202,7 +202,7 @@ UNLOCK TABLES;
 -- Table structure for table `qr`
 --
 
-DROP TABLE IF EXISTS `qr`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `qr` (
@@ -230,7 +230,7 @@ UNLOCK TABLES;
 -- Table structure for table `uploads`
 --
 
-DROP TABLE IF EXISTS `uploads`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `uploads` (
@@ -257,7 +257,7 @@ UNLOCK TABLES;
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
