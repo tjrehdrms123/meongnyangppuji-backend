@@ -28,7 +28,7 @@ const typeOrmModuleOptions = {
         host: configService.get('DB_HOST'),
         port: configService.get('DB_PORT'),
         username: configService.get('DB_USERNAME'),
-        password: process.env.NODE_ENV === 'development' ? configService.get('DB_PASSWORD') : configService.get('DB_PASSWORD_PRO'),
+        password: process.env.NODE_ENV === 'development' ? configService.get('DB_PASSWORD') : '',
         database: configService.get('DB_NAME'),
         entities: [],
         synchronize: true,
