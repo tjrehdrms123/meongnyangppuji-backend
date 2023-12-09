@@ -15,11 +15,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+CREATE DATABASE IF NOT EXISTS `db_meongnyangppuji` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_meongnyangppuji`;
+
 --
 -- Table structure for table `animal`
 --
-
-
+DROP TABLE IF EXISTS `animal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `animal` (
@@ -56,11 +58,13 @@ LOCK TABLES `animal` WRITE;
 /*!40000 ALTER TABLE `animal` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `animal_type`
 --
-
-
+DROP TABLE IF EXISTS `animal_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `animal_type` (
@@ -85,11 +89,13 @@ INSERT INTO `animal_type` VALUES ('1830b29d-f1a4-43e1-b89e-edec8c01d333','2023-0
 /*!40000 ALTER TABLE `animal_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `card`
 --
-
-
+DROP TABLE IF EXISTS `card`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `card` (
@@ -112,11 +118,13 @@ LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `guardian`
 --
-
-
+DROP TABLE IF EXISTS `guardian`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `guardian` (
@@ -143,11 +151,13 @@ INSERT INTO `guardian` VALUES ('0410f2de-26d5-42b3-b22e-706ad0b42f44','2023-08-1
 /*!40000 ALTER TABLE `guardian` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `guardian_animal`
 --
-
-
+DROP TABLE IF EXISTS `guardian_animal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `guardian_animal` (
@@ -174,11 +184,13 @@ LOCK TABLES `guardian_animal` WRITE;
 /*!40000 ALTER TABLE `guardian_animal` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `migrations`
 --
-
-
+DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
@@ -198,11 +210,13 @@ LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `qr`
 --
-
-
+DROP TABLE IF EXISTS `qr`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `qr` (
@@ -226,11 +240,13 @@ INSERT INTO `qr` VALUES ('c9a7bc6d-e5e2-4459-ba39-94dcd928cc86','2023-09-01 09:5
 /*!40000 ALTER TABLE `qr` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `uploads`
 --
-
-
+DROP TABLE IF EXISTS `uploads`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `uploads` (
@@ -253,11 +269,13 @@ LOCK TABLES `uploads` WRITE;
 /*!40000 ALTER TABLE `uploads` ENABLE KEYS */;
 UNLOCK TABLES;
 
+CREATE DATABASE IF NOT EXISTS `db_time_box_planner` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_time_box_planner`;
+
 --
 -- Table structure for table `users`
 --
-
-
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
