@@ -22,8 +22,8 @@ let AnimalTypeService = AnimalTypeService_1 = class AnimalTypeService {
     async getAnimalTypeName() {
         return await this.animalTypeRepository.getAnimalTypeName();
     }
-    async getAnimalTypeByDetailName(name) {
-        return await this.animalTypeRepository.getAnimalTypeByDetailName(name);
+    async getAnimalTypeByDetailName(animalTypeData) {
+        return await this.animalTypeRepository.getAnimalTypeByDetailName(animalTypeData);
     }
     async createAnimalType(animalTypeData) {
         const { detail_name } = animalTypeData;

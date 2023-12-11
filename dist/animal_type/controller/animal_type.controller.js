@@ -39,7 +39,7 @@ let AnimalTypeController = class AnimalTypeController {
         return await this.animalTypeService.getAnimalTypeName();
     }
     async getAnimalTypeByDetailName(name) {
-        return await this.animalTypeService.getAnimalTypeByDetailName(name);
+        return await this.animalTypeService.getAnimalTypeByDetailName({ name });
     }
     async updateAnimalTypeByDetailName(animalTypeData) {
         return await this.animalTypeService.updateAnimalTypeByDetailName(animalTypeData);

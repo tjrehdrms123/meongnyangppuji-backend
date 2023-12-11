@@ -1,5 +1,6 @@
 import { AnimalTypeRepository } from '../infra/animal_type.repository';
 import { CreateAnimalTypeDto } from '../dto/request/create_animal_type_dto';
+import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_detail_name_dto';
 import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
@@ -9,7 +10,7 @@ export declare class AnimalTypeService {
     private readonly logger;
     constructor(animalTypeRepository: AnimalTypeRepository);
     getAnimalTypeName(): Promise<AnimalTypeEntity[]>;
-    getAnimalTypeByDetailName(name: string): Promise<string[]>;
+    getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]>;
     createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<AnimalTypeEntity | null>;
     updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto): Promise<AnimalTypeEntity | null>;
     deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto): Promise<any>;

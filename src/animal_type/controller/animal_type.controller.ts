@@ -14,6 +14,7 @@ import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 import { RolesGuard } from 'src/common/guard/Roles.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { Role } from 'src/common/define/EnumDefine';
+import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_detail_name_dto';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
@@ -54,7 +55,7 @@ export class AnimalTypeController {
   ])
   @Get('detail_name')
   async getAnimalTypeByDetailName(@Query('name') name: string) {
-    return await this.animalTypeService.getAnimalTypeByDetailName(name);
+    return await this.animalTypeService.getAnimalTypeByDetailName({name});
   }
 
   @ApiOperation({ summary: '반려동물 타입 내용 변경', description: '반려동물 타입 내용 변경' })

@@ -27,8 +27,8 @@ export class AnimalTypeRepository {
     }
 
     // GET: name을 줬을때 detail_name값을 반환
-    async getAnimalTypeByDetailName(name: string): Promise<string[]> {
-        const animalType = await this.animalTypeRepository.find({ where : {name: name} });
+    async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]> {
+        const animalType = await this.animalTypeRepository.find({ where : {name: animalTypeData.name} });
         const animalTypeDetailName = animalType.map((value) => value.detail_name);
         return animalTypeDetailName;
     }
