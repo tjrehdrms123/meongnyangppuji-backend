@@ -10,7 +10,7 @@ import { ErrorDefine } from 'src/common/define/ErrorDefine';
 import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { UsersDto } from '../dto/user.dto';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
-import { RolesGuard } from 'src/common/guard/Roles.guard';
+import { RolesGuard } from 'src/auth/guards/Roles.guard';
 
 @Controller('users')
 @ApiTags('users API')

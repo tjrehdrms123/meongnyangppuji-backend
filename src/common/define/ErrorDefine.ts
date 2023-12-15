@@ -13,6 +13,9 @@ type Keys =
   | 'ERROR-0004'
   | 'ERROR-0005'
   | 'ERROR-0006'
+  | 'ERROR-0007'
+  | 'ERROR-0008'
+  | 'ERROR-0009'
   | 'ERROR-9999'
   | 'ERROR-1000'
   | 'ERROR-1001'
@@ -75,6 +78,27 @@ export const ErrorDefine: Record<
     exampleDescription: '해당 유저는 접근할 수 있는 권한 없습니다.',
     message: '해당 유저는 접근할 수 있는 권한 없습니다.',
     code: 'ERROR-0006'
+  },
+  'ERROR-0007': {
+    model: UnauthorizedException,
+    exampleTitle: 'Unauthorized - 토근 에러',
+    exampleDescription: '토근 기한이 만료 되었습니다.',
+    message: '토근 기한이 만료 되었습니다.',
+    code: 'ERROR-0007'
+  },
+  'ERROR-0008': {
+    model: UnauthorizedException,
+    exampleTitle: 'Unauthorized - 토근 에러',
+    exampleDescription: '잘못된 토큰 입니다.',
+    message: '잘못된 토큰 입니다.',
+    code: 'ERROR-0008'
+  },
+  'ERROR-0009': {
+    model: UnauthorizedException,
+    exampleTitle: 'Unauthorized - 잘못된 헤더',
+    exampleDescription: '잘못된 헤더로 요청을 보냈습니다.',
+    message: '잘못된 헤더로 요청을 보냈습니다.',
+    code: 'ERROR-0009'
   },
   // 스로틀
   'ERROR-9999': {

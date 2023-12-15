@@ -52,9 +52,12 @@ export class UsersService {
     if (!(await bcrypt.compare(password, user.password)))
       throw new BadRequestException(ErrorDefine['ERROR-3002']);
     try {
-      // Read: JWT 토근 발급(토큰을 복호화했을때 유저의 ID가 나옵니다.)
+      // Read: JWT 토근 발급(토큰을 복호화했을때 유저의 ID, Role(회원 권한)이 나옵니다.)
       const jwt = await this.jwtService.signAsync(
-        { user_id: user.id },
+        { 
+          user_id: user.id,
+          role: user.role 
+        },
         { secret: this.configService.get('SECRET_KEY') },
       )
       return { jwt, user }

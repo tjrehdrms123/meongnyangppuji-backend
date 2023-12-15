@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from './controller/users.controller';
 import { UsersEntity } from './entities/users.entity';
@@ -8,6 +8,7 @@ import { UsersService } from './service/Users.service';
 import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
 import { GuardianModule } from 'src/guardian/guardian.module';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { GuardianModule } from 'src/guardian/guardian.module';
       secretOrPrivateKey: process.env.SECRET_KEY,
       signOptions: { expiresIn: '1d' },
     }),
-    GuardianModule
+    GuardianModule,
+    forwardRef(() => AuthModule)
   ],
   controllers: [UsersController],
   providers: [UsersRepository, UsersService, JwtStrategy],

@@ -61,7 +61,8 @@ const typeOrmModuleOptions = {
     AnimalModule,
     GuardianAnimalModule,
     UploadsModule,
-    CardModule
+    CardModule,
+    UsersModule
     // ThrottlerModule.forRoot({
     //   ttl: process.env.NODE_ENV === 'production' ? 300 : 60,
     //   limit: 3

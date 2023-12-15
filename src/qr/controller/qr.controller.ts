@@ -10,7 +10,7 @@ import { UpdateQrDto } from '../dto/request/update_qr_dto';
 import { DeleteQrDto } from '../dto/request/delete_qr_dto';
 import { Role } from 'src/common/define/EnumDefine';
 import { Roles } from 'src/common/decorators/roles.decorator';
-import { RolesGuard } from 'src/common/guard/Roles.guard';
+import { RolesGuard } from 'src/auth/guards/Roles.guard';
 import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 
 @Controller('qr')

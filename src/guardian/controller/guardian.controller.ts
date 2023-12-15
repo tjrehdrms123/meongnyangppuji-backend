@@ -13,7 +13,7 @@ import { FindGuardianDto } from '../dto/request/find_guardian_dto';
 import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { Role } from 'src/common/define/EnumDefine';
-import { RolesGuard } from 'src/common/guard/Roles.guard';
+import { RolesGuard } from 'src/auth/guards/Roles.guard';
 
 @Controller('guardian')
 @ApiTags('guardian API')

@@ -6,7 +6,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { Role } from 'src/common/define/EnumDefine';
 import { Roles } from 'src/common/decorators/roles.decorator';
-import { RolesGuard } from 'src/common/guard/Roles.guard';
+import { RolesGuard } from 'src/auth/guards/Roles.guard';
 import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 import { CardService } from '../service/card.service';
 import { CreateCardDto } from '../dto/request/create_card_dto';
