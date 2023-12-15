@@ -46,7 +46,10 @@ let UsersService = UsersService_1 = class UsersService {
         if (!(await bcrypt.compare(password, user.password)))
             throw new common_1.BadRequestException(ErrorDefine_1.ErrorDefine['ERROR-3002']);
         try {
-            const jwt = await this.jwtService.signAsync({ user_id: user.id }, { secret: this.configService.get('SECRET_KEY') });
+            const jwt = await this.jwtService.signAsync({
+                user_id: user.id,
+                role: user.role
+            }, { secret: this.configService.get('SECRET_KEY') });
             return { jwt, user };
         }
         catch (error) {

@@ -25,7 +25,7 @@ const update_qr_dto_1 = require("../dto/request/update_qr_dto");
 const delete_qr_dto_1 = require("../dto/request/delete_qr_dto");
 const EnumDefine_1 = require("../../common/define/EnumDefine");
 const roles_decorator_1 = require("../../common/decorators/roles.decorator");
-const Roles_guard_1 = require("../../common/guard/Roles.guard");
+const Roles_guard_1 = require("../../auth/guards/Roles.guard");
 const jwt_guard_1 = require("../../users/guards/jwt.guard");
 let QrController = class QrController {
     constructor(qrService) {

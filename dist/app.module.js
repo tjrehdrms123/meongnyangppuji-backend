@@ -68,7 +68,8 @@ AppModule = __decorate([
             animal_module_1.AnimalModule,
             guardian_animal_module_1.GuardianAnimalModule,
             uplosds_module_1.UploadsModule,
-            card_module_1.CardModule
+            card_module_1.CardModule,
+            users_module_1.UsersModule
         ],
         controllers: [app_controller_1.AppController],
     })

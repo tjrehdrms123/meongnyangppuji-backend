@@ -46,6 +46,27 @@ exports.ErrorDefine = {
         message: '해당 유저는 접근할 수 있는 권한 없습니다.',
         code: 'ERROR-0006'
     },
+    'ERROR-0007': {
+        model: common_1.UnauthorizedException,
+        exampleTitle: 'Unauthorized - 토근 에러',
+        exampleDescription: '토근 기한이 만료 되었습니다.',
+        message: '토근 기한이 만료 되었습니다.',
+        code: 'ERROR-0007'
+    },
+    'ERROR-0008': {
+        model: common_1.UnauthorizedException,
+        exampleTitle: 'Unauthorized - 토근 에러',
+        exampleDescription: '잘못된 토큰 입니다.',
+        message: '잘못된 토큰 입니다.',
+        code: 'ERROR-0008'
+    },
+    'ERROR-0009': {
+        model: common_1.UnauthorizedException,
+        exampleTitle: 'Unauthorized - 잘못된 헤더',
+        exampleDescription: '잘못된 헤더로 요청을 보냈습니다.',
+        message: '잘못된 헤더로 요청을 보냈습니다.',
+        code: 'ERROR-0009'
+    },
     'ERROR-9999': {
         model: throttler_1.ThrottlerException,
         exampleTitle: 'Throttler - 과도한 요청',

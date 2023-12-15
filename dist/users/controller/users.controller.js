@@ -25,7 +25,7 @@ const ErrorDefine_1 = require("../../common/define/ErrorDefine");
 const current_user_decorator_1 = require("../../common/decorators/current-user.decorator");
 const user_dto_1 = require("../dto/user.dto");
 const SuccessDefine_1 = require("../../common/define/SuccessDefine");
-const Roles_guard_1 = require("../../common/guard/Roles.guard");
+const Roles_guard_1 = require("../../auth/guards/Roles.guard");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;

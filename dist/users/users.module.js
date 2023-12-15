@@ -17,6 +17,7 @@ const Users_service_1 = require("./service/Users.service");
 const passport_1 = require("@nestjs/passport");
 const jwt_1 = require("@nestjs/jwt");
 const guardian_module_1 = require("../guardian/guardian.module");
+const auth_module_1 = require("../auth/auth.module");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
@@ -29,7 +30,8 @@ UsersModule = __decorate([
                 secretOrPrivateKey: process.env.SECRET_KEY,
                 signOptions: { expiresIn: '1d' },
             }),
-            guardian_module_1.GuardianModule
+            guardian_module_1.GuardianModule,
+            (0, common_1.forwardRef)(() => auth_module_1.AuthModule)
         ],
         controllers: [users_controller_1.UsersController],
         providers: [Users_repository_1.UsersRepository, Users_service_1.UsersService, jwt_strategy_1.JwtStrategy],
