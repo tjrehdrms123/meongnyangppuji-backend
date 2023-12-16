@@ -15,7 +15,6 @@ export class UsersService {
   private readonly logger = new Logger(UsersService.name);
   constructor(
     private readonly usersRepository: UsersRepository,
-    private readonly guardianRepository: GuardianRepository,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
   ) {}

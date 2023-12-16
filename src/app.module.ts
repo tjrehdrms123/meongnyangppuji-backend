@@ -13,6 +13,7 @@ import { AnimalModule } from './animal/animal.module'
 import { GuardianAnimalModule } from './guardian_animal/guardian_animal.module'
 import { UploadsModule } from './uploads/uplosds.module'
 import { CardModule } from './card/card.module'
+import { AuthModule } from './auth/auth.module'
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -54,6 +55,7 @@ const typeOrmModuleOptions = {
       }),
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
+    AuthModule,
     AnimalTypeModule,
     GuardianModule,
     UsersModule,
