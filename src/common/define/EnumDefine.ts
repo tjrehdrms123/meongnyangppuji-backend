@@ -4,8 +4,8 @@ enum Role {
 }
 
 enum JWTType {
-  ACCESS = 'ACCESS_SECRET',
-  REGISTER = 'REGISTER_SECRET'
+  ACCESS = 'SECRET_KEY',
+  REGISTER = 'REGISTER_KEY'
 }
 
 export {
