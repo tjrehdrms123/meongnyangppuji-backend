@@ -15,9 +15,11 @@ import { RolesGuard } from 'src/auth/guards/Roles.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { Role } from 'src/common/define/EnumDefine';
 import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_detail_name_dto';
+import { NoAuth } from 'src/auth/guards/NoAuth.guard';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
+@UseGuards(JwtAuthGuard)
 @UseGuards(RolesGuard)
 export class AnimalTypeController {
   constructor(private readonly animalTypeService: AnimalTypeService) {}
@@ -34,7 +36,6 @@ export class AnimalTypeController {
   ])
   @ApiBearerAuth('access-token')
   @Roles(Role.Admin)
-  @UseGuards(JwtAuthGuard)
   @Post()
   async createAnimalType(@Body() animalTypeData: CreateAnimalTypeDto) {
     return await this.animalTypeService.createAnimalType(animalTypeData);
@@ -42,6 +43,7 @@ export class AnimalTypeController {
 
   @ApiOperation({ summary: '반려동물 타입 종류 조회', description: '반려동물 타입 종류 조회' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1001']])
+  @NoAuth()
   @Get('name')
   async getAnimalTypeName() {
     return await this.animalTypeService.getAnimalTypeName();
@@ -53,6 +55,7 @@ export class AnimalTypeController {
     ErrorDefine['ERROR-1000'],
     ErrorDefine['ERROR-0005']
   ])
+  @NoAuth()
   @Get('detail_name')
   async getAnimalTypeByDetailName(@Query('name') name: string) {
     return await this.animalTypeService.getAnimalTypeByDetailName({name});
@@ -67,7 +70,6 @@ export class AnimalTypeController {
   ])
   @ApiBearerAuth('access-token')
   @Roles(Role.Admin)
-  @UseGuards(JwtAuthGuard)
   @Patch()
   async updateAnimalTypeByDetailName(@Body() animalTypeData: UpdateAnimalTypeByDetailNameDto) {
     return await this.animalTypeService.updateAnimalTypeByDetailName(animalTypeData);
@@ -97,7 +99,6 @@ export class AnimalTypeController {
   ])
   @ApiBearerAuth('access-token')
   @Roles(Role.Admin)
-  @UseGuards(JwtAuthGuard)
   @Delete('name')
   async deleteAnimalByName(@Body() animalTypeData: DeleteAnimalTypeNameDto) {
     return await this.animalTypeService.deleteAnimalByName(animalTypeData);

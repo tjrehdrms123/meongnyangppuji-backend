@@ -15,6 +15,7 @@ import { AwsService } from 'src/uploads/service/aws.service';
 
 @Controller('animal')
 @ApiTags('animal API')
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 export class AnimalController {
   constructor(
@@ -33,7 +34,7 @@ export class AnimalController {
     ErrorDefine['ERROR-6000'],
     ErrorDefine['ERROR-7000'],
   ])
-  @ApiBearerAuth('access-token')
+ 
   @Post()
   async createAnimal(@Body() animalData: CreateAnimalDto) {
     return await this.animalService.createAnimal(animalData);
@@ -51,7 +52,6 @@ export class AnimalController {
     ErrorDefine['ERROR-6000'],
     ErrorDefine['ERROR-7000'],
   ])
-  @ApiBearerAuth('access-token')
   @Put()
   async updateAnimal(@Body() animalData: UpdateAnimalDto) {
     return await this.animalService.updateAnimal(animalData);
@@ -63,7 +63,6 @@ export class AnimalController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
-  @ApiBearerAuth('access-token')
   @Delete()
   async deleteAnimal(@Body() animalData: DeleteAnimalDto) {
     return await this.animalService.deleteAnimal(animalData);
@@ -75,7 +74,6 @@ export class AnimalController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
-  @ApiBearerAuth('access-token')
   @Get()
   async getAnimal(@Body() animalData: GetAnimalDto) {
     return await this.animalService.getAniaml(animalData);

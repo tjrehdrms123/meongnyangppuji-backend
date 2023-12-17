@@ -2,7 +2,7 @@ import { Body, Controller, Delete, HttpStatus, Patch, Post, Put, UseGuards } fro
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { Role } from 'src/common/define/EnumDefine';
 import { Roles } from 'src/common/decorators/roles.decorator';
@@ -12,9 +12,11 @@ import { CardService } from '../service/card.service';
 import { CreateCardDto } from '../dto/request/create_card_dto';
 import { UpdateCardDto } from '../dto/request/update_card_dto';
 import { DeleteCardDto } from '../dto/request/delete_card_dto';
+import { NoAuth } from 'src/auth/guards/NoAuth.guard';
 
 @Controller('card')
 @ApiTags('card API')
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 @UseGuards(RolesGuard)
 export class CardController {
@@ -25,7 +27,11 @@ export class CardController {
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
+    ErrorDefine['ERROR-0007'],
+    ErrorDefine['ERROR-0008'],
+    ErrorDefine['ERROR-0009']
   ])
+  @Roles(Role.Admin)
   @Post()
   async createCard(@Body() CardData: CreateCardDto) {
     return await this.cardService.createCard(CardData);
@@ -36,7 +42,11 @@ export class CardController {
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
+    ErrorDefine['ERROR-0007'],
+    ErrorDefine['ERROR-0008'],
+    ErrorDefine['ERROR-0009']
   ])
+  @Roles(Role.Admin)
   @Put()
   async updateCard(@Body() CardData: UpdateCardDto) {
     return await this.cardService.updateCard(CardData);
@@ -47,6 +57,9 @@ export class CardController {
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
+    ErrorDefine['ERROR-0007'],
+    ErrorDefine['ERROR-0008'],
+    ErrorDefine['ERROR-0009']
   ])
   @Roles(Role.Admin)
   @Delete()

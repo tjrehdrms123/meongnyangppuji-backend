@@ -17,6 +17,7 @@ import { RolesGuard } from 'src/auth/guards/Roles.guard';
 
 @Controller('guardian')
 @ApiTags('guardian API')
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 export class GuardianController {
   constructor(private readonly guardianService: GuardianService) {}
@@ -39,7 +40,6 @@ export class GuardianController {
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
   ])
-  @ApiBearerAuth('access-token')
   @Post()
   async createGuardian(@Body() guardianData: CreateGuardianDto) {
     return await this.guardianService.createGuardian(guardianData);
@@ -53,7 +53,6 @@ export class GuardianController {
     ErrorDefine['ERROR-0002'],
     ErrorDefine['ERROR-2000']
   ])
-  @ApiBearerAuth('access-token')
   @Put()
   async updateGuardian(@Body() guardianData: UpdateGuardianDto) {
     return await this.guardianService.updateGuardian(guardianData);
@@ -68,7 +67,6 @@ export class GuardianController {
     ErrorDefine['ERROR-0006'],
     ErrorDefine['ERROR-2000']
   ])
-  @ApiBearerAuth('access-token')
   @Delete()
   async deleteGuardian(@Body() guardianData: DeleteGuardianDto) {
     return await this.guardianService.deleteGuardian(guardianData);

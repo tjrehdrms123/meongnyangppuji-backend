@@ -11,6 +11,7 @@ import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 
 @Controller('guardian_animal')
 @ApiTags('guardian_animal API')
+@ApiBearerAuth('access-token')
 @UseGuards(JwtAuthGuard)
 export class GuardianAnimalController {
   constructor(private readonly guardianAnimalService: GuardianAnimalService) {}
@@ -24,7 +25,6 @@ export class GuardianAnimalController {
     ErrorDefine['ERROR-2000'],
     ErrorDefine['ERROR-4000'],
   ])
-  @ApiBearerAuth('access-token')
   @Post()
   async createGuardian(@Body() guardianAnimalData: CreateGuardianAnimalDto) {
     return await this.guardianAnimalService.createGuardian(guardianAnimalData);
@@ -38,7 +38,6 @@ export class GuardianAnimalController {
   @ErrorResponse(HttpStatus.BAD_REQUEST, [
     ErrorDefine['ERROR-2000']
   ])
-  @ApiBearerAuth('access-token')
   @Get()
   async getByIdGuardianAnimal(@Body() guardianAnimalData: FindGuardianAnimalDto) {
     return await this.guardianAnimalService.getByIdGuardianAnimal(guardianAnimalData);

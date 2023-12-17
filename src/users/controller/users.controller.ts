@@ -11,10 +11,10 @@ import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { UsersDto } from '../dto/user.dto';
 import { SuccessDefine } from 'src/common/define/SuccessDefine';
 import { RolesGuard } from 'src/auth/guards/Roles.guard';
+import { NoAuth } from 'src/auth/guards/NoAuth.guard';
 
 @Controller('users')
 @ApiTags('users API')
-@UseGuards(RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   
