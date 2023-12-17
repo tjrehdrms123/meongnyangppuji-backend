@@ -14,17 +14,24 @@ export class AuthService {
     private configService: ConfigService,
   ) {}
 
-  verifyAccessJWT(jwtString: string): AccessJwtPayload {
+  /**
+   * jwtToken을 받아 복호화 유저의 Id와 권한(Role)을 반환
+   * @param jwtToken: JWT KEY
+   * @returns {id, role}
+   */
+  verifyAccessJWT(jwtToken: string): AccessJwtPayload {
     try {
+      // Read: JWT SECRET_KEY를 가져옴
       const secret = this.configService.get(JWTType.ACCESS);
 
-      const payload = jwt.verify(jwtString, secret) as (
+      // Read: 복호화 진행
+      const payload = jwt.verify(jwtToken, secret) as (
         | jwt.JwtPayload
         | string
       ) &
         AccessJwtPayload;
       const { id, role } = payload;
-
+      
       return {
         id,
         role
