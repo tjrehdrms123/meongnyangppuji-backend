@@ -47,7 +47,11 @@ __decorate([
     (0, ErrorResponse_decorator_1.ErrorResponse)(common_1.HttpStatus.UNAUTHORIZED, [
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
+        ErrorDefine_1.ErrorDefine['ERROR-0007'],
+        ErrorDefine_1.ErrorDefine['ERROR-0008'],
+        ErrorDefine_1.ErrorDefine['ERROR-0009']
     ]),
+    (0, roles_decorator_1.Roles)(EnumDefine_1.Role.Admin),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -60,7 +64,11 @@ __decorate([
     (0, ErrorResponse_decorator_1.ErrorResponse)(common_1.HttpStatus.UNAUTHORIZED, [
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
+        ErrorDefine_1.ErrorDefine['ERROR-0007'],
+        ErrorDefine_1.ErrorDefine['ERROR-0008'],
+        ErrorDefine_1.ErrorDefine['ERROR-0009']
     ]),
+    (0, roles_decorator_1.Roles)(EnumDefine_1.Role.Admin),
     (0, common_1.Put)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -73,6 +81,9 @@ __decorate([
     (0, ErrorResponse_decorator_1.ErrorResponse)(common_1.HttpStatus.UNAUTHORIZED, [
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
+        ErrorDefine_1.ErrorDefine['ERROR-0007'],
+        ErrorDefine_1.ErrorDefine['ERROR-0008'],
+        ErrorDefine_1.ErrorDefine['ERROR-0009']
     ]),
     (0, roles_decorator_1.Roles)(EnumDefine_1.Role.Admin),
     (0, common_1.Delete)(),
@@ -84,6 +95,7 @@ __decorate([
 CardController = __decorate([
     (0, common_1.Controller)('card'),
     (0, swagger_1.ApiTags)('card API'),
+    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.UseGuards)(Roles_guard_1.RolesGuard),
     __metadata("design:paramtypes", [card_service_1.CardService])

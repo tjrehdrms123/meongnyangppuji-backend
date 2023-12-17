@@ -16,19 +16,26 @@ const Users_repository_1 = require("../users/infra/Users.repository");
 const auth_service_1 = require("./service/auth.service");
 const Users_service_1 = require("../users/service/Users.service");
 const jwt_guard_1 = require("../users/guards/jwt.guard");
+const jwt_1 = require("@nestjs/jwt");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
+    (0, common_1.Global)(),
     (0, common_1.Module)({
         imports: [
+            jwt_1.JwtModule.register({
+                secret: process.env.SECRET_KEY,
+                secretOrPrivateKey: process.env.SECRET_KEY,
+                signOptions: { expiresIn: '1d' },
+            }),
+            (0, common_1.forwardRef)(() => users_module_1.UsersModule),
             typeorm_1.TypeOrmModule.forFeature([users_entity_1.UsersEntity]),
-            users_module_1.UsersModule,
         ],
         controllers: [auth_controller_1.AuthController],
         providers: [
             Users_repository_1.UsersRepository,
-            auth_service_1.AuthService,
             Users_service_1.UsersService,
+            auth_service_1.AuthService,
             jwt_guard_1.JwtAuthGuard
         ],
         exports: [auth_service_1.AuthService, jwt_guard_1.JwtAuthGuard]

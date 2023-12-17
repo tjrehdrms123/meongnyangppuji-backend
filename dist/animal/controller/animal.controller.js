@@ -55,7 +55,6 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-6000'],
         ErrorDefine_1.ErrorDefine['ERROR-7000'],
     ]),
-    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -75,7 +74,6 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-6000'],
         ErrorDefine_1.ErrorDefine['ERROR-7000'],
     ]),
-    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.Put)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -89,7 +87,6 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
     ]),
-    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.Delete)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -103,7 +100,6 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
     ]),
-    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.Get)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -113,6 +109,7 @@ __decorate([
 AnimalController = __decorate([
     (0, common_1.Controller)('animal'),
     (0, swagger_1.ApiTags)('animal API'),
+    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [animal_service_1.AnimalService])
 ], AnimalController);

@@ -27,6 +27,7 @@ const EnumDefine_1 = require("../../common/define/EnumDefine");
 const roles_decorator_1 = require("../../common/decorators/roles.decorator");
 const Roles_guard_1 = require("../../auth/guards/Roles.guard");
 const jwt_guard_1 = require("../../users/guards/jwt.guard");
+const NoAuth_guard_1 = require("../../auth/guards/NoAuth.guard");
 let QrController = class QrController {
     constructor(qrService) {
         this.qrService = qrService;
@@ -48,6 +49,7 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
     ]),
+    (0, NoAuth_guard_1.NoAuth)(),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -61,6 +63,7 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
     ]),
+    (0, NoAuth_guard_1.NoAuth)(),
     (0, common_1.Put)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -73,6 +76,9 @@ __decorate([
     (0, ErrorResponse_decorator_1.ErrorResponse)(common_1.HttpStatus.UNAUTHORIZED, [
         ErrorDefine_1.ErrorDefine['ERROR-0001'],
         ErrorDefine_1.ErrorDefine['ERROR-0002'],
+        ErrorDefine_1.ErrorDefine['ERROR-0007'],
+        ErrorDefine_1.ErrorDefine['ERROR-0008'],
+        ErrorDefine_1.ErrorDefine['ERROR-0009']
     ]),
     (0, roles_decorator_1.Roles)(EnumDefine_1.Role.Admin),
     (0, common_1.Delete)(),
@@ -84,6 +90,7 @@ __decorate([
 QrController = __decorate([
     (0, common_1.Controller)('qr'),
     (0, swagger_1.ApiTags)('qr API'),
+    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.UseGuards)(Roles_guard_1.RolesGuard),
     __metadata("design:paramtypes", [qr_service_1.QrService])

@@ -9,8 +9,8 @@ var Role;
 exports.Role = Role;
 var JWTType;
 (function (JWTType) {
-    JWTType["ACCESS"] = "ACCESS_SECRET";
-    JWTType["REGISTER"] = "REGISTER_SECRET";
+    JWTType["ACCESS"] = "SECRET_KEY";
+    JWTType["REGISTER"] = "REGISTER_KEY";
 })(JWTType || (JWTType = {}));
 exports.JWTType = JWTType;
 //# sourceMappingURL=EnumDefine.js.map

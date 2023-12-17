@@ -45,7 +45,6 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-2000'],
         ErrorDefine_1.ErrorDefine['ERROR-4000'],
     ]),
-    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -61,7 +60,6 @@ __decorate([
     (0, ErrorResponse_decorator_1.ErrorResponse)(common_1.HttpStatus.BAD_REQUEST, [
         ErrorDefine_1.ErrorDefine['ERROR-2000']
     ]),
-    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.Get)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -71,6 +69,7 @@ __decorate([
 GuardianAnimalController = __decorate([
     (0, common_1.Controller)('guardian_animal'),
     (0, swagger_1.ApiTags)('guardian_animal API'),
+    (0, swagger_1.ApiBearerAuth)('access-token'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __metadata("design:paramtypes", [guardian_animal_service_1.GuardianAnimalService])
 ], GuardianAnimalController);

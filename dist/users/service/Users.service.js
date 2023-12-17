@@ -17,11 +17,9 @@ const Users_repository_1 = require("../infra/Users.repository");
 const bcrypt = require("bcrypt");
 const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
-const guardian_repository_1 = require("../../guardian/infra/guardian.repository");
 let UsersService = UsersService_1 = class UsersService {
-    constructor(usersRepository, guardianRepository, jwtService, configService) {
+    constructor(usersRepository, jwtService, configService) {
         this.usersRepository = usersRepository;
-        this.guardianRepository = guardianRepository;
         this.jwtService = jwtService;
         this.configService = configService;
         this.logger = new common_1.Logger(UsersService_1.name);
@@ -63,7 +61,6 @@ let UsersService = UsersService_1 = class UsersService {
 UsersService = UsersService_1 = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Users_repository_1.UsersRepository,
-        guardian_repository_1.GuardianRepository,
         jwt_1.JwtService,
         config_1.ConfigService])
 ], UsersService);

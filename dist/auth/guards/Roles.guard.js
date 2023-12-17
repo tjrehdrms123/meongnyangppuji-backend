@@ -21,6 +21,10 @@ let RolesGuard = class RolesGuard {
         this.reflector = reflector;
     }
     canActivate(context) {
+        const noAuth = this.reflector.get('no-auth', context.getHandler());
+        if (noAuth) {
+            return true;
+        }
         const request = context.switchToHttp().getRequest();
         return this.validateRequest(request, context);
     }

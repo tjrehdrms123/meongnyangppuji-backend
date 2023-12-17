@@ -25,7 +25,6 @@ const ErrorDefine_1 = require("../../common/define/ErrorDefine");
 const current_user_decorator_1 = require("../../common/decorators/current-user.decorator");
 const user_dto_1 = require("../dto/user.dto");
 const SuccessDefine_1 = require("../../common/define/SuccessDefine");
-const Roles_guard_1 = require("../../auth/guards/Roles.guard");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
@@ -85,7 +84,6 @@ __decorate([
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
     (0, swagger_1.ApiTags)('users API'),
-    (0, common_1.UseGuards)(Roles_guard_1.RolesGuard),
     __metadata("design:paramtypes", [Users_service_1.UsersService])
 ], UsersController);
 exports.UsersController = UsersController;

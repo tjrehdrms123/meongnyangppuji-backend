@@ -21,6 +21,7 @@ const animal_module_1 = require("./animal/animal.module");
 const guardian_animal_module_1 = require("./guardian_animal/guardian_animal.module");
 const uplosds_module_1 = require("./uploads/uplosds.module");
 const card_module_1 = require("./card/card.module");
+const auth_module_1 = require("./auth/auth.module");
 const typeOrmModuleOptions = {
     useFactory: async (configService) => ({
         namingStrategy: new typeorm_naming_strategies_1.SnakeNamingStrategy(),
@@ -61,6 +62,7 @@ AppModule = __decorate([
                 }),
             }),
             typeorm_1.TypeOrmModule.forRootAsync(typeOrmModuleOptions),
+            auth_module_1.AuthModule,
             animal_type_module_1.AnimalTypeModule,
             guardian_module_1.GuardianModule,
             users_module_1.UsersModule,

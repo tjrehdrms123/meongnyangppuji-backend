@@ -19,10 +19,10 @@ let AuthService = class AuthService {
     constructor(configService) {
         this.configService = configService;
     }
-    verifyAccessJWT(jwtString) {
+    verifyAccessJWT(jwtToken) {
         try {
             const secret = this.configService.get(EnumDefine_1.JWTType.ACCESS);
-            const payload = jwt.verify(jwtString, secret);
+            const payload = jwt.verify(jwtToken, secret);
             const { id, role } = payload;
             return {
                 id,

@@ -3,7 +3,7 @@ declare enum Role {
     Admin = "Admin"
 }
 declare enum JWTType {
-    ACCESS = "ACCESS_SECRET",
-    REGISTER = "REGISTER_SECRET"
+    ACCESS = "SECRET_KEY",
+    REGISTER = "REGISTER_KEY"
 }
 export { Role, JWTType };
