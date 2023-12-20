@@ -13,12 +13,6 @@ import { AuthModule } from 'src/auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([UsersEntity]),
-    PassportModule.register({ defaultStrategy: 'jwt', session: true }),
-    JwtModule.register({
-      secret: process.env.SECRET_KEY,
-      secretOrPrivateKey: process.env.SECRET_KEY,
-      signOptions: { expiresIn: '1d' },
-    }),
     GuardianModule,
     forwardRef(() => AuthModule)
   ],

@@ -7,11 +7,13 @@ import * as jwt from 'jsonwebtoken';
 import { AccessJwtPayload } from '../auth.interface';
 import { JWTType } from 'src/common/define/EnumDefine';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     private configService: ConfigService,
+    private readonly jwtService: JwtService,
   ) {}
 
   /**
@@ -43,5 +45,9 @@ export class AuthService {
         throw new UnauthorizedException(ErrorDefine['ERROR-0008']);
       }
     }
+  }
+
+  async generatorJWT(payloadObj, secretKeyObj){
+    return await this.jwtService.signAsync(payloadObj,secretKeyObj);
   }
 }

@@ -4,18 +4,18 @@ import { CreateUsersDto } from '../dto/request/create_users_dto';
 import { UsersRepository } from '../infra/Users.repository';
 import * as bcrypt from 'bcrypt'
 import { LoginDto } from '../dto/request/login_dto';
-import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { GetUsersDto } from '../dto/request/get_users_dto';
 import { GuardianRepository } from 'src/guardian/infra/guardian.repository';
 import { UsersEntity } from '../entities/users.entity';
+import { AuthService } from 'src/auth/service/auth.service';
 
 @Injectable()
 export class UsersService {
   private readonly logger = new Logger(UsersService.name);
   constructor(
     private readonly usersRepository: UsersRepository,
-    private readonly jwtService: JwtService,
+    private readonly authService: AuthService,
     private readonly configService: ConfigService,
   ) {}
 
@@ -52,7 +52,7 @@ export class UsersService {
       throw new BadRequestException(ErrorDefine['ERROR-3002']);
     try {
       // Read: JWT 토근 발급(토큰을 복호화했을때 유저의 ID, Role(회원 권한)이 나옵니다.)
-      const jwt = await this.jwtService.signAsync(
+      const jwt = await this.authService.generatorJWT(
         { 
           user_id: user.id,
           role: user.role 
