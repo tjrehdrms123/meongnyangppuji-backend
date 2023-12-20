@@ -14,8 +14,6 @@ const users_entity_1 = require("./entities/users.entity");
 const jwt_strategy_1 = require("./guards/jwt.strategy");
 const Users_repository_1 = require("./infra/Users.repository");
 const Users_service_1 = require("./service/Users.service");
-const passport_1 = require("@nestjs/passport");
-const jwt_1 = require("@nestjs/jwt");
 const guardian_module_1 = require("../guardian/guardian.module");
 const auth_module_1 = require("../auth/auth.module");
 let UsersModule = class UsersModule {
@@ -24,12 +22,6 @@ UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
             typeorm_1.TypeOrmModule.forFeature([users_entity_1.UsersEntity]),
-            passport_1.PassportModule.register({ defaultStrategy: 'jwt', session: true }),
-            jwt_1.JwtModule.register({
-                secret: process.env.SECRET_KEY,
-                secretOrPrivateKey: process.env.SECRET_KEY,
-                signOptions: { expiresIn: '1d' },
-            }),
             guardian_module_1.GuardianModule,
             (0, common_1.forwardRef)(() => auth_module_1.AuthModule)
         ],

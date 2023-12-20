@@ -8,6 +8,7 @@ import { AccessJwtPayload } from '../auth.interface';
 import { JWTType } from 'src/common/define/EnumDefine';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
 import { JwtService } from '@nestjs/jwt';
+import { generatorJWTDto } from '../dto/request/generatorJWT';
 
 @Injectable()
 export class AuthService {
@@ -47,7 +48,13 @@ export class AuthService {
     }
   }
 
-  async generatorJWT(payloadObj, secretKeyObj){
-    return await this.jwtService.signAsync(payloadObj,secretKeyObj);
+  /**
+   * 로그인 정보가 맞으면 JWT 생성
+   * @param jwtData: 암호화할 데이터
+   * @param secretKey: 비밀 키
+   * @returns 
+   */
+  async generatorJWT(jwtData: generatorJWTDto,secretKey: Object){
+    return await this.jwtService.signAsync(jwtData,secretKey);
   }
 }

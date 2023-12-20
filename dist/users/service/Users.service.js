@@ -15,12 +15,12 @@ const common_1 = require("@nestjs/common");
 const ErrorDefine_1 = require("../../common/define/ErrorDefine");
 const Users_repository_1 = require("../infra/Users.repository");
 const bcrypt = require("bcrypt");
-const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
+const auth_service_1 = require("../../auth/service/auth.service");
 let UsersService = UsersService_1 = class UsersService {
-    constructor(usersRepository, jwtService, configService) {
+    constructor(usersRepository, authService, configService) {
         this.usersRepository = usersRepository;
-        this.jwtService = jwtService;
+        this.authService = authService;
         this.configService = configService;
         this.logger = new common_1.Logger(UsersService_1.name);
     }
@@ -44,7 +44,7 @@ let UsersService = UsersService_1 = class UsersService {
         if (!(await bcrypt.compare(password, user.password)))
             throw new common_1.BadRequestException(ErrorDefine_1.ErrorDefine['ERROR-3002']);
         try {
-            const jwt = await this.jwtService.signAsync({
+            const jwt = await this.authService.generatorJWT({
                 user_id: user.id,
                 role: user.role
             }, { secret: this.configService.get('SECRET_KEY') });
@@ -61,7 +61,7 @@ let UsersService = UsersService_1 = class UsersService {
 UsersService = UsersService_1 = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Users_repository_1.UsersRepository,
-        jwt_1.JwtService,
+        auth_service_1.AuthService,
         config_1.ConfigService])
 ], UsersService);
 exports.UsersService = UsersService;

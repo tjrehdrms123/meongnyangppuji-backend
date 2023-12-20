@@ -15,9 +15,11 @@ const config_1 = require("@nestjs/config");
 const jwt = require("jsonwebtoken");
 const EnumDefine_1 = require("../../common/define/EnumDefine");
 const ErrorDefine_1 = require("../../common/define/ErrorDefine");
+const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
-    constructor(configService) {
+    constructor(configService, jwtService) {
         this.configService = configService;
+        this.jwtService = jwtService;
     }
     verifyAccessJWT(jwtToken) {
         try {
@@ -38,10 +40,14 @@ let AuthService = class AuthService {
             }
         }
     }
+    async generatorJWT(jwtData, secretKey) {
+        return await this.jwtService.signAsync(jwtData, secretKey);
+    }
 };
 AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [config_1.ConfigService])
+    __metadata("design:paramtypes", [config_1.ConfigService,
+        jwt_1.JwtService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map
