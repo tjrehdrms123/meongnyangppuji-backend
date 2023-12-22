@@ -22,7 +22,12 @@
     "guardian:e2e": "jest --config ./test/guardian/guardian-jest-e2e.json",
     "animal_type:e2e": "jest --config ./test/animal_type/animal_type-jest-e2e.json",
     "animal:e2e": "jest --config ./test/animal/animal-jest-e2e.json",
-    "users:e2e": "jest --config ./test/users/users-jest-e2e.json"
+    "users:e2e": "jest --config ./test/users/users-jest-e2e.json",
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "run:migrations": "npm run typeorm migration:run -- -d ./src/database/migrations/typeOrm.config.ts",
+    "generate:migration": "npm run typeorm -- -d ./src/database/migrations/typeOrm.config.ts migration:generate ./src/database/migrations/$npm_config_name",
+    "create:migration": "npm run typeorm -- migration:create ./src/database/migrations/$npm_config_name",
+    "revert:migration": "npm run typeorm -- -d ./src/database/migrations/typeOrm.config.ts migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
