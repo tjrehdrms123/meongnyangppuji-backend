@@ -14,6 +14,7 @@ import { GuardianAnimalModule } from './guardian_animal/guardian_animal.module'
 import { UploadsModule } from './uploads/uplosds.module'
 import { CardModule } from './card/card.module'
 import { AuthModule } from './auth/auth.module'
+import { dataSourceOptions } from 'db/data-source'
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -24,13 +25,14 @@ const typeOrmModuleOptions = {
     host: configService.get('DB_HOST'), // process.env.DB_HOST
     port: configService.get('DB_PORT'),
     username: configService.get('DB_USERNAME'),
-    password: process.env.NODE_ENV === 'development' ? configService.get('DB_PASSWORD') : '',
+    password: process.env.NODE_ENV === 'development' ? configService.get('DB_PASSWORD') : configService.get('DB_PASSWORD_PRO'),
     database: configService.get('DB_NAME'),
-    entities: [],
-    synchronize: true, //! set 'false' in production
+    entities: ['dist/**/*.entity.js'],
+    synchronize: process.env.NODE_ENV === 'development' ? true : false, //! set 'false' in production
     autoLoadEntities: true,
     logging: true,
     keepConnectionAlive: true,
+    charset: 'utf8mb4_general_ci',
   }),
   inject: [ConfigService],
 }
@@ -64,11 +66,11 @@ const typeOrmModuleOptions = {
     GuardianAnimalModule,
     UploadsModule,
     CardModule,
-    UsersModule
-    // ThrottlerModule.forRoot({
-    //   ttl: process.env.NODE_ENV === 'production' ? 300 : 60,
-    //   limit: 3
-    // }),
+    UsersModule,
+    ThrottlerModule.forRoot({
+      ttl: process.env.NODE_ENV === 'production' ? 300 : 60,
+      limit: 3
+    }),
   ],
   controllers: [AppController],
 })
