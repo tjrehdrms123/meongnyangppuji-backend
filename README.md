@@ -127,7 +127,6 @@ NODE_ENV=production
 
 <br/>
 
-
 # 📝 문서
 
 ## Workflow
@@ -150,11 +149,15 @@ API response파일을 기준으로 성공과 에러의 코드를 작성하였고
 - [Error Code](./src/common/define/ErrorDefine.ts)
 - [API response](./docs/Swagger.md)
 
-## DB Table
+## DB
 
-서비스 구현 전 설계한 DB 설계 파일입니다.
+### Design
 
 - [Version 0.0.1](./docs/DB.md)
+
+### Migrations
+
+- [Migrations 관리 가이드](./docs/DB_Migrations.md)
 
 ## Convention
 
