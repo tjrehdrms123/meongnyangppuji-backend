@@ -23,7 +23,7 @@
     "animal_type:e2e": "jest --config ./test/animal_type/animal_type-jest-e2e.json",
     "animal:e2e": "jest --config ./test/animal/animal-jest-e2e.json",
     "users:e2e": "jest --config ./test/users/users-jest-e2e.json",
-    "typeorm": "npm run build && npx typeorm -d dist/database/data-source.js",
+    "typeorm": "npm run build && npx typeorm -d dist/db/data-source.js",
     "migration:generate": "npm run typeorm -- migration:generate",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert"
