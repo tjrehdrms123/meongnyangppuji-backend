@@ -10,6 +10,13 @@
 npm run migration:generate db/migrations/init-schema
 ```
 
+### 생성 시 명명 규칙
+
+```bash
+# {생성: New, 변경: Update}{컬럼: Column, 테이블, Table}{엔티티 명}{컬럼 or 테이블}
+npm run migration:generate db/migrations/NewColumnAnimalLikeRead
+```
+
 ## 되돌리기
 
 ```bash
