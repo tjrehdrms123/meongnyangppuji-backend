@@ -13,7 +13,7 @@ exports.dataSourceOptions = {
     username: configService.get('DB_USERNAME'),
     password: process.env.NODE_ENV === 'development' ? configService.get('DB_PASSWORD') : configService.get('DB_PASSWORD_PRO'),
     database: configService.get('DB_NAME'),
-    synchronize: process.env.NODE_ENV === 'development' ? true : false,
+    synchronize: false,
     entities: ['dist/**/*.entity.js'],
     migrations: ['dist/db/migrations/*.js'],
     migrationsTableName: 'migrations',

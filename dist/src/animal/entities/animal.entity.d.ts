@@ -8,6 +8,8 @@ export declare class AnimalEntity extends CommonEntity {
     introduction: string;
     age: number;
     sex: boolean;
+    like: number;
+    read: number;
     uploads_id: UploadsEntity;
     animal_type_id: AnimalTypeEntity;
     qr_id: QrEntity;

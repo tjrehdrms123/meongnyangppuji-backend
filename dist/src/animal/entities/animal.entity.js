@@ -66,6 +66,24 @@ __decorate([
     __metadata("design:type", Boolean)
 ], AnimalEntity.prototype, "sex", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: 'int', comment: '좋아요', default: 0 }),
+    (0, swagger_1.ApiProperty)({
+        example: '0',
+        description: '좋아요',
+        required: true
+    }),
+    __metadata("design:type", Number)
+], AnimalEntity.prototype, "like", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int', comment: '조회수', default: 0 }),
+    (0, swagger_1.ApiProperty)({
+        example: '0',
+        description: '조회수',
+        required: true
+    }),
+    __metadata("design:type", Number)
+], AnimalEntity.prototype, "read", void 0);
+__decorate([
     (0, typeorm_1.OneToOne)(() => uplosds_entity_1.UploadsEntity, { eager: true }),
     (0, typeorm_1.JoinColumn)({ name: 'uploads_id', referencedColumnName: 'id' }),
     (0, class_validator_1.IsUUID)(4, {
