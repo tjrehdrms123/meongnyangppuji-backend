@@ -28,7 +28,7 @@ const typeOrmModuleOptions = {
     password: process.env.NODE_ENV === 'development' ? configService.get('DB_PASSWORD') : configService.get('DB_PASSWORD_PRO'),
     database: configService.get('DB_NAME'),
     entities: ['dist/**/*.entity.js'],
-    synchronize: process.env.NODE_ENV === 'development' ? true : false, //! set 'false' in production
+    synchronize: false, //! set 'false' in production
     autoLoadEntities: true,
     logging: true,
     keepConnectionAlive: true,
