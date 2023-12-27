@@ -53,6 +53,24 @@ export class AnimalEntity extends CommonEntity {
     })
     sex: boolean
 
+    @Column({ type: 'int', comment: '좋아요', default: 0 })
+    @ApiProperty({
+      example: '0',
+      description: '좋아요',
+      required: true
+    })
+    like: number
+
+
+    @Column({ type: 'int', comment: '조회수', default: 0 })
+    @ApiProperty({
+      example: '0',
+      description: '조회수',
+      required: true
+    })
+    read: number
+
+    //* Relation */
     @OneToOne(() => UploadsEntity, { eager: true })
     @JoinColumn({ name: 'uploads_id', referencedColumnName: 'id' })
     @IsUUID(4,{
@@ -66,7 +84,6 @@ export class AnimalEntity extends CommonEntity {
     })
     uploads_id: UploadsEntity
 
-    //* Relation */
     @ManyToOne(() => AnimalTypeEntity, { eager: true })
     @JoinColumn({ name: 'animal_type_id', referencedColumnName: 'id' })
     @IsUUID(4,{
