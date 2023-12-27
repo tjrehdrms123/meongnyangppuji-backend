@@ -35,7 +35,7 @@ export abstract class CommonEntity {
     required: true,
     type: String
   })
-  createdAt: Date
+  created_at: Date
 
   @UpdateDateColumn({ type: 'timestamp' })
   @Expose()
@@ -45,12 +45,12 @@ export abstract class CommonEntity {
     required: true,
     type: String
   })
-  updatedAt: Date
+  updated_at: Date
 
   // Soft Delete : 기존에는 null, 삭제시에 timestamp를 찍는다.
   @Exclude({toPlainOnly: true})
   @DeleteDateColumn({ type: 'timestamp' })
-  deletedAt?: Date | null
+  deleted_at?: Date | null
 
   toJSON() {                       // 컨트롤러의 응답메서드의 결과에 첨가해줄 메서드
     return instanceToPlain(this)   // instanceToPlain() 함수 사용
