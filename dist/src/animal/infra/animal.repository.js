@@ -56,8 +56,8 @@ let AnimalRepository = class AnimalRepository {
         const animal = await this.AnimalRepository.findOneBy({ id: animalId });
         return animal;
     }
-    async getListAnimal(animalData) {
-        const { order, type_name, sort_type } = animalData;
+    async getListAnimal(animalData, item) {
+        const { type_name, sort_type } = animalData;
         const result = await this.AnimalRepository.createQueryBuilder('animal')
             .select([
             'animal.*',
@@ -70,7 +70,7 @@ let AnimalRepository = class AnimalRepository {
         ])
             .innerJoin('animal.animal_type_id', 'at2')
             .where('at2.name = :typeName', { typeName: type_name })
-            .orderBy(`${order}`, sort_type)
+            .orderBy(`${item}`, sort_type)
             .getRawMany();
         return result;
     }

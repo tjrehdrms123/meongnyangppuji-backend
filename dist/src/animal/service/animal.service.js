@@ -72,7 +72,20 @@ let AnimalService = AnimalService_1 = class AnimalService {
         const animal = this.animalRepository.getAniaml(animalData);
     }
     async getListAniaml(animalData) {
-        return this.animalRepository.getListAnimal(animalData);
+        const { option } = animalData;
+        let item = '';
+        switch (option) {
+            case 1:
+                item = 'scoreAvg';
+                break;
+            case 2:
+                item = 'created_at';
+                break;
+            case 3:
+                item = 'readCal';
+                break;
+        }
+        return this.animalRepository.getListAnimal(animalData, item);
     }
 };
 AnimalService = AnimalService_1 = __decorate([

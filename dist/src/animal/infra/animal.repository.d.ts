@@ -13,5 +13,5 @@ export declare class AnimalRepository {
     deleteAnimal(animalData: DeleteAnimalDto): Promise<any>;
     getAniaml(animalData: GetAnimalDto): Promise<AnimalEntity[] | null>;
     isExitsAnimal(animalId: any): Promise<AnimalEntity | null>;
-    getListAnimal(animalData: GetListAniamlDto): Promise<any[]>;
+    getListAnimal(animalData: GetListAniamlDto, item: string): Promise<any[]>;
 }

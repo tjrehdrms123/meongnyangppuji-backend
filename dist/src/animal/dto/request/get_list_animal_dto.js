@@ -16,15 +16,10 @@ const swagger_1 = require("@nestjs/swagger");
 class GetListAniamlDto {
 }
 __decorate([
-    (0, class_validator_1.IsString)({ message: '문자로 입력해주세요.' }),
-    (0, class_validator_1.IsNotEmpty)({ message: '정렬할 컬럼을 입력해주세요.' }),
-    (0, swagger_1.ApiProperty)({
-        example: 'scoreAvg',
-        description: '정렬할 컬럼',
-        required: true
-    }),
-    __metadata("design:type", String)
-], GetListAniamlDto.prototype, "order", void 0);
+    (0, class_validator_1.IsInt)({ message: '숫자로 입력해주세요.' }),
+    (0, class_validator_1.IsNotEmpty)({ message: '옵션을 입력해주세요' }),
+    __metadata("design:type", Number)
+], GetListAniamlDto.prototype, "option", void 0);
 __decorate([
     (0, class_validator_1.IsString)({ message: '문자로 입력해주세요.' }),
     (0, class_validator_1.IsNotEmpty)({ message: '반려 동물 종류를 입력해주세요.' }),
