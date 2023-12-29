@@ -9,6 +9,7 @@ import { AnimalTypeRepository } from 'src/animal_type/infra/animal_type.reposito
 import { QrRepository } from 'src/qr/infra/qr.repository';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
 import { UploadsRepository } from 'src/uploads/infra/uploads.repository';
+import { GetListAniamlDto } from '../dto/request/get_list_animal_dto';
 
 @Injectable()
 export class AnimalService {
@@ -90,5 +91,11 @@ export class AnimalService {
   // GET: Animal 가져오기
   async getAniaml(animalData: GetAnimalDto) {
     const animal = this.animalRepository.getAniaml(animalData)
+  }
+
+  // GET: Animal 목록 조회
+  async getListAniaml(animalData: GetListAniamlDto) {
+    // Read: 인기순('scoreAvg','고양이','DESC'), 2: 등록일 순('created_at','고양이','DESC'), 조회수 순('read','고양이','DESC'), 4: 좋아요 순('like','고양이','DESC')
+    return this.animalRepository.getListAnimal(animalData);
   }
 }

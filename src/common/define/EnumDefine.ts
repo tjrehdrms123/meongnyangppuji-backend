@@ -8,7 +8,13 @@ enum JWTType {
   REGISTER = 'REGISTER_KEY'
 }
 
+enum SortType {
+  ASC = 'ASC',
+  DESC = 'DESC'
+}
+
 export {
   Role,
-  JWTType
+  JWTType,
+  SortType
 }

@@ -12,6 +12,7 @@ import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
 import { JwtAuthGuard } from 'src/users/guards/jwt.guard';
 import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { AwsService } from 'src/uploads/service/aws.service';
+import { GetListAniamlDto } from '../dto/request/get_list_animal_dto';
 
 @Controller('animal')
 @ApiTags('animal API')
@@ -77,5 +78,11 @@ export class AnimalController {
   @Get()
   async getAnimal(@Body() animalData: GetAnimalDto) {
     return await this.animalService.getAniaml(animalData);
+  }
+ 
+  @ApiOperation({ summary: '반려동물 목록 조회', description: '반려동물 목록 조회' })
+  @Get('/list')
+  async getListAnimal(@Body() animalData: GetListAniamlDto) {
+    return await this.animalService.getListAniaml(animalData);
   }
 }
