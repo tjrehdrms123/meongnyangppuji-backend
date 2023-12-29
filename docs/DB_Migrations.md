@@ -17,13 +17,13 @@ npm run migration:generate db/migrations/init-schema
 npm run migration:generate db/migrations/NewColumnAnimalLikeRead
 ```
 
-## 되돌리기
+## 실행 시키기
 
 ```bash
 npm run migration:run
 ```
 
-## 실행 시키기
+## 되돌리기
 
 ```bash
 npm run migration:revert
