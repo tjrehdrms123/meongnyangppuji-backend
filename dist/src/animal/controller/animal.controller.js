@@ -25,6 +25,7 @@ const get_animal_dto_1 = require("../dto/request/get_animal_dto");
 const update_animal_dto_1 = require("../dto/request/update_animal_dto");
 const delete_animal_dto_1 = require("../dto/request/delete_animal_dto");
 const jwt_guard_1 = require("../../users/guards/jwt.guard");
+const get_list_animal_dto_1 = require("../dto/request/get_list_animal_dto");
 let AnimalController = class AnimalController {
     constructor(animalService) {
         this.animalService = animalService;
@@ -40,6 +41,9 @@ let AnimalController = class AnimalController {
     }
     async getAnimal(animalData) {
         return await this.animalService.getAniaml(animalData);
+    }
+    async getListAnimal(animalData) {
+        return await this.animalService.getListAniaml(animalData);
     }
 };
 __decorate([
@@ -106,6 +110,14 @@ __decorate([
     __metadata("design:paramtypes", [get_animal_dto_1.GetAnimalDto]),
     __metadata("design:returntype", Promise)
 ], AnimalController.prototype, "getAnimal", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: '반려동물 목록 조회', description: '반려동물 목록 조회' }),
+    (0, common_1.Get)('/list'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [get_list_animal_dto_1.GetListAniamlDto]),
+    __metadata("design:returntype", Promise)
+], AnimalController.prototype, "getListAnimal", null);
 AnimalController = __decorate([
     (0, common_1.Controller)('animal'),
     (0, swagger_1.ApiTags)('animal API'),

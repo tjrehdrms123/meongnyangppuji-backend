@@ -7,6 +7,7 @@ import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
 import { AnimalTypeRepository } from 'src/animal_type/infra/animal_type.repository';
 import { QrRepository } from 'src/qr/infra/qr.repository';
 import { UploadsRepository } from 'src/uploads/infra/uploads.repository';
+import { GetListAniamlDto } from '../dto/request/get_list_animal_dto';
 export declare class AnimalService {
     private readonly animalRepository;
     private readonly animalTypeRepository;
@@ -18,4 +19,5 @@ export declare class AnimalService {
     updateAnimal(animalData: UpdateAnimalDto): Promise<AnimalEntity | null>;
     deleteAnimal(animalData: DeleteAnimalDto): Promise<any>;
     getAniaml(animalData: GetAnimalDto): Promise<void>;
+    getListAniaml(animalData: GetListAniamlDto): Promise<any[]>;
 }

@@ -56,6 +56,23 @@ let AnimalRepository = class AnimalRepository {
         const animal = await this.AnimalRepository.findOneBy({ id: animalId });
         return animal;
     }
+    async getListAnimal(animalData) {
+        const { order, type_name, sort_type } = animalData;
+        const result = await this.AnimalRepository.createQueryBuilder('animal')
+            .select([
+            'animal.id',
+            'animal.name',
+            'animal.uploads_id',
+            'animal.like',
+            '(animal.like * 0.3) as likeCal',
+            '(animal.read * 0.1) as readCal',
+            'DATEDIFF(NOW(), animal.created_at) * -0.1 as datediffCal',
+            '(animal.like * 0.3 + animal.read * 0.1 + DATEDIFF(NOW(), animal.created_at) * -0.1) as scoreAvg',
+        ])
+            .orderBy('scoreAvg', 'DESC')
+            .getRawMany();
+        return result;
+    }
 };
 AnimalRepository = __decorate([
     (0, common_1.Injectable)(),

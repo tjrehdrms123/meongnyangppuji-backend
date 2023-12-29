@@ -44,7 +44,7 @@ __decorate([
         type: String
     }),
     __metadata("design:type", Date)
-], CommonEntity.prototype, "createdAt", void 0);
+], CommonEntity.prototype, "created_at", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)({ type: 'timestamp' }),
     (0, class_transformer_1.Expose)(),
@@ -55,11 +55,11 @@ __decorate([
         type: String
     }),
     __metadata("design:type", Date)
-], CommonEntity.prototype, "updatedAt", void 0);
+], CommonEntity.prototype, "updated_at", void 0);
 __decorate([
     (0, class_transformer_1.Exclude)({ toPlainOnly: true }),
     (0, typeorm_1.DeleteDateColumn)({ type: 'timestamp' }),
     __metadata("design:type", Date)
-], CommonEntity.prototype, "deletedAt", void 0);
+], CommonEntity.prototype, "deleted_at", void 0);
 exports.CommonEntity = CommonEntity;
 //# sourceMappingURL=common.entity.js.map

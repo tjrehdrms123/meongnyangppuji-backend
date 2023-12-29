@@ -6,4 +6,8 @@ declare enum JWTType {
     ACCESS = "SECRET_KEY",
     REGISTER = "REGISTER_KEY"
 }
-export { Role, JWTType };
+declare enum SortType {
+    ASC = "ASC",
+    DESC = "DESC"
+}
+export { Role, JWTType, SortType };

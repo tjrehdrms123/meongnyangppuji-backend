@@ -4,6 +4,7 @@ import { CreateAnimalDto } from '../dto/request/create_animal_dto';
 import { GetAnimalDto } from '../dto/request/get_animal_dto';
 import { UpdateAnimalDto } from '../dto/request/update_animal_dto';
 import { DeleteAnimalDto } from '../dto/request/delete_animal_dto';
+import { GetListAniamlDto } from '../dto/request/get_list_animal_dto';
 export declare class AnimalRepository {
     private readonly AnimalRepository;
     constructor(AnimalRepository: Repository<AnimalEntity>);
@@ -12,4 +13,5 @@ export declare class AnimalRepository {
     deleteAnimal(animalData: DeleteAnimalDto): Promise<any>;
     getAniaml(animalData: GetAnimalDto): Promise<AnimalEntity[] | null>;
     isExitsAnimal(animalId: any): Promise<AnimalEntity | null>;
+    getListAnimal(animalData: GetListAniamlDto): Promise<any[]>;
 }

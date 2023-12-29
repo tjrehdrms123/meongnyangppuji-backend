@@ -1,7 +1,7 @@
 export declare abstract class CommonEntity {
     id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt?: Date | null;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at?: Date | null;
     toJSON(): Record<string, any>;
 }

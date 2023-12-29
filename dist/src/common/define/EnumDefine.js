@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JWTType = exports.Role = void 0;
+exports.SortType = exports.JWTType = exports.Role = void 0;
 var Role;
 (function (Role) {
     Role["User"] = "User";
@@ -13,4 +13,10 @@ var JWTType;
     JWTType["REGISTER"] = "REGISTER_KEY";
 })(JWTType || (JWTType = {}));
 exports.JWTType = JWTType;
+var SortType;
+(function (SortType) {
+    SortType["ASC"] = "ASC";
+    SortType["DESC"] = "DESC";
+})(SortType || (SortType = {}));
+exports.SortType = SortType;
 //# sourceMappingURL=EnumDefine.js.map

@@ -71,6 +71,9 @@ let AnimalService = AnimalService_1 = class AnimalService {
     async getAniaml(animalData) {
         const animal = this.animalRepository.getAniaml(animalData);
     }
+    async getListAniaml(animalData) {
+        return this.animalRepository.getListAnimal(animalData);
+    }
 };
 AnimalService = AnimalService_1 = __decorate([
     (0, common_1.Injectable)(),
