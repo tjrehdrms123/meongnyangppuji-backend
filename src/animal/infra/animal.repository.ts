@@ -92,39 +92,19 @@ export class AnimalRepository {
         // Read: 조회수당 0.1점, 좋아요당 0.3점, 생성일 기준 오늘로부터 하루씩 멀어질때 마다 -0.1(신규 유저 배려)
         const result = await this.AnimalRepository.createQueryBuilder('animal')
         .select([
-          'animal.id',
-          'animal.name',
-          'animal.uploads_id',
-          'animal.like',
-          '(animal.like * 0.3) as likeCal',
-          '(animal.read * 0.1) as readCal',
-          'DATEDIFF(NOW(), animal.created_at) * -0.1 as datediffCal',
-          '(animal.like * 0.3 + animal.read * 0.1 + DATEDIFF(NOW(), animal.created_at) * -0.1) as scoreAvg',
+            'animal.*',
+            '(animal.like * 0.3) as likeCal',
+            '(animal.read * 0.1) as readCal',
+            'DATEDIFF(NOW(), animal.created_at) * -0.1 as datediffCal',
+            'animal.animal_type_id',
+            'at2.name as type_name',
+            '((animal.like * 0.3) + (animal.read * 0.1) + (DATEDIFF(NOW(), animal.created_at) * -0.1)) as scoreAvg',
         ])
-        .orderBy('scoreAvg', 'DESC')
+        .innerJoin('animal.animal_type_id', 'at2')
+        .where('at2.name = :typeName', { typeName: type_name })
+        .orderBy(`${order}`, sort_type)
         .getRawMany();
+
         return result;
     }
-
-    // async getListAnimal(animalData: GetListAniamlDto) {
-    //     const { order, type_name, sort_type } = animalData;
-
-    //     // Read: 조회수당 0.1점, 좋아요당 0.3점, 생성일 기준 오늘로부터 하루씩 멀어질때 마다 -0.1(신규 유저 배려)
-    //     const result = await this.AnimalRepository.createQueryBuilder('animal')
-    //     .select([
-    //         'animal.*',
-    //         '(animal.like * 0.3) as likeCal',
-    //         '(animal.read * 0.1) as readCal',
-    //         'DATEDIFF(NOW(), animal.created_at) * -0.1 as datediffCal',
-    //         'animal.animal_type_id',
-    //         'at2.name as type_name',
-    //         '((animal.like * 0.3) + (animal.read * 0.1) + (DATEDIFF(NOW(), animal.created_at) * -0.1)) as scoreAvg',
-    //     ])
-    //     .innerJoinAndSelect('animal.animal_type', 'at2')
-    //     .where('at2.name = :typeName', { typeName: type_name })
-    //     .orderBy(`${order}`, sort_type)
-    //     .getRawMany();
-
-    //     return result;
-    // }
 }
