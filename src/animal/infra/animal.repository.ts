@@ -86,8 +86,8 @@ export class AnimalRepository {
      * @param animalData 
      * @returns 반려동물 목록
      */
-    async getListAnimal(animalData: GetListAniamlDto) {
-        const { order, type_name, sort_type } = animalData;
+    async getListAnimal(animalData: GetListAniamlDto, item: string) {
+        const { type_name, sort_type } = animalData;
 
         // Read: 조회수당 0.1점, 좋아요당 0.3점, 생성일 기준 오늘로부터 하루씩 멀어질때 마다 -0.1(신규 유저 배려)
         const result = await this.AnimalRepository.createQueryBuilder('animal')
@@ -102,7 +102,7 @@ export class AnimalRepository {
         ])
         .innerJoin('animal.animal_type_id', 'at2')
         .where('at2.name = :typeName', { typeName: type_name })
-        .orderBy(`${order}`, sort_type)
+        .orderBy(`${item}`, sort_type)
         .getRawMany();
 
         return result;

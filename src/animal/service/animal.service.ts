@@ -95,7 +95,20 @@ export class AnimalService {
 
   // GET: Animal 목록 조회
   async getListAniaml(animalData: GetListAniamlDto) {
-    // Read: 인기순('scoreAvg','고양이','DESC'), 2: 등록일 순('created_at','고양이','DESC'), 조회수 순('read','고양이','DESC'), 4: 좋아요 순('like','고양이','DESC')
-    return this.animalRepository.getListAnimal(animalData);
+    const { option } = animalData;
+    let item = '';
+    switch(option){
+      case 1: 
+        item = 'scoreAvg'; //Read: 인기순
+        break;
+      case 2:
+        item = 'created_at'; //Read: 등록일 순
+        break;
+      case 3:
+        item = 'readCal'; //Read: 조회수 순
+        break;
+    }
+
+    return this.animalRepository.getListAnimal(animalData, item);
   }
 }
