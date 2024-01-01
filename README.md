@@ -139,7 +139,7 @@ Workflow 문서 입니다.
 
 Swagger API Docs 문서 입니다.
 
-- [Version 0.0.1](./docs/api/swagger.html)
+- [Version 0.0.1](https://tjrehdrms123.github.io/meongnyangppuji-backend/docs/api/swagger.html)
 
 ## Success & Error Code
 
