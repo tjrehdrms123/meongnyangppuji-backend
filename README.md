@@ -4,7 +4,7 @@
 
 <br/>
 
-# ✨ 서비스 페이지
+# ✨ 서비스 페이지 - 개발 중
 
 [mn.donggeun.co.kr](mn.donggeun.co.kr)
 
