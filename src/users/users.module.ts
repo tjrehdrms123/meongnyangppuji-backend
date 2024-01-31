@@ -1,10 +1,10 @@
 import { Module, forwardRef } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersController } from './controller/users.controller';
-import { UsersEntity } from './entities/users.entity';
+import { UsersController } from './users.controller';
+import { UsersEntity } from './users.entity';
 import { JwtStrategy } from './guards/jwt.strategy';
-import { UsersRepository } from './infra/Users.repository';
-import { UsersService } from './service/Users.service';
+import { UsersRepository } from './users.repository';
+import { UsersService } from './users.service';
 import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
 import { GuardianModule } from 'src/guardian/guardian.module';

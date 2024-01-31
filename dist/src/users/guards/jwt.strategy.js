@@ -13,7 +13,7 @@ exports.JwtStrategy = void 0;
 const passport_1 = require("@nestjs/passport");
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
-const Users_repository_1 = require("../infra/Users.repository");
+const users_repository_1 = require("../users.repository");
 const ErrorDefine_1 = require("../../common/define/ErrorDefine");
 const passport_jwt_1 = require("passport-jwt");
 let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(passport_jwt_1.Strategy) {
@@ -44,7 +44,7 @@ let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(pas
 };
 JwtStrategy = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [Users_repository_1.UsersRepository,
+    __metadata("design:paramtypes", [users_repository_1.UsersRepository,
         config_1.ConfigService])
 ], JwtStrategy);
 exports.JwtStrategy = JwtStrategy;

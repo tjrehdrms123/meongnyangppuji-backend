@@ -1,5 +1,5 @@
 import { PickType } from '@nestjs/swagger'
-import { GuardianEntity } from 'src/guardian/entities/guardian.entity'
+import { GuardianEntity } from 'src/guardian/guardian.entity'
 import { UsersDto } from '../user.dto'
 import { IsNotEmpty, IsString } from 'class-validator'
 

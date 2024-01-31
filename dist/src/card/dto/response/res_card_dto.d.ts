@@ -1,4 +1,4 @@
-import { CardEntity } from "src/card/entities/card.entity";
+import { CardEntity } from "src/card/card.entity";
 declare const ResCardDto_base: import("@nestjs/common").Type<Omit<CardEntity, never>>;
 export declare class ResCardDto extends ResCardDto_base {
 }

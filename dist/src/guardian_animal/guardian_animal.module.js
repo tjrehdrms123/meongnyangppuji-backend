@@ -11,10 +11,10 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const animal_module_1 = require("../animal/animal.module");
 const guardian_module_1 = require("../guardian/guardian.module");
-const guardian_animal_controller_1 = require("./controller/guardian_animal.controller");
-const guardian_animal_entity_1 = require("./entities/guardian_animal.entity");
-const guardian_animal_repository_1 = require("./infra/guardian_animal.repository");
-const guardian_animal_service_1 = require("./service/guardian_animal.service");
+const guardian_animal_controller_1 = require("./guardian_animal.controller");
+const guardian_animal_entity_1 = require("./guardian_animal.entity");
+const guardian_animal_repository_1 = require("./guardian_animal.repository");
+const guardian_animal_service_1 = require("./guardian_animal.service");
 let GuardianAnimalModule = class GuardianAnimalModule {
 };
 GuardianAnimalModule = __decorate([

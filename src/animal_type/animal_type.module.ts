@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AnimalTypeController } from './controller/animal_type.controller';
-import { AnimalTypeService } from './service/animal_type.service';
+import { AnimalTypeController } from './animal_type.controller';
+import { AnimalTypeService } from './animal_type.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AnimalTypeRepository } from './infra/animal_type.repository';
-import { AnimalTypeEntity } from './entities/animal_type.entity';
-import { UsersService } from 'src/users/service/Users.service';
+import { AnimalTypeRepository } from './animal_type.repository';
+import { AnimalTypeEntity } from './animal_type.entity';
+import { UsersService } from 'src/users/users.service';
 
 @Module({
   imports: [

@@ -1,4 +1,4 @@
-import { AnimalTypeEntity } from '../../entities/animal_type.entity';
+import { AnimalTypeEntity } from '../../animal_type.entity';
 declare const ResAnimalTypeDto_base: import("@nestjs/common").Type<Omit<AnimalTypeEntity, never>>;
 export declare class ResAnimalTypeDto extends ResAnimalTypeDto_base {
 }

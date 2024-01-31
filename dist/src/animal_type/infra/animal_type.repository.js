@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimalTypeRepository = void 0;
 const typeorm_1 = require("typeorm");
-const animal_type_entity_1 = require("../entities/animal_type.entity");
+const animal_type_entity_1 = require("../animal_type.entity");
 const common_1 = require("@nestjs/common");
 const typeorm_2 = require("@nestjs/typeorm");
 let AnimalTypeRepository = class AnimalTypeRepository {

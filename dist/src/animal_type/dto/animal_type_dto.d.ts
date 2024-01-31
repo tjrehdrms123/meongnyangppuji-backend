@@ -1,4 +1,4 @@
-import { AnimalTypeEntity } from '../entities/animal_type.entity';
+import { AnimalTypeEntity } from '../animal_type.entity';
 declare const AnimalTypeDto_base: import("@nestjs/common").Type<Partial<AnimalTypeEntity>>;
 export declare class AnimalTypeDto extends AnimalTypeDto_base {
     name: string;

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AnimalEntity } from './entities/animal.entity';
-import { AnimalController } from './controller/animal.controller';
-import { AnimalService } from './service/animal.service';
-import { AnimalRepository } from './infra/animal.repository';
+import { AnimalEntity } from './animal.entity';
+import { AnimalController } from './animal.controller';
+import { AnimalService } from './animal.service';
+import { AnimalRepository } from './animal.repository';
 import { QrModule } from 'src/qr/qr.module';
 import { AnimalTypeModule } from 'src/animal_type/animal_type.module';
 import { UploadsModule } from 'src/uploads/uplosds.module';

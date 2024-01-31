@@ -1,1 +1,1 @@
-{"version":3,"file":"delete_animal_dto.js","sourceRoot":"","sources":["../../../../../src/animal/dto/request/delete_animal_dto.ts"],"names":[],"mappings":";;;AAAA,6CAA0C;AAC1C,gEAAgE;AAEhE,MAAa,eAAgB,SAAQ,IAAA,kBAAQ,EAAC,4BAAY,EAAG,CAAC,IAAI,CAAU,CAAC;CAE5E;AAFD,0CAEC"}
+{"version":3,"file":"delete_animal_dto.js","sourceRoot":"","sources":["../../../../../src/animal/dto/request/delete_animal_dto.ts"],"names":[],"mappings":";;;AAAA,6CAA0C;AAC1C,uDAAuD;AAEvD,MAAa,eAAgB,SAAQ,IAAA,kBAAQ,EAAC,4BAAY,EAAG,CAAC,IAAI,CAAU,CAAC;CAE5E;AAFD,0CAEC"}

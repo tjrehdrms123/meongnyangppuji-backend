@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResQrMetaData = exports.ResQrRowDto = exports.ResQrDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-const qr_entity_1 = require("../../entities/qr.entity");
+const qr_entity_1 = require("../../qr.entity");
 class ResQrDto extends (0, swagger_1.OmitType)(qr_entity_1.QrEntity, []) {
 }
 exports.ResQrDto = ResQrDto;

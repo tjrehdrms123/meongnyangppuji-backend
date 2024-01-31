@@ -9,12 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const users_entity_1 = require("../users/entities/users.entity");
+const users_entity_1 = require("../users/users.entity");
 const users_module_1 = require("../users/users.module");
-const auth_controller_1 = require("./controller/auth.controller");
-const Users_repository_1 = require("../users/infra/Users.repository");
-const auth_service_1 = require("./service/auth.service");
-const Users_service_1 = require("../users/service/Users.service");
+const auth_controller_1 = require("./auth.controller");
+const users_repository_1 = require("../users/users.repository");
+const auth_service_1 = require("./auth.service");
+const users_service_1 = require("../users/users.service");
 const jwt_guard_1 = require("../users/guards/jwt.guard");
 const jwt_1 = require("@nestjs/jwt");
 let AuthModule = class AuthModule {
@@ -33,8 +33,8 @@ AuthModule = __decorate([
         ],
         controllers: [auth_controller_1.AuthController],
         providers: [
-            Users_repository_1.UsersRepository,
-            Users_service_1.UsersService,
+            users_repository_1.UsersRepository,
+            users_service_1.UsersService,
             auth_service_1.AuthService,
             jwt_guard_1.JwtAuthGuard
         ],

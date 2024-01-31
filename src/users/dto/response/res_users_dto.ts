@@ -1,5 +1,5 @@
 import { ApiProperty, OmitType } from '@nestjs/swagger'
-import { UsersEntity } from 'src/users/entities/users.entity';
+import { UsersEntity } from 'src/users/users.entity';
 
 export class ResUsersTypeDto extends OmitType(UsersEntity , [] as const){}
 

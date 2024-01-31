@@ -4,7 +4,7 @@ import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_
 import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeByDetailNameDto } from '../dto/request/delete_animal_type_by_detail_name_dto';
 import { DeleteAnimalTypeNameDto } from '../dto/request/delete_animal_type_by_name_dto';
-import { AnimalTypeEntity } from '../entities/animal_type.entity';
+import { AnimalTypeEntity } from '../animal_type.entity';
 export declare class AnimalTypeService {
     private readonly animalTypeRepository;
     private readonly logger;

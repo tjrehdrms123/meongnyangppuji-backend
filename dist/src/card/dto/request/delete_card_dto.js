@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteCardDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-const card_entity_1 = require("../../entities/card.entity");
+const card_entity_1 = require("../../card.entity");
 class DeleteCardDto extends (0, swagger_1.PickType)(card_entity_1.CardEntity, ['id']) {
 }
 __decorate([

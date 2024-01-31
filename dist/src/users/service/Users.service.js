@@ -13,10 +13,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
 const ErrorDefine_1 = require("../../common/define/ErrorDefine");
-const Users_repository_1 = require("../infra/Users.repository");
+const users_repository_1 = require("../users.repository");
 const bcrypt = require("bcrypt");
 const config_1 = require("@nestjs/config");
-const auth_service_1 = require("../../auth/service/auth.service");
+const auth_service_1 = require("../../auth/auth.service");
 let UsersService = UsersService_1 = class UsersService {
     constructor(usersRepository, authService, configService) {
         this.usersRepository = usersRepository;
@@ -60,7 +60,7 @@ let UsersService = UsersService_1 = class UsersService {
 };
 UsersService = UsersService_1 = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [Users_repository_1.UsersRepository,
+    __metadata("design:paramtypes", [users_repository_1.UsersRepository,
         auth_service_1.AuthService,
         config_1.ConfigService])
 ], UsersService);

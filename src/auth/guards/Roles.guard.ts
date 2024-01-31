@@ -8,8 +8,8 @@ import {
   UnauthorizedException
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { UsersService } from 'src/users/service/Users.service';
-import { AuthService } from '../service/auth.service';
+import { UsersService } from 'src/users/users.service';
+import { AuthService } from '../auth.service';
 import { Role } from 'src/common/define/EnumDefine';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
 

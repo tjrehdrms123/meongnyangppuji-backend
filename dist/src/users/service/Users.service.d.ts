@@ -1,10 +1,10 @@
 import { CreateUsersDto } from '../dto/request/create_users_dto';
-import { UsersRepository } from '../infra/Users.repository';
+import { UsersRepository } from '../users.repository';
 import { LoginDto } from '../dto/request/login_dto';
 import { ConfigService } from '@nestjs/config';
 import { GetUsersDto } from '../dto/request/get_users_dto';
-import { UsersEntity } from '../entities/users.entity';
-import { AuthService } from 'src/auth/service/auth.service';
+import { UsersEntity } from '../users.entity';
+import { AuthService } from 'src/auth/auth.service';
 export declare class UsersService {
     private readonly usersRepository;
     private readonly authService;

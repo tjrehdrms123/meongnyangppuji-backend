@@ -1,1 +1,1 @@
-{"version":3,"file":"animal_type_dto.js","sourceRoot":"","sources":["../../../../src/animal_type/dto/animal_type_dto.ts"],"names":[],"mappings":";;;AAAA,6CAA0D;AAC1D,uEAAkE;AAElE,MAAa,aAAc,SAAQ,IAAA,qBAAW,EAAC,qCAAgB,CAAC;CAG/D;AAHD,sCAGC"}
+{"version":3,"file":"animal_type_dto.js","sourceRoot":"","sources":["../../../../src/animal_type/dto/animal_type_dto.ts"],"names":[],"mappings":";;;AAAA,6CAA0D;AAC1D,8DAAyD;AAEzD,MAAa,aAAc,SAAQ,IAAA,qBAAW,EAAC,qCAAgB,CAAC;CAG/D;AAHD,sCAGC"}

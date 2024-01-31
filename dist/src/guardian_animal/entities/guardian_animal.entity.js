@@ -12,8 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GuardianAnimalEntity = void 0;
 const typeorm_1 = require("typeorm");
 const common_entity_1 = require("../../common/entities/common.entity");
-const animal_entity_1 = require("../../animal/entities/animal.entity");
-const guardian_entity_1 = require("../../guardian/entities/guardian.entity");
+const animal_entity_1 = require("../../animal/animal.entity");
+const guardian_entity_1 = require("../../guardian/guardian.entity");
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
 let GuardianAnimalEntity = class GuardianAnimalEntity extends common_entity_1.CommonEntity {

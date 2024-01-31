@@ -9,11 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const users_controller_1 = require("./controller/users.controller");
-const users_entity_1 = require("./entities/users.entity");
+const users_controller_1 = require("./users.controller");
+const users_entity_1 = require("./users.entity");
 const jwt_strategy_1 = require("./guards/jwt.strategy");
-const Users_repository_1 = require("./infra/Users.repository");
-const Users_service_1 = require("./service/Users.service");
+const users_repository_1 = require("./users.repository");
+const users_service_1 = require("./users.service");
 const guardian_module_1 = require("../guardian/guardian.module");
 const auth_module_1 = require("../auth/auth.module");
 let UsersModule = class UsersModule {
@@ -26,8 +26,8 @@ UsersModule = __decorate([
             (0, common_1.forwardRef)(() => auth_module_1.AuthModule)
         ],
         controllers: [users_controller_1.UsersController],
-        providers: [Users_repository_1.UsersRepository, Users_service_1.UsersService, jwt_strategy_1.JwtStrategy],
-        exports: [Users_repository_1.UsersRepository]
+        providers: [users_repository_1.UsersRepository, users_service_1.UsersService, jwt_strategy_1.JwtStrategy],
+        exports: [users_repository_1.UsersRepository]
     })
 ], UsersModule);
 exports.UsersModule = UsersModule;

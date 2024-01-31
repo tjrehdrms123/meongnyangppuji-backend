@@ -1,5 +1,5 @@
 import { ApiProperty, OmitType } from "@nestjs/swagger";
-import { GuardianEntity } from "src/guardian/entities/guardian.entity";
+import { GuardianEntity } from "src/guardian/guardian.entity";
 
 export class ResGuardianDto extends OmitType(GuardianEntity , [] as const){}
 

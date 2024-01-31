@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CardController } from './controller/card.controller';
-import { CardEntity } from './entities/card.entity';
-import { CardRepository } from './infra/card.repository';
-import { CardService } from './service/card.service';
+import { CardController } from './card.controller';
+import { CardEntity } from './card.entity';
+import { CardRepository } from './card.repository';
+import { CardService } from './card.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([CardEntity]),

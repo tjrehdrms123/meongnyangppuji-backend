@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/swagger'
-import { QrEntity } from 'src/qr/entities/qr.entity'
-import { AnimalEntity } from '../entities/animal.entity'
+import { QrEntity } from 'src/qr/qr.entity'
+import { AnimalEntity } from '../animal.entity'
 
 export class QrDto extends PartialType(QrEntity) {
     qr_issuance: boolean

@@ -16,7 +16,7 @@ exports.CardRepository = void 0;
 const typeorm_1 = require("typeorm");
 const common_1 = require("@nestjs/common");
 const typeorm_2 = require("@nestjs/typeorm");
-const card_entity_1 = require("../entities/card.entity");
+const card_entity_1 = require("../card.entity");
 let CardRepository = class CardRepository {
     constructor(CardRepository) {
         this.CardRepository = CardRepository;

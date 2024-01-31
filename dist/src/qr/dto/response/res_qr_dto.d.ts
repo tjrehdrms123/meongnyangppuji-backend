@@ -1,4 +1,4 @@
-import { QrEntity } from "src/qr/entities/qr.entity";
+import { QrEntity } from "src/qr/qr.entity";
 declare const ResQrDto_base: import("@nestjs/common").Type<Omit<QrEntity, never>>;
 export declare class ResQrDto extends ResQrDto_base {
 }

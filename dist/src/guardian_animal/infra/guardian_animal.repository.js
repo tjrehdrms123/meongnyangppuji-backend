@@ -16,7 +16,7 @@ exports.GuardianAnimalRepository = void 0;
 const typeorm_1 = require("typeorm");
 const common_1 = require("@nestjs/common");
 const typeorm_2 = require("@nestjs/typeorm");
-const guardian_animal_entity_1 = require("../entities/guardian_animal.entity");
+const guardian_animal_entity_1 = require("../guardian_animal.entity");
 let GuardianAnimalRepository = class GuardianAnimalRepository {
     constructor(GuardianAnimalRepository) {
         this.GuardianAnimalRepository = GuardianAnimalRepository;

@@ -1,5 +1,5 @@
 import { ApiProperty, OmitType } from '@nestjs/swagger'
-import { AnimalTypeEntity } from '../../entities/animal_type.entity';
+import { AnimalTypeEntity } from '../../animal_type.entity';
 
 export class ResAnimalTypeDto extends OmitType(AnimalTypeEntity , [] as const){}
 

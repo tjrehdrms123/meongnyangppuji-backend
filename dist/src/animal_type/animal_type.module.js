@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimalTypeModule = void 0;
 const common_1 = require("@nestjs/common");
-const animal_type_controller_1 = require("./controller/animal_type.controller");
-const animal_type_service_1 = require("./service/animal_type.service");
+const animal_type_controller_1 = require("./animal_type.controller");
+const animal_type_service_1 = require("./animal_type.service");
 const typeorm_1 = require("@nestjs/typeorm");
-const animal_type_repository_1 = require("./infra/animal_type.repository");
-const animal_type_entity_1 = require("./entities/animal_type.entity");
+const animal_type_repository_1 = require("./animal_type.repository");
+const animal_type_entity_1 = require("./animal_type.entity");
 let AnimalTypeModule = class AnimalTypeModule {
 };
 AnimalTypeModule = __decorate([

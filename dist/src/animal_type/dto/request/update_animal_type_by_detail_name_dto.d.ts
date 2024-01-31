@@ -1,4 +1,4 @@
-import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity';
+import { AnimalTypeEntity } from 'src/animal_type/animal_type.entity';
 declare const UpdateAnimalTypeByDetailNameDto_base: import("@nestjs/common").Type<Pick<AnimalTypeEntity, "id" | "detail_name">>;
 export declare class UpdateAnimalTypeByDetailNameDto extends UpdateAnimalTypeByDetailNameDto_base {
     id: string;

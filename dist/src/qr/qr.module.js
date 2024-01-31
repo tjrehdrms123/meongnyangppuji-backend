@@ -9,10 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.QrModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const qr_entity_1 = require("./entities/qr.entity");
-const qr_controller_1 = require("./controller/qr.controller");
-const qr_service_1 = require("./service/qr.service");
-const qr_repository_1 = require("./infra/qr.repository");
+const qr_entity_1 = require("./qr.entity");
+const qr_controller_1 = require("./qr.controller");
+const qr_service_1 = require("./qr.service");
+const qr_repository_1 = require("./qr.repository");
 let QrModule = class QrModule {
 };
 QrModule = __decorate([

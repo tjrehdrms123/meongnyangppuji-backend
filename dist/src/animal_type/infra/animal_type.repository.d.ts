@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { AnimalTypeEntity } from 'src/animal_type/entities/animal_type.entity';
+import { AnimalTypeEntity } from 'src/animal_type/animal_type.entity';
 import { CreateAnimalTypeDto } from '../dto/request/create_animal_type_dto';
 import { GetAnimalTypeByDetailNameDto } from '../dto/request/get_animal_type_by_detail_name_dto';
 import { UpdateAnimalTypeByDetailNameDto } from '../dto/request/update_animal_type_by_detail_name_dto';

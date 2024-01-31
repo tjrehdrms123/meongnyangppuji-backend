@@ -9,10 +9,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const card_controller_1 = require("./controller/card.controller");
-const card_entity_1 = require("./entities/card.entity");
-const card_repository_1 = require("./infra/card.repository");
-const card_service_1 = require("./service/card.service");
+const card_controller_1 = require("./card.controller");
+const card_entity_1 = require("./card.entity");
+const card_repository_1 = require("./card.repository");
+const card_service_1 = require("./card.service");
 let CardModule = class CardModule {
 };
 CardModule = __decorate([

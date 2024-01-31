@@ -1,4 +1,4 @@
-import { UsersEntity } from 'src/users/entities/users.entity';
+import { UsersEntity } from 'src/users/users.entity';
 declare const ResUsersTypeDto_base: import("@nestjs/common").Type<Omit<UsersEntity, never>>;
 export declare class ResUsersTypeDto extends ResUsersTypeDto_base {
 }

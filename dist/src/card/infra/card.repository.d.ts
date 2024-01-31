@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { CardEntity } from '../entities/card.entity';
+import { CardEntity } from '../card.entity';
 import { CreateCardDto } from '../dto/request/create_card_dto';
 import { UpdateCardDto } from '../dto/request/update_card_dto';
 import { DeleteCardDto } from '../dto/request/delete_card_dto';

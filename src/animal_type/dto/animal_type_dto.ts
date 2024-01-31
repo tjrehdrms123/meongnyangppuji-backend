@@ -1,5 +1,5 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger'
-import { AnimalTypeEntity } from '../entities/animal_type.entity';
+import { AnimalTypeEntity } from '../animal_type.entity';
 
 export class AnimalTypeDto extends PartialType(AnimalTypeEntity) {
     name: string

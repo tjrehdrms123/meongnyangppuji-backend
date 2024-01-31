@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { QrEntity } from './entities/qr.entity';
-import { QrController } from './controller/qr.controller';
-import { QrService } from './service/qr.service';
-import { QrRepository } from './infra/qr.repository';
+import { QrEntity } from './qr.entity';
+import { QrController } from './qr.controller';
+import { QrService } from './qr.service';
+import { QrRepository } from './qr.repository';
 
 @Module({
   imports: [

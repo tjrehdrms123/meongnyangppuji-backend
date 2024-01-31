@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { GuardianAnimalEntity } from '../entities/guardian_animal.entity';
+import { GuardianAnimalEntity } from '../guardian_animal.entity';
 import { CreateGuardianAnimalDto } from '../dto/request/create_guardian_animal_dto';
 import { FindGuardianAnimalDto } from '../dto/request/find_guardian_dto';
 export declare class GuardianAnimalRepository {

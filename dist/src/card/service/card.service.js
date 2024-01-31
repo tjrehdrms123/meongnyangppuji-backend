@@ -12,7 +12,7 @@ var CardService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardService = void 0;
 const common_1 = require("@nestjs/common");
-const card_repository_1 = require("../infra/card.repository");
+const card_repository_1 = require("../card.repository");
 let CardService = CardService_1 = class CardService {
     constructor(cardRepository) {
         this.cardRepository = cardRepository;

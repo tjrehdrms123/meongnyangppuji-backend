@@ -13,9 +13,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GuardianAnimalService = void 0;
 const common_1 = require("@nestjs/common");
 const ErrorDefine_1 = require("../../common/define/ErrorDefine");
-const guardian_animal_repository_1 = require("../infra/guardian_animal.repository");
-const guardian_repository_1 = require("../../guardian/infra/guardian.repository");
-const animal_repository_1 = require("../../animal/infra/animal.repository");
+const guardian_animal_repository_1 = require("../guardian_animal.repository");
+const guardian_repository_1 = require("../../guardian/guardian.repository");
+const animal_repository_1 = require("../../animal/animal.repository");
 let GuardianAnimalService = GuardianAnimalService_1 = class GuardianAnimalService {
     constructor(guardianAnimalRepository, guardianRepository, animalRepository) {
         this.guardianAnimalRepository = guardianAnimalRepository;

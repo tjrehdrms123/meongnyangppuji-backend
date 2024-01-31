@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { GuardianController } from './controller/guardian.controller';
-import { GuardianService } from './service/guardian.service';
+import { GuardianController } from './guardian.controller';
+import { GuardianService } from './guardian.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { GuardianEntity } from './entities/guardian.entity';
-import { GuardianRepository } from './infra/guardian.repository';
+import { GuardianEntity } from './guardian.entity';
+import { GuardianRepository } from './guardian.repository';
 
 @Module({
   imports: [

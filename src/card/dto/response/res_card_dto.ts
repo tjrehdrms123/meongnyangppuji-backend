@@ -1,5 +1,5 @@
 import { ApiProperty, OmitType } from "@nestjs/swagger";
-import { CardEntity } from "src/card/entities/card.entity";
+import { CardEntity } from "src/card/card.entity";
 export class ResCardDto extends OmitType(CardEntity , [] as const){}
 
 export class ResCardRowDto {

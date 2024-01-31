@@ -1,4 +1,4 @@
-import { GuardianEntity } from "src/guardian/entities/guardian.entity";
+import { GuardianEntity } from "src/guardian/guardian.entity";
 declare const ResGuardianDto_base: import("@nestjs/common").Type<Omit<GuardianEntity, never>>;
 export declare class ResGuardianDto extends ResGuardianDto_base {
 }
