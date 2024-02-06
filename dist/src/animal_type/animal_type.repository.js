@@ -21,6 +21,12 @@ let AnimalTypeRepository = class AnimalTypeRepository {
     constructor(animalTypeRepository) {
         this.animalTypeRepository = animalTypeRepository;
     }
+    async getAnimalTypeId(detail_name) {
+        return await this.animalTypeRepository.findOne({
+            select: ['id'],
+            where: { detail_name: detail_name }
+        });
+    }
     async getAnimalTypeName() {
         const distinctValues = await this.animalTypeRepository
             .createQueryBuilder('animal_type')
@@ -30,11 +36,9 @@ let AnimalTypeRepository = class AnimalTypeRepository {
         return animalTypeName;
     }
     async getAnimalTypeByDetailName(animalTypeData) {
-        const animalType = await this.animalTypeRepository.find({
-            select: ['id', 'detail_name'],
-            where: { name: animalTypeData.name }
-        });
-        return animalType;
+        const animalType = await this.animalTypeRepository.find({ where: { name: animalTypeData.name } });
+        const animalTypeDetailName = animalType.map((value) => value.detail_name);
+        return animalTypeDetailName;
     }
     async createAnimalType(animalTypeData) {
         return await this.animalTypeRepository.save(animalTypeData);

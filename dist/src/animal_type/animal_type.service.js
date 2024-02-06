@@ -19,6 +19,9 @@ let AnimalTypeService = AnimalTypeService_1 = class AnimalTypeService {
         this.animalTypeRepository = animalTypeRepository;
         this.logger = new common_1.Logger(AnimalTypeService_1.name);
     }
+    async getAnimalTypeId(detail_name) {
+        return await this.animalTypeRepository.getAnimalTypeId(detail_name);
+    }
     async getAnimalTypeName() {
         return await this.animalTypeRepository.getAnimalTypeName();
     }

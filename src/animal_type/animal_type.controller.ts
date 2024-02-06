@@ -41,6 +41,20 @@ export class AnimalTypeController {
     return await this.animalTypeService.createAnimalType(animalTypeData);
   }
 
+  @ApiOperation({ summary: '반려동물 조회', description: '반려동물 조회' })
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1001']])
+  @ErrorResponse(HttpStatus.UNAUTHORIZED, [
+    ErrorDefine['ERROR-0001'],
+    ErrorDefine['ERROR-0002'],
+    ErrorDefine['ERROR-0006'],
+  ])
+  @ApiBearerAuth('access-token')
+  
+  @Get()
+  async getAnimalTypeId(@Query('detail_name') detail_name: string) {
+    return await this.animalTypeService.getAnimalTypeId(detail_name);
+  }
+
   @ApiOperation({ summary: '반려동물 타입 종류 조회', description: '반려동물 타입 종류 조회' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1001']])
   @NoAuth()

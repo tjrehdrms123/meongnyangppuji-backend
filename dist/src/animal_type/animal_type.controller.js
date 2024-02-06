@@ -36,6 +36,9 @@ let AnimalTypeController = class AnimalTypeController {
     async createAnimalType(animalTypeData) {
         return await this.animalTypeService.createAnimalType(animalTypeData);
     }
+    async getAnimalTypeId(detail_name) {
+        return await this.animalTypeService.getAnimalTypeId(detail_name);
+    }
     async getAnimalTypeName() {
         return await this.animalTypeService.getAnimalTypeName();
     }
@@ -72,6 +75,21 @@ __decorate([
     __metadata("design:paramtypes", [create_animal_type_dto_1.CreateAnimalTypeDto]),
     __metadata("design:returntype", Promise)
 ], AnimalTypeController.prototype, "createAnimalType", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: '반려동물 조회', description: '반려동물 조회' }),
+    (0, SuccessResponse_decorator_1.SuccessResponse)(common_1.HttpStatus.OK, [SuccessDefine_1.SuccessDefine['SUCCESS-1001']]),
+    (0, ErrorResponse_decorator_1.ErrorResponse)(common_1.HttpStatus.UNAUTHORIZED, [
+        ErrorDefine_1.ErrorDefine['ERROR-0001'],
+        ErrorDefine_1.ErrorDefine['ERROR-0002'],
+        ErrorDefine_1.ErrorDefine['ERROR-0006'],
+    ]),
+    (0, swagger_1.ApiBearerAuth)('access-token'),
+    (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('detail_name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AnimalTypeController.prototype, "getAnimalTypeId", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: '반려동물 타입 종류 조회', description: '반려동물 타입 종류 조회' }),
     (0, SuccessResponse_decorator_1.SuccessResponse)(common_1.HttpStatus.OK, [SuccessDefine_1.SuccessDefine['SUCCESS-1001']]),

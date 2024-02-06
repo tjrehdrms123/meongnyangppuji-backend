@@ -15,13 +15,18 @@ export class AnimalTypeService {
     private readonly animalTypeRepository: AnimalTypeRepository,
   ) {}
 
+  // GET: detail_name을 받고, 해당하는 ID를 return
+  async getAnimalTypeId(detail_name: string) {
+    return await this.animalTypeRepository.getAnimalTypeId(detail_name);
+  }
+
   // GET: name을 distinct로 반환
   async getAnimalTypeName(): Promise<AnimalTypeEntity[]> {
     return await this.animalTypeRepository.getAnimalTypeName();
   }
 
   // GET: name을 줬을때 detail_name값을 반환
-  async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<Object> {
+  async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]> {
     return await this.animalTypeRepository.getAnimalTypeByDetailName(animalTypeData);
   }
 
