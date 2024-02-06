@@ -19,7 +19,6 @@ import { NoAuth } from 'src/auth/guards/NoAuth.guard';
 
 @Controller('animal_type')
 @ApiTags('animal_type API')
-@UseGuards(JwtAuthGuard)
 @UseGuards(RolesGuard)
 export class AnimalTypeController {
   constructor(private readonly animalTypeService: AnimalTypeService) {}
@@ -35,6 +34,7 @@ export class AnimalTypeController {
     ErrorDefine['ERROR-0006']
   ])
   @ApiBearerAuth('access-token')
+  @UseGuards(JwtAuthGuard)
   @Roles(Role.Admin)
   @Post()
   async createAnimalType(@Body() animalTypeData: CreateAnimalTypeDto) {
@@ -69,6 +69,7 @@ export class AnimalTypeController {
     ErrorDefine['ERROR-0006'],
   ])
   @ApiBearerAuth('access-token')
+  @UseGuards(JwtAuthGuard)
   @Roles(Role.Admin)
   @Patch()
   async updateAnimalTypeByDetailName(@Body() animalTypeData: UpdateAnimalTypeByDetailNameDto) {
@@ -98,6 +99,7 @@ export class AnimalTypeController {
     ErrorDefine['ERROR-0006'],
   ])
   @ApiBearerAuth('access-token')
+  @UseGuards(JwtAuthGuard)
   @Roles(Role.Admin)
   @Delete('name')
   async deleteAnimalByName(@Body() animalTypeData: DeleteAnimalTypeNameDto) {

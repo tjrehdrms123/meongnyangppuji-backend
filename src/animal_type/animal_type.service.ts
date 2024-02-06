@@ -21,7 +21,7 @@ export class AnimalTypeService {
   }
 
   // GET: name을 줬을때 detail_name값을 반환
-  async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]> {
+  async getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<Object> {
     return await this.animalTypeRepository.getAnimalTypeByDetailName(animalTypeData);
   }
 

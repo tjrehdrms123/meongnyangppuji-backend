@@ -10,7 +10,7 @@ export declare class AnimalTypeService {
     private readonly logger;
     constructor(animalTypeRepository: AnimalTypeRepository);
     getAnimalTypeName(): Promise<AnimalTypeEntity[]>;
-    getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]>;
+    getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<Object>;
     createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<AnimalTypeEntity | null>;
     updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto): Promise<AnimalTypeEntity | null>;
     deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto): Promise<any>;

@@ -30,9 +30,11 @@ let AnimalTypeRepository = class AnimalTypeRepository {
         return animalTypeName;
     }
     async getAnimalTypeByDetailName(animalTypeData) {
-        const animalType = await this.animalTypeRepository.find({ where: { name: animalTypeData.name } });
-        const animalTypeDetailName = animalType.map((value) => value.detail_name);
-        return animalTypeDetailName;
+        const animalType = await this.animalTypeRepository.find({
+            select: ['id', 'detail_name'],
+            where: { name: animalTypeData.name }
+        });
+        return animalType;
     }
     async createAnimalType(animalTypeData) {
         return await this.animalTypeRepository.save(animalTypeData);

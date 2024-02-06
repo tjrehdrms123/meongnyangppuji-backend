@@ -8,7 +8,7 @@ export declare class AnimalTypeController {
     constructor(animalTypeService: AnimalTypeService);
     createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<import("./animal_type.entity").AnimalTypeEntity>;
     getAnimalTypeName(): Promise<import("./animal_type.entity").AnimalTypeEntity[]>;
-    getAnimalTypeByDetailName(name: string): Promise<string[]>;
+    getAnimalTypeByDetailName(name: string): Promise<Object>;
     updateAnimalTypeByDetailName(animalTypeData: UpdateAnimalTypeByDetailNameDto): Promise<import("./animal_type.entity").AnimalTypeEntity>;
     deleteAnimalTypeByDetailName(animalTypeData: DeleteAnimalTypeByDetailNameDto): Promise<any>;
     deleteAnimalByName(animalTypeData: DeleteAnimalTypeNameDto): Promise<any>;

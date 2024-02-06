@@ -64,6 +64,7 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-0006']
     ]),
     (0, swagger_1.ApiBearerAuth)('access-token'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, roles_decorator_1.Roles)(EnumDefine_1.Role.Admin),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
@@ -103,6 +104,7 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-0006'],
     ]),
     (0, swagger_1.ApiBearerAuth)('access-token'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, roles_decorator_1.Roles)(EnumDefine_1.Role.Admin),
     (0, common_1.Patch)(),
     __param(0, (0, common_1.Body)()),
@@ -136,6 +138,7 @@ __decorate([
         ErrorDefine_1.ErrorDefine['ERROR-0006'],
     ]),
     (0, swagger_1.ApiBearerAuth)('access-token'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, roles_decorator_1.Roles)(EnumDefine_1.Role.Admin),
     (0, common_1.Delete)('name'),
     __param(0, (0, common_1.Body)()),
@@ -146,7 +149,6 @@ __decorate([
 AnimalTypeController = __decorate([
     (0, common_1.Controller)('animal_type'),
     (0, swagger_1.ApiTags)('animal_type API'),
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     (0, common_1.UseGuards)(Roles_guard_1.RolesGuard),
     __metadata("design:paramtypes", [animal_type_service_1.AnimalTypeService])
 ], AnimalTypeController);

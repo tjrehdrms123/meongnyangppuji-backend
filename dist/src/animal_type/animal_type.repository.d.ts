@@ -9,7 +9,7 @@ export declare class AnimalTypeRepository {
     private readonly animalTypeRepository;
     constructor(animalTypeRepository: Repository<AnimalTypeEntity>);
     getAnimalTypeName(): Promise<AnimalTypeEntity[]>;
-    getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<string[]>;
+    getAnimalTypeByDetailName(animalTypeData: GetAnimalTypeByDetailNameDto): Promise<Object>;
     createAnimalType(animalTypeData: CreateAnimalTypeDto): Promise<AnimalTypeEntity | null>;
     findOneByDetailName(detail_name: string): Promise<AnimalTypeEntity | null>;
     isExitsAnimalType(id: any): Promise<AnimalTypeEntity | null>;
