@@ -6,6 +6,18 @@ export class ResAnimalTypeDto extends OmitType(AnimalTypeEntity , [] as const){}
 export class ResAnimalTypeOmitNameDto extends OmitType(AnimalTypeEntity , ['detail_name'] as const){}
 
 export class ResAnimalTypeOmitDetailNameDto extends OmitType(AnimalTypeEntity , ['name'] as const){}
+
+
+export class ResAnimalTypeIdDto {
+    @ApiProperty({
+        example: {
+            "id": "1c7fb21a-8f67-4dbc-90e9-48a19b784e19"
+        },
+        description: '상세 종류에 해당하는 ID'
+    })
+    id: string;
+}
+
 export class ResAnimalTypeNameDto {
     @ApiProperty({
         example: [

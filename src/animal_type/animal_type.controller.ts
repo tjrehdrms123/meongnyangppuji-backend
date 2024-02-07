@@ -42,14 +42,13 @@ export class AnimalTypeController {
   }
 
   @ApiOperation({ summary: '반려동물 조회', description: '반려동물 조회' })
-  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1001']])
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-1005']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
     ErrorDefine['ERROR-0001'],
     ErrorDefine['ERROR-0002'],
     ErrorDefine['ERROR-0006'],
   ])
   @ApiBearerAuth('access-token')
-  
   @Get()
   async getAnimalTypeId(@Query('detail_name') detail_name: string) {
     return await this.animalTypeService.getAnimalTypeId(detail_name);

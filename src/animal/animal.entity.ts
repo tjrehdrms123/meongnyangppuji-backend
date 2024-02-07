@@ -1,5 +1,5 @@
 import { IsBoolean, IsInt, IsNotEmpty, IsString, IsUUID, Max } from 'class-validator'
-import { Column, Entity, JoinColumn, OneToOne, ManyToOne } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToOne, ManyToOne, OneToMany } from 'typeorm'
 import { CommonEntity } from 'src/common/entities/common.entity'
 import { ApiProperty } from '@nestjs/swagger'
 import { AnimalTypeEntity } from 'src/animal_type/animal_type.entity'
@@ -110,7 +110,7 @@ export class AnimalEntity extends CommonEntity {
     })
     qr_id: QrEntity
 
-    @OneToOne(() => CardEntity, { eager: true })
+    @ManyToOne(() => CardEntity, { eager: true })
     @JoinColumn({ name: 'card_id', referencedColumnName: 'id' })
     @IsUUID(4,{
       message: "입력한 Card ID가 옳바르지 않습니다."

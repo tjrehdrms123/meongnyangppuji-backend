@@ -39,6 +39,10 @@ export class UsersService {
     return await this.usersRepository.findById(createUserId);
   }
 
+  async addUserInfo(){
+    
+  }
+
   // POST: 유저 로그인
   async login(userData: LoginDto): Promise<{jwt: string, user: UsersEntity} | null> {
     const { user_id: userId, password } = userData;

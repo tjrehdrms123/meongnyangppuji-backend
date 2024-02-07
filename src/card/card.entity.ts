@@ -19,13 +19,13 @@ export class CardEntity extends CommonEntity {
     })
     background_color: string
 
-    @Column({ type: 'int', comment: '배경 레이아웃 (0: 기본, 1: 옵션1, 2: 옵션2...)', nullable: false })
-    @IsInt({ message: 'Int형식으로 입력해주세요.' })
+    @Column({ type: 'varchar', comment: '배경 레이아웃 (0: 기본, 1: 옵션1, 2: 옵션2...)', nullable: false })
+    @IsString({ message: 'String형식으로 입력해주세요.' })
     @IsNotEmpty({ message: '배경 레이아웃을 선택해주세요.' })
     @ApiProperty({
       example: 0,
       description: '배경 레이아웃 (0: 기본, 1: 옵션1, 2: 옵션2...)',
       required: true
     })
-    option: number
+    option: string
 }

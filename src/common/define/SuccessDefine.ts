@@ -1,4 +1,4 @@
-import { ResAnimalTypeDetailNameDto, ResAnimalTypeDto, ResAnimalTypeManyRowDto, ResAnimalTypeMetaData, ResAnimalTypeNameDto } from 'src/animal_type/dto/response/res_animal_type_dto';
+import { ResAnimalTypeDetailNameDto, ResAnimalTypeDto, ResAnimalTypeIdDto, ResAnimalTypeManyRowDto, ResAnimalTypeMetaData, ResAnimalTypeNameDto } from 'src/animal_type/dto/response/res_animal_type_dto';
 import { ResGuardianDto, ResGuardianMetaData, ResGuardianRowDto } from 'src/guardian/dto/response/res_guardian_dto';
 import { SuccessResponseOption } from '../decorators/SuccessResponse.decorator';
 import { ResUsersTypeDto } from 'src/users/dto/response/res_users_dto';
@@ -12,6 +12,7 @@ type Keys =
   | 'SUCCESS-1002'
   | 'SUCCESS-1003'
   | 'SUCCESS-1004'
+  | 'SUCCESS-1005'
   | 'SUCCESS-2000'
   | 'SUCCESS-2001'
   | 'SUCCESS-2002'
@@ -29,6 +30,7 @@ type Keys =
   | 'SUCCESS-7000'
   | 'SUCCESS-7001'
   | 'SUCCESS-7002'
+  | 'SUCCESS-7003'
   ;
 
 export const SuccessDefine: Record<
@@ -60,6 +62,11 @@ export const SuccessDefine: Record<
     model: ResAnimalTypeManyRowDto,
     exampleTitle: '반려동물 이름으로 삭제 예시',
     exampleDescription: '반려동물 이름으로 삭제 성공 예시',
+  },
+  'SUCCESS-1005': {
+    model: ResAnimalTypeIdDto,
+    exampleTitle: '반려동물 이름으로 조회 예시',
+    exampleDescription: '반려동물 이름으로 조회 성공 예시',
   },
   // 2000 : Guardian
   'SUCCESS-2000': {
@@ -164,5 +171,10 @@ export const SuccessDefine: Record<
     model: ResCardRowDto,
     exampleTitle: 'Card 삭제 성공 예시',
     exampleDescription: 'Card 삭제 성공 예시'
+  },
+  'SUCCESS-7003': {
+    model: ResCardDto,
+    exampleTitle: 'Card 조회 성공 예시',
+    exampleDescription: 'Card 조회 성공 예시'
   },
 };

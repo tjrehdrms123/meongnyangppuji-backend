@@ -12,6 +12,16 @@ export class CardService {
     private readonly cardRepository: CardRepository,
   ) {}
 
+  // GET: Card 조회
+  async getCardId(option){
+    return await this.cardRepository.getCardId(option);
+  }
+
+  // GET: Card 목록 조회
+  async getCardOption(){
+    return await this.cardRepository.getCardOption();
+  }
+
   // POST: Card 등록
   async createCard(cardData: CreateCardDto): Promise<CardEntity | null> {
     return await this.cardRepository.createCard(cardData);

@@ -12,7 +12,32 @@ export class CardRepository {
         @InjectRepository(CardEntity)
         private readonly CardRepository: Repository<CardEntity>
     ){}
-    
+
+    /**
+     * GET: Card 조회
+     * @param CardData
+     * @returns 등록된 Card 정보
+     */
+    async getCardId(option){
+        return await this.CardRepository.findOne(
+            { 
+                select : ['id'],
+                where : {option: option}
+            }
+        );
+    }
+
+    /**
+     * GET: Card 조회
+     * @param CardData
+     * @returns 등록된 Card 정보
+     */
+    async getCardOption(){
+        const card = await this.CardRepository.find();
+        const cardOption = card.map((value) => value.option);
+        return cardOption;
+    }
+
     /**
      * POST: Card 등록
      * @param CardData

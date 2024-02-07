@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, HttpStatus, Patch, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Patch, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { SuccessResponse } from 'src/common/decorators/SuccessResponse.decorator';
 import { ErrorResponse } from 'src/common/decorators/ErrorResponse.decorator';
 import { ErrorDefine } from 'src/common/define/ErrorDefine';
@@ -16,12 +16,26 @@ import { NoAuth } from 'src/auth/guards/NoAuth.guard';
 
 @Controller('card')
 @ApiTags('card API')
-@ApiBearerAuth('access-token')
-@UseGuards(JwtAuthGuard)
 @UseGuards(RolesGuard)
 export class CardController {
   constructor(private readonly cardService: CardService) {}
-  
+
+  @ApiOperation({ summary: 'Card 조회', description: 'Card 조회' })
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-7000']])
+  @NoAuth()
+  @Get()
+  async getCardId(@Query('option') option: string) {
+    return await this.cardService.getCardId(option);
+  }
+
+  @ApiOperation({ summary: 'Card 목록 조회', description: 'Card 목록 조회' })
+  @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-7000']])
+  @NoAuth()
+  @Get('option')
+  async getCardOption() {
+    return await this.cardService.getCardOption();
+  }
+
   @ApiOperation({ summary: 'Card 생성', description: 'Card 생성' })
   @SuccessResponse(HttpStatus.OK, [SuccessDefine['SUCCESS-7000']])
   @ErrorResponse(HttpStatus.UNAUTHORIZED, [
@@ -31,6 +45,8 @@ export class CardController {
     ErrorDefine['ERROR-0008'],
     ErrorDefine['ERROR-0009']
   ])
+  @ApiBearerAuth('access-token')
+  @UseGuards(JwtAuthGuard)
   @Roles(Role.Admin)
   @Post()
   async createCard(@Body() CardData: CreateCardDto) {
@@ -46,6 +62,8 @@ export class CardController {
     ErrorDefine['ERROR-0008'],
     ErrorDefine['ERROR-0009']
   ])
+  @ApiBearerAuth('access-token')
+  @UseGuards(JwtAuthGuard)
   @Roles(Role.Admin)
   @Put()
   async updateCard(@Body() CardData: UpdateCardDto) {
@@ -61,6 +79,8 @@ export class CardController {
     ErrorDefine['ERROR-0008'],
     ErrorDefine['ERROR-0009']
   ])
+  @ApiBearerAuth('access-token')
+  @UseGuards(JwtAuthGuard)
   @Roles(Role.Admin)
   @Delete()
   async deleteCard(@Body() CardData: DeleteCardDto) {
